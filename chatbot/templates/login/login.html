@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Login</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+<link href="{{ url_for('static', filename='assets/vendor/fonts/circular-std/style.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/libs/css/style.css') }}" >
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/fonts/fontawesome/css/fontawesome-all.css') }}" >
+<style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    </style>
+</head>
+<body>
+
+
+
+<div class="splash-container">
+<div class="card ">
+<div class="card-header text-center"><span class="splash-description"><label>LOGIN</label></span></div>
+<div class="card-body">
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<form method="POST" action="">
+
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+
+            <div class="form-group">
+                {{ form.username.label(class="form-control-label") }}
+                {% if form.username.errors %}
+                    {{ form.username(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+
+                {% else %}
+                    {{ form.username(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.password.label(class="form-control-label") }}
+                {% if form.password.errors %}
+                    {{ form.password(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+
+                {% else %}
+                    {{ form.password(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+
+        </fieldset>
+
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary btn-lg btn-block") }}
+        </div>
+    </form>
+</div>
+</div>
+</div>
+
+<script src="{{ url_for('static', filename='assets/vendor/jquery/jquery-3.3.1.min.js') }}" ></script>
+<script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.js') }}" ></script>
+
+</body>
+</html>

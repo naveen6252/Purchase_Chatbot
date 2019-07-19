@@ -1,0 +1,171 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <title>Sales ChatBot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"/>
+    <link type="text/css" href="{{ url_for('static', filename='css/PT+Serif400,700.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet"/>
+    <link type="text/css" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"/>
+    <link type="text/css" href="{{ url_for('static', filename='css/GR_style.css') }}" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }}">
+    <link type="text/css" href="{{ url_for('static', filename='css/layout.css') }}" rel="stylesheet"/>
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.twbsPagination.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/canvasjs.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/gauge.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-multiselect.js') }}"></script>
+
+    <script type="application/javascript">
+        sessionStorage.setItem("accessToken", "{{token}}");
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > document.body.scrollHeight / 3 ||
+                document.documentElement.scrollTop > document.documentElement.scrollHeight / 3) {
+                document.getElementById("topButton").style.display = "block";
+                document.getElementById("bottomButton").style.display = "none";
+            } else {
+                document.getElementById("topButton").style.display = "none";
+                document.getElementById("bottomButton").style.display = "block";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        function bottomFunction() {
+            document.body.scrollTop = document.body.scrollHeight;
+            document.documentElement.scrollTop = document.documentElement.scrollHeight;
+        }
+    </script>
+</head>
+
+<body class="grayBackGr h-100">
+{% if username %}
+    <button class="btn btn-primary" onclick="topFunction()" id="topButton" title="Go to top"
+            style="position:fixed; bottom: 2%; right: 1%; display: none; z-index: 99;">
+        <i class="glyphicon glyphicon-menu-up"></i>
+    </button>
+    <button class="btn btn-primary" onclick="bottomFunction()" id="bottomButton" title="Go to bottom"
+            style="position:fixed; top: 50px; right: 1%; z-index: 99;">
+        <i class="glyphicon glyphicon-menu-down"></i>
+    </button>
+    <header class="container-fluid" style="position: fixed; width: 100%; top:0; height: 50px; z-index: 999;">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="logo">
+                    <img alt='Logo' src="{{ url_for('static', filename='img/logo.png') }}" class="logo"/>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h3 class="align-middle text-center">{{ title }}</h3>
+            </div>
+            <div class="col-sm-4">
+                <div class="navContainer">
+                    <div class="providedLinks">
+                        <ul>
+                            <li class="userProfile">
+                                <a href="#" class="btn colorBtn">{{ username }}<i
+                                        class="glyphicon glyphicon-menu-down"></i></a>
+
+                                <ul class="sub-menu">
+
+                                    <li><a href="{{ url_for('home') }}"><i class="glyphicon glyphicon-comment"></i>
+                                        ChatBot</a></li>
+                                    {% if role=='admin' %}
+                                        <li><a href="{{ url_for('interactive_learning') }}"><i
+                                                class="glyphicon glyphicon-education"></i> Train Bot</a></li>
+                                        <li><a href="{{ url_for('view_nlu') }}"><i
+                                                class="glyphicon glyphicon-cog"></i> Add Training Data</a></li>
+                                        <li><a href="{{ url_for('create_user') }}"><i
+                                                class="glyphicon glyphicon-user"></i> Create
+                                            User</a></li>
+                                        <li><a href="{{ url_for('view_user') }}"><i
+                                                class="glyphicon glyphicon-stats"></i> View
+                                            User</a></li>
+                                        <li><a href="{{ url_for('view_logs') }}"><i
+                                                class="glyphicon glyphicon-list"></i> View
+                                            Logs</a></li>
+                                        <li><a href="{{ url_for('change_theme') }}"><i
+                                                class="glyphicon glyphicon-edit"></i> Change Brand Logo</a></li>
+                                    {% endif %}
+                                    <li><a href="{{ url_for('logout') }}"><i class="glyphicon glyphicon-log-out"></i>
+                                        Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- } -->
+{% else %}
+
+    <!-- else
+    { -->
+    <header class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <a href="{{ url_for('login') }}" class="forDesktop"><img alt='Logo'
+                                                                         src="{{ url_for('static', filename='img/logo.png') }}"
+                                                                         class="logo"/></a>
+                <a href="{{ url_for('login') }}" class="forMobile"><img alt='Logo'
+                                                                        src="{{ url_for('static', filename='img/logo.png') }}"
+                                                                        class="logo"/></a>
+            </div>
+            <div class="col-sm-9">
+                <div class="navContainer">
+                    <div class="providedLinks">
+                        <ul>
+                            <li><a href="{{ url_for('login') }}" class="loginBtn">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- } -->
+{% endif %}
+{% block content %}{% endblock %}
+<!-- @RenderBody() -->
+<!--
+<footer class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="{{ url_for('login') }}" class="forDesktop"><img alt='Polestar Logo'
+                                                                     src="{{ url_for('static', filename='img/logo.png') }}"
+                                                                     class="logo"/></a>
+            <a href="{{ url_for('login') }}" class="forMobile"><img alt='Polestar Logo'
+                                                                    src="{{ url_for('static', filename='img/logo.png') }}"
+                                                                    class="logo"/></a>
+        </div>
+        <div class="col-sm-9">
+            <div class="navContainer">
+                <div class="providedLinks">
+                    <ul>
+                        <li style="font-family:Roboto,serif;font-weight:400;">© Copyright 2019. All Rights Reserved |
+                            Polestar
+                            Solutions India Pvt. Ltd.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+-->
+</body>
+</html>

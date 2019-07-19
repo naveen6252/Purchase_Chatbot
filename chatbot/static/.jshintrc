@@ -1,0 +1,9 @@
+{
+    "globals": {
+        "$": false,
+        "google": false,
+        "document": false,
+        "console": false,
+        "async": false
+    }
+}

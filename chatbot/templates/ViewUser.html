@@ -1,0 +1,107 @@
+{% extends "layout/ChatbotLayout.html" %}
+{% block content %}
+    <style>
+        #userTable {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #userTable td, #userTable th {
+            border: 1px solid #111;
+            padding: 8px;
+        }
+
+        #userTable tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+        #userTable tr {
+            background-color: #aaaaaa;
+        }
+
+        #userTable tr:hover {
+            background-color: #6d93d1;
+        }
+
+        #userTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #69a84f;
+            color: white;
+        }
+    </style>
+    <div class="container-fluid" id="showData" style="margin-top: 50px"></div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: '/api/get_users',
+                headers: {
+                    "x-access-token": sessionStorage.getItem('accessToken')
+                },
+                success: function (response) {
+                    userData = response;
+                    var row = "";
+                    row += "<div class = 'table-responsive container' style='padding-bottom:50px'><table id='userTable' ><tr>";
+                    row += "<th align='center'>Update/Delete</th>"; // will contain icons for update and delete row
+                    row += "<th align='center'>Username</th>";
+                    row += "<th align='center'>Name</th>";
+                    row += "<th align='center'>Role</th>";
+                    row += '</tr>';
+
+                    for (var i = 0; i < userData.length; i++) {
+                        row += "<tr>";
+                        if (userData[i].username != '{{ username }}') {
+                            row += "<td align='center'><button class='btn btn-info' onclick=\"UpdateUser('" +
+                                userData[i].username + "')\" title='Update'><i class='glyphicon glyphicon-cog'></i></button><button class='btn btn-danger' onclick=\"DeleteUser('" +
+                                userData[i].username + "')\" title='Delete'><i class='glyphicon glyphicon-trash'></i></button></td>";
+                        }
+                        // will contain icons for update and delete row
+                        else {
+                            row += "<td></td>";
+                        }
+                        row += "<td align='center'>" + userData[i].username + "</td>";
+                        row += "<td align='center'>" + userData[i].name + "</td>";
+                        row += "<td align='center'>" + userData[i].role + "</td>";
+                        row += '</tr>';
+                    }
+                    row += '</table></div>';
+                    $('#showData').html(row);
+                }
+            });
+
+
+        });
+
+        function UpdateUser(username) {
+
+            window.location.href = '/update user/' + username;
+        }
+
+        function DeleteUser(username) {
+            var r = confirm("Are you sure want to delete user " + username);
+            if (r === false) {
+                return;
+            }
+
+            $.ajax({
+                type: "GET",
+                url: '/api/DeleteUser/' + username,
+                headers: {
+                    "x-access-token": sessionStorage.getItem('accessToken')
+                },
+                success: function (response) {
+                    window.alert(response.message);
+                    window.location.href = '{{ url_for("view_user") }}';
+                }
+            });
+
+        }
+    </script>
+
+
+{% endblock content %}

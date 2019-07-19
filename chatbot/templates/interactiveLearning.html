@@ -1,0 +1,319 @@
+{% extends "layout/ChatbotLayout.html" %}
+{% block content %}
+    <style>
+        #intentsTable {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #intentsTable td, #intentsTable th {
+            border: 1px solid #111;
+            padding: 8px;
+        }
+
+
+        #intentsTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #69a84f;
+            color: white;
+        }
+
+        #lookupTable {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #lookupTable td, #lookupTable th {
+            border: 1px solid #111;
+            padding: 8px;
+        }
+
+
+        #lookupTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #69a84f;
+            color: white;
+        }
+
+    </style>
+    <div class="loader-container" id="loader" style="display: none;">
+        <?xml version="1.0" encoding="utf-8" ?>
+        <svg class="loader" xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" x="0" y="0"
+             viewBox="0 0 200 200" xml:space="preserve">
+            <path class="loaderreverse"
+                  d="M200 100c0-30.3-13.5-57.5-34.8-75.8 -4.8-4.1-12.2-3-15.8 2.3v0c-3 4.5-2.4 10.7 1.8 14.2 16.6 14.4 27.1 35.6 27.1 59.3s-10.5 44.9-27.1 59.3c-4.1 3.6-4.8 9.7-1.8 14.2v0c3.6 5.3 11 6.4 15.8 2.3C186.5 157.5 200 130.3 200 100z"></path>
+            <path d="M156.7 100c0-14.9-5.8-28.5-15.2-38.6 -4.6-4.9-12.6-4.1-16.3 1.4l-0.4 0.6c-2.8 4.1-2.2 9.5 1.2 13.2 5.7 6.2 9.1 14.4 9.1 23.5 0 9-3.4 17.3-9.1 23.5 -3.3 3.7-3.9 9-1.2 13.2l0.4 0.6c3.7 5.6 11.7 6.3 16.3 1.4C150.9 128.5 156.7 114.9 156.7 100z"></path></svg>
+    </div>
+
+    <div style="margin-top: 50px">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <button class='btn btn-default center-block' onclick="showIntentsData()"
+                            title='Show Intents'>
+                        <i class='glyphicon glyphicon-comment'></i>
+                        Intents
+                    </button>
+                </div>
+                <div class="col-xs-6">
+                    <button class='btn btn-default center-block' onclick="showLookupTable()"
+                            title='Show Lookup Table'>
+                        <i class='glyphicon glyphicon-list'></i>
+                        Lookup Table
+                    </button>
+                </div>
+
+            </div>
+            <div class="row" id="intentsDiv">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <h2><i class="glyphicon glyphicon-comment"></i>Intents</h2>
+                    </div>
+                </div>
+                <div class='table-responsive container' style='padding-bottom:50px'>
+                    <table id='intentsTable'>
+                        <tr>
+                            <th align='center' style="max-width: 40px">Intent</th>
+                            <th align='center'>Training Phrase</th>
+                            <th align='center' style="max-width: 10px">Delete</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row" id="lookupDiv" style="display: none;">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <h2 class="text-center"><i class="glyphicon glyphicon-list"></i>Lookup Tables</h2>
+                    </div>
+                </div>
+                <div class='table-responsive container' style='padding-bottom:50px'>
+                    <table id='lookupTable'>
+                        <tr>
+                            <th align='center' style="max-width: 40px">Column</th>
+                            <th align='center'>Lookup Value</th>
+                        </tr>
+                        {% for name, elements in lookup.items() %}
+                            <tr id="lookupExample{{ name }}">
+                                <td align='center' style="max-width: 40px">
+                                    {{ name }}
+                                </td>
+                                <td align='center'>
+                                    <select title="Lookup Table for {{ name }}" data-toggle="tooltip"
+                                            class="form-control">
+                                        {% for element in elements %}
+                                            <option>
+                                                {{ element }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="inputDiv">
+        <div class="col-xs-8 col-xs-offset-2">
+            <form id="target">
+                <input class="input" type="text" value="" placeholder="Enter message..." autocomplete="off"
+                       id="input_message" onclick="showIntentsData()"/>
+                <span class="fa fa-comments  fa-2x icon"></span>
+                <input type="submit" hidden=hidden/>
+            </form>
+        </div>
+        <div class="col-xs-2">
+            <input type="button" value="Train Model" id="btnTrainModel"
+                   class="btn btn-primary" onclick="trainModel()"/>
+        </div>
+    </div>
+    <script>
+        var prev_message = '';
+        var intentID = 0;
+        var parameters_ids = [];
+
+        function showIntentsData() {
+            $('#lookupDiv').hide();
+            $('#intentsDiv').show();
+            $("#btnTrainModel").removeAttr("disabled");
+        }
+
+        function showLookupTable() {
+            $('#intentsDiv').hide();
+            $('#lookupDiv').show();
+            $('#btnTrainModel').attr("disabled", true);
+        }
+
+        function show_nlu_parameters(data) {
+            $("#waiting").remove();
+            intentID++;
+            parameters_ids.push(intentID);
+
+            var row = '<tr id="intentExample' + intentID + '"><td align="center" style="max-width: 40px">' +
+                '<input type="text" id="intentInput' + intentID + '" data-toggle="tooltip" class="form-control"' +
+                ' value="' + data.intent + '"/><span id="intentError' + intentID + '" class="help-block"></span></td>' +
+                '<td align="center">\n' +
+                '<input type="text" id="exampleInput' + intentID + '" data-toggle="tooltip"\n' +
+                ' class="form-control" value="' + data.text + '"/>\n' +
+                '<span id="parameterTextError' + intentID + '" class="help-block"></span></td>\n' +
+                '<td align="center" style="max-width: 10px">\n' +
+                '     <button class="btn btn-danger" onclick="DeleteIntentExample(' + intentID + ')"\n' +
+                '  title="Delete">\n' +
+                '<i class="glyphicon glyphicon-trash"></i>\n' +
+                '</button>\n' +
+                '</td>\n' +
+                '</tr>';
+
+
+            $('#intentsTable').append(row).ready(function () {
+                $("html, body").animate({
+                    scrollTop: $('#intentExample' + intentID).offset().top
+                }, 1);
+            });
+        }
+
+        function trainModel() {
+            if (!parameters_ids.length) {
+                return;
+            }
+            $("#btnTrainModel").attr("disabled", true);
+            $("#input_message").attr("disabled", true);
+            for (var i = 0; i < parameters_ids.length; ++i) {
+                $("#intentExample" + parameters_ids[i]).removeClass("has-error");
+                $("#intentError" + parameters_ids[i]).html('');
+                $("#parameterTextError" + parameters_ids[i]).html('');
+
+            }
+            var nlu_examples = [];
+
+            for (var i = 0; i < parameters_ids.length; ++i) {
+                intent = $('#intentInput' + parameters_ids[i]).val();
+                text = $('#exampleInput' + parameters_ids[i]).val();
+                if (!intent) {
+                    $("#intentExample" + parameters_ids[i]).addClass("has-error");
+                    $("#intentError" + parameters_ids[i]).html('Enter intent Name!');
+                    $("#intentInput" + parameters_ids[i]).focus();
+                    return;
+                }
+                if (!text) {
+                    $("#intentExample" + parameters_ids[i]).addClass("has-error");
+                    $("#parameterTextError" + parameters_ids[i]).html('Enter Example Phrase!');
+                    $("#exampleInput" + parameters_ids[i]).focus();
+                    return;
+                }
+                nlu_examples.push({'intent': intent, 'text': text});
+            }
+            $("#loader").show();
+            $("#intentsDiv").hide();
+            var post_data = {
+                'append': true,
+                'common_examples': nlu_examples,
+                'lookup_tables': [],
+                'entity_synonyms': []
+            };
+            $.ajax({
+                type: 'POST',
+                url: "{{ url_for('api_save_nlu_data') }}",
+                data: JSON.stringify(post_data),
+                contentType: 'application/json;charset=UTF-8',
+                headers: {
+                    "x-access-token": sessionStorage.getItem('accessToken')
+                },
+                success: function (response) {
+                    $("#loader").hide();
+                    alert("Train Successfully completed!");
+                    window.location.href = "{{ url_for('home') }}";
+                },
+                error: function (error) {
+                    $("#loader").hide();
+                    $("#intentsDiv").show();
+                    $("#btnTrainModel").removeAttr("disabled");
+                    $("#input_message").removeAttr("disabled");
+                    alert("Error! \n" + error.responseText);
+                }
+            });
+
+        }
+
+        function DeleteIntentExample(id) {
+            parameters_ids.splice(parameters_ids.indexOf(id), 1);
+            $("#intentExample" + id).remove();
+        }
+
+        function get_message_result(message, callback) {
+            "use strict";
+            $.ajax({
+                type: 'GET',
+                url: "{{ url_for('api_get_entity_parameters') }}",
+                data: {
+                    message: message
+                },
+                contentType: 'application/json;charset=UTF-8',
+                headers: {
+                    "x-access-token": sessionStorage.getItem('accessToken')
+                },
+                success: function (response) {
+                    callback(response);
+                },
+                error: function (error) {
+                    $("#waiting").remove();
+                    alert(error.responseJSON.message);
+                }
+            });
+        }
+
+        function submit_message(message) {
+            "use strict";
+            prev_message = message;
+            // Replace <, >, =
+            message = message.replace('<', ' less than ').replace('>', ' greater than ').replace('=', ' equal to ');
+
+            // loading Animation
+            var loading = '<tr id="waiting"><td align="center" style="max-width: 40px">' +
+                '<h5 class="loading">Getting Results</h5></td></tr>';
+
+            $('#intentsTable').append(loading).ready(function () {
+                $("html, body").animate({
+                    scrollTop: $('#waiting').offset().top
+                }, 1);
+            });
+
+            // clear the text input
+            $('#input_message').val('');
+
+            // post message to python server and get result
+            get_message_result(message, show_nlu_parameters);
+        }
+
+
+        // on up key fill previous value
+        $('#target').keydown(function (e) {
+            if (e.keyCode == 38) {
+                var input = $('#input_message');
+                input.val(prev_message);
+                input.focus().val(input.val());
+            }
+        });
+
+        $('#target').on('submit', function (e) {
+            e.preventDefault();
+            var input_message = $('#input_message').val();
+            // return if the user does not enter any text
+            if (!input_message) {
+                return;
+            }
+            // send the message
+            submit_message(input_message);
+        });
+
+    </script>
+
+{% endblock content %}

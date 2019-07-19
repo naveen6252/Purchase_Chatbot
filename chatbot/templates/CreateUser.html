@@ -1,0 +1,456 @@
+{% extends "layout/ChatbotLayout.html" %}
+{% block content %}
+    <form id="theform" style="margin-top: 60px">
+        <div class="mainContentBox marginT20px">
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <div class="whiteBg">
+
+                                <div class="formSection">
+                                    <div class="col-sm-12">
+                                        <h3>Create User</h3>
+
+                                        <div class="row">
+                                            <div class="col-sm-6" id="nameDiv">
+                                                <p>Name</p>
+                                                <span>
+                                                    <input type="text" id="name" title="Name is Required"
+                                                           data-toggle="tooltip" class="form-control"/>
+                                                </span>
+                                                <span id="nameError" class="help-block"></span>
+                                            </div>
+                                            <div class="col-sm-6" id="userNameDiv">
+                                                <p>User Name</p>
+                                                <span>
+                                                    <input type="text" id="userName" title="User Name is Required"
+                                                           data-toggle="tooltip"
+                                                           class="form-control"/>
+                                                </span>
+                                                <span id="userNameError" class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6" id="passwordDiv">
+                                                <p>Password</p>
+                                                <span>
+                                                    <input type="password" id="password" title="Password is Required"
+                                                           data-toggle="tooltip" class="form-control"/>
+                                                </span>
+                                                <span id="passwordError" class="help-block"></span>
+                                            </div>
+                                            <div class="col-sm-6" id="confirmPasswordDiv">
+                                                <p>Confirm Password</p>
+                                                <span>
+                                                    <input type="password" id="confirmPassword"
+                                                           title="Confirm Password is Required" data-toggle="tooltip"
+                                                           class="form-control"/>
+                                                </span>
+                                                <span id="confirmPasswordError" class="help-block"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" id="isExistingOrNewRoleDiv">
+                                            <div class="col-sm-6">
+                                                <label class="radio-inline form-group">
+                                                    <input type="radio" id="existing_role" name="user_role"
+                                                           onclick="existing_role1()" required>
+                                                    Select from Existing User Roles
+                                                </label>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="radio-inline form-group">
+                                                    <input type="radio" id="new_role" name="user_role"
+                                                           onclick="new_role1()" required>
+                                                    Create New User Role
+                                                </label>
+                                            </div>
+                                            <span id="isExistingOrNewRoleError" class="col-sm-offset-4 help-block">
+
+                                            </span>
+                                        </div>
+                                        <div class="row" style="display:none" id="existingUserRoleDiv">
+                                            <div class="row">
+                                                <div class="col-sm-6 form-group" id="selectExistingUserRole">
+                                                    <p>Select from Existing User Roles</p>
+                                                    <select id="existingUserRoles"
+                                                            onchange="selectExistingUserRoles(this)"
+                                                            title="Select a option" data-toggle="tooltip"
+                                                            class="form-control myselect">
+                                                        <option hidden disabled selected
+                                                                value>-- Select Role --
+                                                        </option>
+                                                        {% for roles in existing_roles %}
+                                                            <option value="{{ roles.role }}">{{ roles.role }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                    <span id="selectExistingRoleError" class="help-block"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                            </div>
+                                            <div class="col-sm-12" id="access_json">
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="row" id="createNewUerRoleDiv" style="display: none">
+                                            <div class="row container-fluid">
+                                                <div class="col-sm-6" id="newUserRoleDiv">
+                                                    <p>User Role</p>
+                                                    <input type="text" id="newUserRole" title="User Role is Required"
+                                                           data-toggle="tooltip" class="form-control"/>
+                                                    <span id="newUserRoleError" class="help-block"></span>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p>Add Role Filter</p>
+                                                    <span>
+                                                        <img src="{{ url_for('static', filename='img/add_roles.jpg') }}"
+                                                             style="width:15px;height:15px;cursor:pointer;"
+                                                             id="addRoles" onclick="addNewFilter()"/>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div id="container"></div>
+                                        </div>
+                                        <div class="row">
+                                        <span class="col-sm-12">
+                                            <span><input type="button" value="Register" id="btnSubmitForm"
+                                                         class="btn btn-defaults" onclick="createNewUser()"/></span>
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        var filter_id = 0;
+        var filter_ids = [];
+        var isExistingRole = false;
+        var isNewRole = false;
+        var rls_json_data = {};
+
+
+        function existing_role1() {
+            $("#createNewUerRoleDiv").hide();
+            $("#existingUserRoleDiv").show();
+            $("#isExistingOrNewRoleDiv").removeClass("has-error");
+            $("#isExistingOrNewRoleError").html("");
+            isExistingRole = true;
+            isNewRole = false;
+        }
+
+        function new_role1() {
+            $("#existingUserRoleDiv").hide();
+            $("#createNewUerRoleDiv").show();
+            $("#isExistingOrNewRoleDiv").removeClass("has-error");
+            $("#isExistingOrNewRoleError").html("");
+            isExistingRole = false;
+            isNewRole = true;
+
+        }
+
+        function selectExistingUserRoles(role) {
+            $("#selectExistingUserRole").removeClass("has-error");
+            $("#selectExistingRoleError").html("");
+            var all_roles = {{ existing_roles|safe }};
+            var selected_json = [];
+            for (i = 0; i < all_roles.length; ++i) {
+                if (all_roles[i].role === role.value) {
+                    selected_json = all_roles[i].access_json
+                }
+            }
+            var row = "";
+            row += "<div style='padding-bottom:50px'><table class='table' ><tr>";
+            row += "<th>Column Name</th>";
+            row += "<th>Operator</th>";
+            row += "<th>Value</th>";
+            row += '</tr>';
+            for (var i = 0; i < selected_json.length; i++) {
+                row += "<tr>";
+                row += "<td>" + selected_json[i].col_name + "</td>";
+                row += "<td>" + selected_json[i].operator_choice + "</td>";
+                row += "<td>" + selected_json[i].value + "</td>";
+                row += '</tr>';
+            }
+            row += '</table></div>';
+            $('#access_json').html(row);
+        }
+
+        function onSelectColumnName(col_name, id) {
+            $("#column_nameDiv" + id).removeClass("has-error");
+            $("#column_nameError" + id).html('');
+            var all_filters = {{ rls_filters|safe }};
+            var operator_choice = {};
+
+            for (i = 0; i < all_filters.length; ++i) {
+                if (all_filters[i].col_name === col_name.value) {
+                    operator_choice = all_filters[i].operator_choice;
+                }
+            }
+            var option = '<option hidden disabled selected value>Select Operator</option>';
+            Object.keys(operator_choice).forEach(function (key) {
+                option += '<option value="' + operator_choice[key] + '">' + key + '</option>';
+            });
+            $("#operator_choice" + id).show().html(option);
+            $("#value_choiceDiv" + id).hide();
+        }
+
+        function onSelectOperator(operator, id) {
+            $("#operator_choiceDiv" + id).removeClass("has-error");
+            $("#operator_choiceError" + id).html('');
+
+            var selected_column = $("#column_name" + id).val();
+            if (operator.value === 'textbox') {
+                row = "<input type='text' title='value is required' data-toggle='tooltip' id='value_choice" + id + "' class='form-control' onchange='onSelectValue(" + id + ")'/><span id='value_choiceError" + id + "' class='help-block'></span>";
+                $("#value_choiceDiv" + id).show().html(row);
+            } else if (operator.value === 'option') {
+
+                var all_filters = {{ rls_filters|safe }};
+                var value_choice = [];
+
+                for (i = 0; i < all_filters.length; ++i) {
+                    if (all_filters[i].col_name === selected_column) {
+                        value_choice = all_filters[i].value_choice;
+                    }
+                }
+                var option = '<select id="value_choice' + id + '" multiple="multiple" onchange="onSelectValue(' + id + ')">';
+
+                (value_choice).forEach(function (key) {
+                    option += '<option value="' + key + '">' + key + '</option>';
+                });
+
+                option += "</select><span id='value_choiceError" + id + "' class='help-block'></span>";
+
+                $("#value_choiceDiv" + id).html(option).show();
+                $('#value_choice' + id).multiselect({
+                    buttonWidth: '100%',
+                    includeSelectAllOption: true,
+                    nonSelectedText: 'Select an Option',
+                    enableClickableOptGroups: true,
+                    enableFiltering: true,
+                    maxHeight: 450
+                });
+
+            } else if (operator.value === 'calendar') {
+                var today = new Date();
+                row = "<input type='date' title='value is required' data-toggle='tooltip' id='value_choice" + id + "' class='form-control' min='2000-01-01' max='2999-12-31' value='" + today + "' onchange='onSelectValue(" + id + ")'/><span id='value_choiceError" + id + "' class='help-block'></span>";
+                $("#value_choiceDiv" + id).show().html(row);
+            }
+        }
+
+        function onSelectValue(id) {
+            $("#value_choiceDiv" + id).removeClass("has-error");
+            $("#value_choiceError" + id).html('');
+        }
+
+        function remove_role(selected_filter) {
+            filter_ids.splice(filter_ids.indexOf(selected_filter), 1);
+            $("#roleFilter" + selected_filter).remove();
+        }
+
+        function addNewFilter() {
+            filter_id++;
+            filter_ids.push(filter_id);
+            var filter_html = '<div class="row container-fluid" id="roleFilter' + filter_id + '">\n' +
+                '    <div class="col-sm-4" id="column_nameDiv' + filter_id + '">\n' +
+                '            <select id="column_name' + filter_id + '" title="Select a option" data-toggle="tooltip" class="form-control" onchange="onSelectColumnName(this,' + filter_id + ')">\n' +
+                '                <option hidden disabled selected value>Select Column Name</option>\n' +
+                '                {% for filters in rls_filters %}\n'+
+                    '                <option value="{{ filters.col_name }}">{{ filters.col_name }}</option>\n'+
+                    '                {% endfor %}\n' +
+                '            </select>\n' +
+                '<span id="column_nameError' + filter_id + '" class="help-block"></span>\n' +
+                '    </div>\n' +
+                '\n' +
+                '    <div class="col-sm-3" id="operator_choiceDiv' + filter_id + '">\n' +
+                '            <select id="operator_choice' + filter_id + '" title="Select a option" data-toggle="tooltip" class="form-control" style="display: none" onchange="onSelectOperator(this,' + filter_id + ')">\n' +
+                '            </select>\n' +
+                '<span id="operator_choiceError' + filter_id + '" class="help-block"></span>\n' +
+                '    </div>\n' +
+                '    <div class="col-sm-4" id="value_choiceDiv' + filter_id + '" style="display: none;">\n' +
+                '    </div>\n' +
+                '    <div class="col-sm-1"  onclick="remove_role(' + filter_id + ')">\n' +
+                '        <span>\n' +
+                '            <img src=' + "'{{ url_for("static", filename="img/remove_roles.png") }}'" + ' style="width:15px;height:15px;cursor:pointer;"/>\n' +
+                '        </span>\n' +
+                '    </div>\n' +
+                '</div>';
+            $("#container").append(filter_html);
+        }
+
+        function createNewUser() {
+            // First Reset All Errors
+            $("#nameDiv").removeClass("has-error");
+            $("#nameError").html('');
+            $("#userNameDiv").removeClass("has-error");
+            $("#userNameError").html('');
+            $("#passwordDiv").removeClass("has-error");
+            $("#passwordError").html('');
+            $("#confirmPasswordDiv").removeClass("has-error");
+            $("#confirmPasswordError").html('');
+            $("#selectExistingUserRole").removeClass("has-error");
+            $("#selectExistingRoleError").html("");
+            $("#isExistingOrNewRoleDiv").removeClass("has-error");
+            $("#isExistingOrNewRoleError").html("");
+            $("#newUserRoleDiv").removeClass("has-error");
+            $("#newUserRoleError").html('');
+            for (var i = 0; i < filter_ids.length; ++i) {
+                $("#column_nameDiv" + filter_ids[i]).removeClass("has-error");
+                $("#operator_choiceDiv" + filter_ids[i]).removeClass("has-error");
+                $("#value_choiceDiv" + filter_ids[i]).removeClass("has-error");
+                $("#column_nameError" + filter_ids[i]).html('');
+                $("#operator_choiceError" + filter_ids[i]).html('');
+                $("#value_choiceError" + filter_ids[i]).html('');
+            }
+            var name = $("#name").val();
+            var username = $("#userName").val();
+            var password = $("#password").val();
+            var confirmPassword = $("#confirmPassword").val();
+            var allUsers = {{ users|safe }};
+            var allRoles = {{ existing_roles|safe }};
+            var userData;
+            if (!name) {
+                $("#nameDiv").addClass("has-error");
+                $("#nameError").html('Enter Name!');
+                $("#name").focus();
+                return false;
+            }
+            if (!username) {
+                $("#userNameDiv").addClass("has-error");
+                $("#userNameError").html('Enter User Name!');
+                $("#userName").focus();
+                return false;
+            }
+            for (var i = 0; i < allUsers.length; ++i) {
+                if (username === allUsers[i].username) {
+                    $("#userNameDiv").addClass("has-error");
+                    $("#userNameError").html('UserName Already Exists!');
+                    $("#userName").focus();
+                    return false;
+                }
+            }
+            if (!password) {
+                $("#passwordDiv").addClass("has-error");
+                $("#passwordError").html('Enter Password!');
+                $("#password").focus();
+                return false;
+            }
+            if (!confirmPassword) {
+                $("#confirmPasswordDiv").addClass("has-error");
+                $("#confirmPasswordError").html('Enter Password!');
+                $("#confirmPassword").focus();
+                return false;
+            }
+            if (password !== confirmPassword) {
+                $("#passwordDiv").addClass("has-error");
+                $("#confirmPasswordDiv").addClass("has-error");
+                $("#passwordError").html('Password does not match!');
+                $("#confirmPasswordError").html('Password does not match!');
+                $("#password").focus();
+                return false;
+            }
+            if (!isExistingRole && !isNewRole) {
+                $("#isExistingOrNewRoleDiv").addClass("has-error");
+                $("#isExistingOrNewRoleError").html("Select One Option!");
+                $("#existingUserRoles").focus();
+                return false;
+            }
+            if (isExistingRole) {
+                var role = $("#existingUserRoles").val();
+                if (!role) {
+                    $("#selectExistingUserRole").addClass("has-error");
+                    $("#selectExistingRoleError").html('Select Role!');
+                    return false;
+                }
+                userData = {
+                    "username": username,
+                    "name": name,
+                    "role": role,
+                    "password": password,
+                    "existing_role": isExistingRole
+                };
+            }
+            if (isNewRole) {
+                var newRoleName = $("#newUserRole").val();
+                if (!newRoleName) {
+                    $("#newUserRoleDiv").addClass("has-error");
+                    $("#newUserRoleError").html('Enter Role Name');
+                    $("#newUserRole").focus();
+                    return false;
+                }
+                // check if role name exists
+                for (var i = 0; i < allRoles.length; ++i) {
+                    if (newRoleName === allRoles[i].role) {
+                        $("#newUserRoleDiv").addClass("has-error");
+                        $("#newUserRoleError").html('UserName Already Exists!');
+                        $("#newUserRole").focus();
+                        return false;
+                    }
+                }
+                var rls_json = [];
+                // get data from all filters
+                for (var i = 0; i < filter_ids.length; ++i) {
+                    var colName = $("#column_name" + filter_ids[i]).val();
+                    var operatorChoice = $("#operator_choice" + filter_ids[i] + " option:selected").text();
+                    var valueChoice = $("#value_choice" + filter_ids[i]).val();
+                    if (!colName) {
+                        $("#column_nameDiv" + filter_ids[i]).addClass("has-error");
+                        $("#column_nameError" + filter_ids[i]).html('Select Column Name!');
+                        $("#column_name" + filter_ids[i]).focus();
+                        return false;
+                    }
+                    if (!operatorChoice || operatorChoice === 'Select Operator') {
+                        $("#operator_choiceDiv" + filter_ids[i]).addClass("has-error");
+                        $("#operator_choiceError" + filter_ids[i]).html('Select Operator Name!');
+                        $("#operator_choice" + filter_ids[i]).focus();
+                        return false;
+                    }
+                    if (!valueChoice.length) {
+                        $("#value_choiceDiv" + filter_ids[i]).addClass("has-error");
+                        $("#value_choiceError" + filter_ids[i]).html('Select Value!');
+                        $("#value_choice" + filter_ids[i]).focus();
+                        return false;
+                    }
+                    rls_json.push({'col_name': colName, 'operator_choice': operatorChoice, 'value': valueChoice});
+                }
+                userData = {
+                    "username": username,
+                    "name": name,
+                    "role": newRoleName,
+                    "password": password,
+                    "existing_role": isExistingRole,
+                    "access_json": rls_json
+
+                };
+            }
+            $.ajax({
+                type: 'POST',
+                url: "{{ url_for('api_create_user') }}",
+                data: JSON.stringify(userData),
+                contentType: 'application/json;charset=UTF-8',
+                headers: {
+                    "x-access-token": sessionStorage.getItem('accessToken')
+                },
+                success: function (response) {
+                    alert("User Created Successfully");
+                    window.location.href = "{{ url_for('view_user') }}";
+                },
+                error: function (error) {
+                    alert("Error! \n" + error.responseText);
+                }
+            });
+        }
+    </script>
+{% endblock content %}
+
+
+

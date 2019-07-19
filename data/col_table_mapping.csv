@@ -1,0 +1,26 @@
+"column","table","date_col"
+"SubTotal","PurchaseOrderHeader.csv","['OrderDate','ShipDate']"
+"TaxAmt","PurchaseOrderHeader.csv","['OrderDate','ShipDate']"
+"Freight","PurchaseOrderHeader.csv","['OrderDate','ShipDate']"
+"TotalDue","PurchaseOrderHeader.csv","['OrderDate','ShipDate']"
+"OrderQty","PurchaseOrderDetail.csv","['DueDate']"
+"UnitPrice","PurchaseOrderDetail.csv","['DueDate']"
+"LineTotal","PurchaseOrderDetail.csv","['DueDate']"
+"ReceivedQty","PurchaseOrderDetail.csv","['DueDate']"
+"EmployeeName","Employee.csv","['BirthDate', 'HireDate']"
+"JobTitle","Employee.csv","['BirthDate', 'HireDate']"
+"DepartmentName","Employee.csv","['BirthDate', 'HireDate']"
+"BirthDate","Employee.csv","['BirthDate', 'HireDate']"
+"MaritalStatus","Employee.csv","['BirthDate', 'HireDate']"
+"Gender","Employee.csv","['BirthDate', 'HireDate']"
+"HireDate","Employee.csv","['BirthDate', 'HireDate']"
+"ProductName","Product.csv",
+"ProductNumber","Product.csv",
+"ProductSubcategoryName","Product.csv",
+"ProductCategoryName","Product.csv",
+"ShipMethodName","ShipMethod.csv",
+"ShipBase","ShipMethod.csv",
+"ShipRate","ShipMethod.csv",
+"VendorAccountNumber","Vendor.csv",
+"VendorName","Vendor.csv",
+"VendorCreditRating","Vendor.csv",

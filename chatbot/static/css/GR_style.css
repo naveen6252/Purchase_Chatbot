@@ -1,0 +1,84 @@
+.breach {
+    border: 1px solid #fff;
+    margin-top: 30px;
+    margin-bottom: 58px;
+    overflow: hidden;
+}
+
+.calculator {
+    border-bottom: 1px solid #ddd;
+}
+
+.borderBtm1pxddd {
+    border-bottom: 1px solid #ddd;
+}
+.QuestionList .borderBtm1pxddd,
+.RiskCalculator .nav-tabs{padding: 0 15px;}
+.RiskCalculator .nav-tabs{border: 0 !important;}
+
+.calculator p {
+    margin: 5px;
+}
+
+.sec_area h4 {
+    color: #073763;
+    font-weight: 800;
+    font-size: 28px;
+    margin: 15px 28px;
+}
+
+.factors {
+    margin-bottom: 20px;
+    display: inline-block;
+    width: 100%;
+}
+
+.factors h4 {
+    color: #073763;
+    display: inline-block;
+    width: 100%;
+}
+
+.factors form {
+    font-size: 12px;
+}
+
+.Breadcummenu {
+    border-top: 1px solid #333;
+}
+
+.Breadcummenu p {
+    margin: 5px;
+}
+
+.forpadding {
+    padding-right: 15px;
+}
+
+.forimgf img {
+    max-height: 247px;
+    width: auto;
+    margin: auto;
+}
+
+.join {
+    display: inline-block;
+    width: 100%;
+    padding: 15px 0
+}
+
+.join p {
+    margin: 0px 10px;
+    line-height: 20px;
+}
+
+.bgColored {
+    background: #6aa84f !important;
+    color: #fff !important;
+}
+
+@media(max-width:767px) {
+    .titleSection {
+        padding: 20px 15px;
+    }
+}

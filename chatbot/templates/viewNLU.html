@@ -1,0 +1,465 @@
+{% extends "layout/ChatbotLayout.html" %}
+{% block content %}
+    <style>
+        #intentsTable {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #intentsTable td, #intentsTable th {
+            border: 1px solid #111;
+            padding: 8px;
+        }
+
+
+        #intentsTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #69a84f;
+            color: white;
+        }
+
+        #lookupTable {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #lookupTable td, #lookupTable th {
+            border: 1px solid #111;
+            padding: 8px;
+        }
+
+
+        #lookupTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #69a84f;
+            color: white;
+        }
+
+        #synonymTable {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #synonymTable td, #synonymTable th {
+            border: 1px solid #111;
+            padding: 8px;
+        }
+
+
+        #synonymTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #69a84f;
+            color: white;
+        }
+    </style>
+    <div class="loader-container" id="loader" style="display: none;">
+        <?xml version="1.0" encoding="utf-8" ?>
+        <svg class="loader" xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" x="0" y="0"
+             viewBox="0 0 200 200" xml:space="preserve">
+            <path class="loaderreverse"
+                  d="M200 100c0-30.3-13.5-57.5-34.8-75.8 -4.8-4.1-12.2-3-15.8 2.3v0c-3 4.5-2.4 10.7 1.8 14.2 16.6 14.4 27.1 35.6 27.1 59.3s-10.5 44.9-27.1 59.3c-4.1 3.6-4.8 9.7-1.8 14.2v0c3.6 5.3 11 6.4 15.8 2.3C186.5 157.5 200 130.3 200 100z"></path>
+            <path d="M156.7 100c0-14.9-5.8-28.5-15.2-38.6 -4.6-4.9-12.6-4.1-16.3 1.4l-0.4 0.6c-2.8 4.1-2.2 9.5 1.2 13.2 5.7 6.2 9.1 14.4 9.1 23.5 0 9-3.4 17.3-9.1 23.5 -3.3 3.7-3.9 9-1.2 13.2l0.4 0.6c3.7 5.6 11.7 6.3 16.3 1.4C150.9 128.5 156.7 114.9 156.7 100z"></path></svg>
+    </div>
+    <div class="container" id="dataContainer" style="margin-top: 50px">
+        <div class="row">
+            <div class="col-xs-4">
+                <button class='btn btn-default center-block' onclick="showIntentTable()"
+                        title='Show Intents'>
+                    <i class='glyphicon glyphicon-comment'></i>
+                    Intents
+                </button>
+            </div>
+            <div class="col-xs-4">
+                <button class='btn btn-default center-block' onclick="showLookupTable()"
+                        title='Show Lookup Table'>
+                    <i class='glyphicon glyphicon-list'></i>
+                    Lookup Table
+                </button>
+            </div>
+            <div class="col-xs-4">
+                <button class='btn btn-default center-block' onclick="showSynonymTable()"
+                        title='Show Synonym Table'>
+                    <i class='glyphicon glyphicon-duplicate'></i>
+                    Synonyms
+                </button>
+            </div>
+        </div>
+        <div id="intentsDiv">
+            <div class="row">
+                <div class="col-xs-3">
+                    <h2 class="text-center"><i class="glyphicon glyphicon-comment"></i>Intents</h2>
+                </div>
+                <div class="col-xs-4">
+                    <button class='btn btn-default center-block' onclick="addIntentExample()" title='Add Intent Example'>
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class='table-responsive container' style='padding-bottom:50px'>
+                <table id='intentsTable'>
+                    <tr>
+                        <th align='center' style="max-width: 40px">Intent</th>
+                        <th align='center'>Training Phrase</th>
+                        <th align='center' style="max-width: 10px">Delete</th>
+                    </tr>
+                    {% set exampleId = [0] %}
+                    {% for intent, examples in nlu_data.intent.items() %}
+                        {% for example in examples %}
+                            {% if exampleId.append(exampleId.pop() + 1) %}{% endif %}
+                            <tr id="intentExample{{ exampleId[0] }}">
+                                <td align='center' style="max-width: 40px">
+                                    <input type="text" id="intentInput{{ exampleId[0] }}" data-toggle="tooltip"
+                                           class="form-control" value="{{ intent }}"/>
+                                </td>
+                                <td align='center'>
+                                    <input type="text" id="exampleInput{{ exampleId[0] }}" data-toggle="tooltip"
+                                           class="form-control" value="{{ example }}"/>
+                                </td>
+                                <td align='center' style="max-width: 10px">
+                                    <button class='btn btn-danger' onclick="DeleteIntentExample({{ exampleId[0] }})"
+                                            title='Delete'>
+                                        <i class='glyphicon glyphicon-trash'></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                </table>
+
+            </div>
+        </div>
+        <div id="lookupDiv" style="display: none;">
+            <div class="row">
+                <div class="col-xs-3">
+                    <h2 class="text-center"><i class="glyphicon glyphicon-list"></i>Lookup Tables</h2>
+                </div>
+                <div class="col-xs-4">
+                    <button class='btn btn-default center-block' onclick="addLookupExample()" title='Add Lookup Example'>
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class='table-responsive container' style='padding-bottom:50px'>
+                <table id='lookupTable'>
+                    <tr>
+                        <th align='center' style="max-width: 40px">Column</th>
+                        <th align='center'>Lookup Value</th>
+                        <th align='center' style="max-width: 10px">Delete</th>
+                    </tr>
+                    {% set lookupId = [0] %}
+                    {% for name, elements in nlu_data.lookup.items() %}
+                        {% for element in elements %}
+                            {% if lookupId.append(lookupId.pop() + 1) %}{% endif %}
+                            <tr id="lookupExample{{ lookupId[0] }}">
+                                <td align='center' style="max-width: 40px">
+                                    <input type="text" id="lookupNameInput{{ lookupId[0] }}" data-toggle="tooltip"
+                                           class="form-control" value="{{ name }}"/>
+                                </td>
+                                <td align='center'>
+                                    <input type="text" id="lookupElementInput{{ lookupId[0] }}" data-toggle="tooltip"
+                                           class="form-control" value="{{ element }}"/>
+                                </td>
+                                <td align='center' style="max-width: 10px">
+                                    <button class='btn btn-danger' onclick="DeleteLookupExample({{ lookupId[0] }})"
+                                            title='Delete'>
+                                        <i class='glyphicon glyphicon-trash'></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                </table>
+
+            </div>
+        </div>
+        <div id="synonymDiv" style="display: none;">
+            <div class="row">
+                <div class="col-xs-3">
+                    <h2 class="text-center"><i class="glyphicon glyphicon-duplicate"></i>Synonyms</h2>
+                </div>
+                <div class="col-xs-4">
+                    <button class='btn btn-default center-block' onclick="addSynonymExample()"
+                            title='Add Synonym Example'>
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class='table-responsive container' style='padding-bottom:50px'>
+                <table id='synonymTable'>
+                    <tr>
+                        <th align='center' style="max-width: 40px">Value</th>
+                        <th align='center'>Synonym Value</th>
+                        <th align='center' style="max-width: 10px">Delete</th>
+                    </tr>
+                    {% set synonymId = [0] %}
+                    {% for name, synonyms in nlu_data.synonym.items() %}
+                        {% for synonym in synonyms %}
+                            {% if synonymId.append(synonymId.pop() + 1) %}{% endif %}
+                            <tr id="synonymExample{{ synonymId[0] }}">
+                                <td align='center' style="max-width: 40px">
+                                    <input type="text" id="synonymNameInput{{ synonymId[0] }}" data-toggle="tooltip"
+                                           class="form-control" value="{{ name }}"/>
+                                </td>
+                                <td align='center'>
+                                    <input type="text" id="synonymValueInput{{ synonymId[0] }}" data-toggle="tooltip"
+                                           class="form-control" value="{{ synonym }}"/>
+                                </td>
+                                <td align='center' style="max-width: 10px">
+                                    <button class='btn btn-danger' onclick="DeleteSynonymExample({{ synonymId[0] }})"
+                                            title='Delete'>
+                                        <i class='glyphicon glyphicon-trash'></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="inputDiv">
+        <div class="col-xs-3 col-xs-offset-6">
+            <input type="button" value="Train Model" id="btnTrainModel"
+                   class="btn btn-primary" onclick="trainModel()"/>
+        </div>
+    </div>
+
+    <script>
+        var exampleId = {{ exampleId[0] }};
+        var lookupId = {{ lookupId[0] }};
+        var synonymId = {{ synonymId[0] }};
+        var intentExampleIds = [];
+        var lookupExampleIds = [];
+        var synonymExampleIds = [];
+
+        for (var i = 1; i <= exampleId; i++) {
+            intentExampleIds.push(i);
+        }
+
+        for (var i = 1; i <= lookupId; i++) {
+            lookupExampleIds.push(i);
+        }
+
+        for (var i = 1; i <= synonymId; i++) {
+            synonymExampleIds.push(i);
+        }
+
+        function DeleteIntentExample(id) {
+            intentExampleIds.splice(intentExampleIds.indexOf(id), 1);
+            $('#intentExample' + id).remove();
+        }
+
+        function DeleteLookupExample(id) {
+            lookupExampleIds.splice(lookupExampleIds.indexOf(id), 1);
+            $('#lookupExample' + id).remove();
+        }
+
+        function DeleteSynonymExample(id) {
+            synonymExampleIds.splice(synonymExampleIds.indexOf(id), 1);
+            $('#synonymExample' + id).remove();
+        }
+
+        function showIntentTable() {
+            $('#lookupDiv').hide();
+            $('#synonymDiv').hide();
+            $('#intentsDiv').show();
+        }
+
+        function showLookupTable() {
+            $('#intentsDiv').hide();
+            $('#synonymDiv').hide();
+            $('#lookupDiv').show();
+        }
+
+        function showSynonymTable() {
+            $('#intentsDiv').hide();
+            $('#lookupDiv').hide();
+            $('#synonymDiv').show();
+        }
+
+        function addIntentExample() {
+            exampleId++;
+            intentExampleIds.push(exampleId);
+            row = '<tr id="intentExample' + exampleId + '">\n' +
+                '                                <td align="center" style="max-width: 40px">\n' +
+                '                                    <input type="text" id="intentInput' + exampleId + '" data-toggle="tooltip"\n' +
+                '                                           class="form-control" />\n' +
+                '                                </td>\n' +
+                '                                <td align="center">\n' +
+                '                                    <input type="text" id="exampleInput' + exampleId + '" data-toggle="tooltip"\n' +
+                '                                           class="form-control" />\n' +
+                '                                </td>\n' +
+                '                                <td align="center" style="max-width: 10px">\n' +
+                '                                    <button class="btn btn-danger" onclick="DeleteIntentExample(' + exampleId + ')"\n' +
+                '                                            title="Delete">\n' +
+                '                                        <i class="glyphicon glyphicon-trash"></i>\n' +
+                '                                    </button>\n' +
+                '                                </td>\n' +
+                '                            </tr>';
+
+            $("#intentsTable tr:first").after(row);
+        }
+
+        function addLookupExample() {
+            lookupId++;
+            lookupExampleIds.push(lookupId);
+            row = '<tr id="lookupExample' + lookupId + '">\n' +
+                '                                <td align="center" style="max-width: 40px">\n' +
+                '                                    <input type="text" id="lookupNameInput' + lookupId + '" data-toggle="tooltip"\n' +
+                '                                           class="form-control" />\n' +
+                '                                </td>\n' +
+                '                                <td align="center">\n' +
+                '                                    <input type="text" id="lookupElementInput' + lookupId + '" data-toggle="tooltip"\n' +
+                '                                           class="form-control" />\n' +
+                '                                </td>\n' +
+                '                                <td align="center" style="max-width: 10px">\n' +
+                '                                    <button class="btn btn-danger" onclick="DeleteLookupExample(' + lookupId + ')"\n' +
+                '                                            title="Delete">\n' +
+                '                                        <i class="glyphicon glyphicon-trash"></i>\n' +
+                '                                    </button>\n' +
+                '                                </td>\n' +
+                '                            </tr>';
+
+            $("#lookupTable tr:first").after(row);
+        }
+
+        function addSynonymExample() {
+            synonymId++;
+            synonymExampleIds.push(synonymId);
+            row = '<tr id="synonymExample' + synonymId + '">\n' +
+                '                                <td align="center" style="max-width: 40px">\n' +
+                '                                    <input type="text" id="synonymNameInput' + synonymId + '" data-toggle="tooltip"\n' +
+                '                                           class="form-control" />\n' +
+                '                                </td>\n' +
+                '                                <td align="center">\n' +
+                '                                    <input type="text" id="synonymValueInput' + synonymId + '" data-toggle="tooltip"\n' +
+                '                                           class="form-control" />\n' +
+                '                                </td>\n' +
+                '                                <td align="center" style="max-width: 10px">\n' +
+                '                                    <button class="btn btn-danger" onclick="DeleteSynonymExample(' + synonymId + ')"\n' +
+                '                                            title="Delete">\n' +
+                '                                        <i class="glyphicon glyphicon-trash"></i>\n' +
+                '                                    </button>\n' +
+                '                                </td>\n' +
+                '                            </tr>';
+
+            $("#synonymTable tr:first").after(row);
+        }
+
+        function trainModel() {
+            if (!intentExampleIds.length && !lookupExampleIds.length && !synonymExampleIds.length) {
+                return;
+            }
+
+            var intentExamples = [];
+            var lookupExamples = [];
+            var synonymExamples = [];
+
+            for (var i = 0; i < intentExampleIds.length; ++i) {
+                intent = $('#intentInput' + intentExampleIds[i]).val();
+                text = $('#exampleInput' + intentExampleIds[i]).val();
+                if (!intent) {
+                    showIntentTable();
+                    $("#intentInput" + intentExampleIds[i]).focus();
+                    $("html, body").animate({
+                        scrollTop: $("#intentInput" + intentExampleIds[i]).offset().top
+                    }, 1);
+                    return;
+                }
+                if (!text) {
+                    showIntentTable();
+                    $("#exampleInput" + intentExampleIds[i]).focus();
+                    $("html, body").animate({
+                        scrollTop: $("#exampleInput" + intentExampleIds[i]).offset().top
+                    }, 1);
+                    return;
+                }
+                intentExamples.push({'intent': intent, 'text': text});
+            }
+            for (var i = 0; i < lookupExampleIds.length; ++i) {
+                lookupName = $('#lookupNameInput' + lookupExampleIds[i]).val();
+                element = $('#lookupElementInput' + lookupExampleIds[i]).val();
+                if (!lookupName) {
+                    showLookupTable();
+                    $("#lookupNameInput" + lookupExampleIds[i]).focus();
+                    $("html, body").animate({
+                        scrollTop: $("#lookupNameInput" + lookupExampleIds[i]).offset().top
+                    }, 1);
+                    return;
+                }
+                if (!element) {
+                    showLookupTable();
+                    $("#lookupElementInput" + lookupExampleIds[i]).focus();
+                    $("html, body").animate({
+                        scrollTop: $("#lookupElementInput" + lookupExampleIds[i]).offset().top
+                    }, 1);
+                    return;
+                }
+                lookupExamples.push({'name': lookupName, 'element': element});
+            }
+            for (var i = 0; i < synonymExampleIds.length; ++i) {
+                synonym_name = $('#synonymNameInput' + synonymExampleIds[i]).val();
+                synonym_value = $('#synonymValueInput' + synonymExampleIds[i]).val();
+                if (!synonym_name) {
+                    showSynonymTable();
+                    $("#synonymNameInput" + synonymExampleIds[i]).focus();
+                    $("html, body").animate({
+                        scrollTop: $("#synonymNameInput" + synonymExampleIds[i]).offset().top
+                    }, 1);
+                    return;
+                }
+                if (!synonym_value) {
+                    showSynonymTable();
+                    $("#synonymValueInput" + synonymExampleIds[i]).focus();
+                    $("html, body").animate({
+                        scrollTop: $("#synonymValueInput" + synonymExampleIds[i]).offset().top
+                    }, 1);
+                    return;
+                }
+                synonymExamples.push({'value': synonym_name, 'synonym': synonym_value});
+            }
+            $("#loader").show();
+            $("#btnTrainModel").attr("disabled", true);
+            $("#dataContainer").hide();
+            var post_data = {
+                'append': false,
+                'common_examples': intentExamples,
+                'lookup_tables': lookupExamples,
+                'entity_synonyms': synonymExamples
+            };
+            $.ajax({
+                type: 'POST',
+                url: "{{ url_for('api_save_nlu_data') }}",
+                data: JSON.stringify(post_data),
+                contentType: 'application/json;charset=UTF-8',
+                headers: {
+                    "x-access-token": sessionStorage.getItem('accessToken')
+                },
+                success: function (response) {
+                    $("#loader").hide();
+                    alert("Train Successfully completed!");
+                    window.location.href = "{{ url_for('home') }}";
+                },
+                error: function (error) {
+                    $("#loader").hide();
+                    $("#dataContainer").show();
+                    $("#btnTrainModel").removeAttr("disabled");
+                    alert("Error! \n" + error.responseText);
+                }
+            });
+        }
+
+    </script>
+
+{% endblock content %}

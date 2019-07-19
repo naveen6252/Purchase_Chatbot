@@ -1,0 +1,100 @@
+{% extends "layout/ChatbotLayout.html" %}
+{% block content %}
+    <style>
+        #logTable {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #logTable td, #logTable th {
+            border: 1px solid #111;
+            padding: 8px;
+        }
+
+        #logTable tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+        #logTable tr {
+            background-color: #aaaaaa;
+        }
+
+        #logTable tr:hover {
+            background-color: #6d93d1;
+        }
+
+        #logTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #69a84f;
+            color: white;
+        }
+    </style>
+    <div class="container-fluid" id="showData" style="margin-top: 50px"></div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: '/api/get_logs',
+                headers: {
+                    "x-access-token": sessionStorage.getItem('accessToken')
+                },
+                success: function (response) {
+                    logData = response;
+                    var row = "";
+                    row += "<div class = 'table-responsive container' style='padding-bottom:50px'><table id='logTable'><tr>";
+                    row += "<th align='center'>Delete Log</th>"; // will contain icons for update and delete row
+                    row += "<th align='center'>Username</th>";
+                    row += "<th align='center'>User Query</th>";
+                    row += "<th align='center'>Query Parameters</th>";
+                    row += "<th align='center'>Status</th>";
+                    row += "<th align='center'>Error Message</th>";
+                    row += '</tr>';
+
+                    for (var i = 0; i < logData.length; i++) {
+                        row += "<tr>";
+                        row += "<td align='center'><button class='btn btn-danger' onclick=\"DeleteLog('" +
+                            logData[i].log_id + "')\" title='Delete'><i class='glyphicon glyphicon-trash'></i></button></td>";
+                        row += "<td align='center'>" + logData[i].username + "</td>";
+                        row += "<td align='center'>" + logData[i].user_query + "</td>";
+                        row += "<td align='center'>" + logData[i].query_parameters + "</td>";
+                        row += "<td align='center'>" + logData[i].status + "</td>";
+                        row += "<td align='center'>" + logData[i].error_message + "</td>";
+                        row += '</tr>';
+                    }
+                    row += '</table></div>';
+                    $('#showData').html(row);
+                }
+            });
+
+
+        });
+
+
+        function DeleteLog(logId) {
+            var r = confirm("Are you sure want to delete log " + logId);
+            if (r === false) {
+                return;
+            }
+
+            $.ajax({
+                type: "GET",
+                url: '/api/DeleteLog/' + logId,
+                headers: {
+                    "x-access-token": sessionStorage.getItem('accessToken')
+                },
+                success: function (response) {
+                    window.alert(response.message);
+                    window.location.href = '{{ url_for("view_logs") }}';
+                }
+            });
+
+        }
+    </script>
+
+
+{% endblock content %}

@@ -1,0 +1,347 @@
+/*@import url('https://fonts.googleapis.com/css?family=Sansita');
+*/
+
+html,
+body {
+    /*background: #252C33;*/
+    font-family: Sansita, sans-serif;
+    margin: 0px auto;
+     height: 100%;
+}
+
+::selection {
+    background: rgba(82, 179, 217, 0.3);
+    color: inherit;
+}
+
+.nav {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 50px;
+    background: rgba(27, 35, 42, 0.9);
+    z-index: 100;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.title {
+    position: absolute;
+    top: 3px;
+    left: 110px;
+    font-family: Sansita;
+    font-size: 25px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.98);
+    cursor: default;
+}
+
+.chat {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    list-style: none;
+    background: none;
+    margin: 0;
+    padding: 0 0 200px 0;
+    margin-top: 60px;
+    margin-bottom: 15px;
+    padding-bottom: 8%;
+}
+
+    .chat li {
+        overflow: hidden;
+        display: flex;
+    }
+
+.other .msg {
+    border-top-left-radius: 0px;
+    box-shadow: -1px 2px 0px #c1cbcd;
+}
+
+.other:before {
+    content: "";
+    position: relative;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    width: 0px;
+    height: 0px;
+    border: 5px solid #eef8ff;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.self {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+    .self .msg {
+        border-bottom-right-radius: 0px;
+        box-shadow: 1px 2px 0px #c1cbcd;
+    }
+
+    .self:after {
+        content: "";
+        position: relative;
+        display: inline-block;
+        float: right;
+        bottom: 0px;
+        right: 0px;
+        width: 0px;
+        height: 0px;
+        border: 5px solid #eef8ff;
+        margin: 0 0 10px 0;
+        border-right-color: transparent;
+        border-top-color: transparent;
+        box-shadow: 0px 2px 0px #c1cbcd;
+    }
+
+.msg {
+    background: #eef8ff;
+    min-width: 50px;
+    padding: 5px;
+    margin: 0 0 10px 0;
+    border-radius: 2px;
+    overflow: auto;
+    max-height: 48vh;
+    max-width: 75%;
+}
+
+
+[class*='close-'] {
+  color: #777;
+  font: 14px/100% arial, sans-serif;
+  position: absolute;
+  right: 5px;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #fff;
+  top: 5px;
+}
+
+.close-classic:after {
+    content: 'X'; /* ANSI X letter */
+}
+
+
+.parameterMsg{
+    background: #eef8ff;
+    margin: 0 0 10px 0;
+    padding: 10px 5px 10px 5px;
+    border-radius: 2px;
+}
+
+    .msg p {
+        font-size: 13px;
+        margin: 0 0 2px 0;
+        color: #333;
+        transition: all .2s ease;
+    }
+
+
+
+.icon {
+    position: relative;
+    margin-top: -36px;
+    margin-left: 10px;
+    float: left;
+    z-index: 2;
+}
+
+.input {
+    padding-left: 45px;
+    width: 100%;
+    background-color: #eef8ff;
+    color: #111;
+    font-size: 1.6em;
+    border-radius: 0.2em;
+    border: none;
+}
+
+
+.inputDiv {
+    position: fixed;
+    bottom: 10px;
+    left: 0px;
+    right: 0px;
+    z-index: 4;
+    border: none;
+    outline: none;
+}
+
+/* ----------------------------------- Table Formats ----------------------------------------- */
+
+.odd-row {
+    background: rgb(129, 208, 177);
+}
+/*
+table {
+    border-collapse: collapse;
+    margin-right: 10px;
+    max-width: 100%;
+    background: #fff;
+}
+
+td,
+th {
+    padding: 0.50em 1.0em;
+    text-align: left;
+}
+
+th {
+    background-color: #111647;
+    font-weight: normal;
+    color: #FFF;
+    white-space: normal;
+}
+
+tbody tr {
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgb(129, 208, 177);
+}
+
+tbody tr:hover {
+    background-color: rgba(117, 16, 9, .7);
+}
+*/
+
+/* Loading Animation */
+/* Background */
+.loader-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    width: 100px;
+    height: 100px;
+}
+
+    .loader path {
+        fill: black;
+        transform-origin: center;
+        animation: rotate 1.5s linear infinite;
+    }
+
+.loaderreverse {
+    animation-direction: reverse !important;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+
+    from {
+        transform: rotate(0deg);
+    }
+}
+
+
+
+.loading:after {
+    content: ' .';
+    animation: dots 1s steps(5, end) infinite;
+}
+
+@keyframes dots {
+
+    0%, 20% {
+        color: rgba(0, 0, 0, 0);
+        text-shadow: .25em 0 0 rgba(0, 0, 0, 0), .5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    40% {
+        color: black;
+        text-shadow: .25em 0 0 rgba(0, 0, 0, 0), .5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    60% {
+        text-shadow: .25em 0 0 black, .5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    80%, 100% {
+        text-shadow: .25em 0 0 black, .5em 0 0 black;
+    }
+}
+
+
+/* Scroll Bars */
+@-webikt-keyframes pulse {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.5;
+    }
+}
+
+::-webkit-scrollbar {
+    min-width: 12px;
+    width: 12px;
+    max-width: 12px;
+    min-height: 12px;
+    height: 12px;
+    max-height: 12px;
+    background: #252C33;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 100px;
+    border: solid 3px #252C33;
+    max-height: 12px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+
+/* R E S P O N S I V E   C O N F I G U R A T I O N */
+
+@media screen and (max-width: 750px) {
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .chat {
+        margin-bottom: 55px;
+    }
+
+    .msg p {
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .msg p {
+        max-width: 250px;
+    }
+
+    .msg img {
+        width: 200px;
+    }
+}
+
+svg > g > g:last-child {
+    pointer-events: none;
+}
