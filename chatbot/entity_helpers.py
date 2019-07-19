@@ -402,9 +402,9 @@ def get_nlu_parameters(text):
 
 
 def get_dimension_names():
-	return ['EmployeeName', 'JobTitle', 'ProductName', 'ProductNumber', 'ProductSubcategoryName', 'ProductCategoryName',
-			'ShipMethodName', 'VendorAccountNumber', 'VendorName', 'VendorCreditRating', 'CalendarDate',
-			'Month', 'Year', 'MonthYear', 'Quarter', 'QuarterYear']
+	return ['EmployeeName', 'JobTitle', 'DepartmentName', 'ProductName', 'ProductNumber', 'ProductSubcategoryName',
+			'ProductCategoryName', 'ShipMethodName', 'VendorAccountNumber', 'VendorName', 'VendorCreditRating',
+			'CalendarDate', 'Month', 'Year', 'MonthYear', 'Quarter', 'QuarterYear']
 
 
 if __name__ == '__main__':

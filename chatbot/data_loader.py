@@ -61,10 +61,10 @@ def load_data(columns):
 	return df
 
 
-def load_table_rls_filtered(entities, rls_json):
+def load_table_rls_filtered(intent, entities, rls_json):
 	columns = get_columns_from_rls(rls_json) + get_columns_from_entities(entities)
-	# Always load SalesAmount column
-	columns.append('SalesAmount')
+	if intent == 'POHeaderDetails':
+		columns = get_columns_from_rls(rls_json) + ['PurchaseOrderID', 'Status', ]
 
 	unique_columns = []
 	for col in columns:

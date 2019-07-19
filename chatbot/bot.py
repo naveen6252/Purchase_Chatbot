@@ -15,7 +15,7 @@ def get_json_from_query(query, rls_access_string):
 	entities = [{k: v for k, v in en.items() if k in ('entity', 'value', 'start', 'end', 'extractor',
 													  'additional_info', 'text')} for en in entities if
 				en['entity'] not in ('DATE')]
-	df = data_loader.load_table_rls_filtered(entities, rls_access_string)
+	df = data_loader.load_table_rls_filtered(intent,entities, rls_access_string)
 
 	# format entities after loading data
 	entities = en_helpers.format_entities(entities)

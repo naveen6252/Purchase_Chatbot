@@ -1,0 +1,2135 @@
+## intent:POHeaderDetails
+- purchase order details of last month
+- purchase order details of [American Bikes](VendorName:American Bikes)
+- order from [Aurora Bike Center](VendorName:Aurora Bike Center)
+- order details of vendor account [AMERICAN0001](VendorAccountNumber:AMERICAN0001)
+- order details of vendor account [BICYCLE0001](VendorAccountNumber:BICYCLE0001)
+- order details of vendor account [COMPETE0001](VendorAccountNumber:COMPETE0001)
+
+
+## lookup:agg
+- sum
+- min
+- max
+- mean
+- count
+
+## lookup:Condition
+- equal_to
+- greater_than
+- lesser_than
+- greater_than_equal
+- lesser_than_equal
+
+## lookup: graph
+- table
+- bar
+- line
+- pie
+- donut
+
+## lookup:logic
+- MTD
+- QTD
+- YTD
+- MOM
+- QOQ
+- YOY
+- Target-Achievement
+- Contribution
+
+## lookup:fact
+- SubTotal
+- TaxAmt
+- Freight
+- TotalDue
+- OrderQty
+- UnitPrice
+- LineTotal
+- ReceivedQty
+
+## lookup:dim
+- EmployeeName
+- JobTitle
+- DepartmentName
+- ProductName
+- ProductNumber
+- ProductSubcategoryName
+- ProductCategoryName
+- ShipMethodName
+- VendorAccountNumber
+- VendorName
+- VendorCreditRating
+- CalendarDate
+- Month
+- Year
+- MonthYear
+- Quarter
+- QuarterYear
+
+## lookup:EmployeeName
+- A. Scott Wright
+- Alan Brewer
+- Alejandro McGuel
+- Alex Nayberg
+- Alice Ciccu
+- Amy Alberts
+- Andreas Berglund
+- Andrew Cencini
+- Andrew Hill
+- Andy Ruth
+- Angela Barbariol
+- Anibal Sousa
+- Annette Hill
+- Annik Stahl
+- Arvind Rao
+- Ashvini Sharma
+- Barbara Decker
+- Barbara Moreland
+- Baris Cetinok
+- Barry Johnson
+- Belinda Newman
+- Ben Miller
+- Benjamin Martin
+- Betsy Stadick
+- Bjorn Rettig
+- Bob Hohman
+- Bonnie Kearney
+- Brandon Heidepriem
+- Brenda Diaz
+- Brian Goldstein
+- Brian LaMee
+- Brian Lloyd
+- Brian Welcker
+- Britta Simon
+- Bryan Baker
+- Bryan Walton
+- Candy Spoon
+- Carol Philips
+- Carole Poland
+- Chad Niswonger
+- Charles Fitzgerald
+- Chris Norred
+- Chris Okelberry
+- Chris Preston
+- Christian Kleinerman
+- Christopher Hill
+- Cristian Petculescu
+- Cynthia Randall
+- Dan Bacon
+- Dan Wilson
+- Danielle Tiedt
+- David Barber
+- David Bradley
+- David Campbell
+- David Hamilton
+- David Johnson
+- David Lawrence
+- David Liu
+- David Ortiz
+- David Yalovsky
+- Deborah Poe
+- Denise Smith
+- Diane Glimp
+- Diane Margheim
+- Diane Tibbott
+- Don Hall
+- Doris Hartwig
+- Douglas Hite
+- Dragan Tomic
+- Dylan Miller
+- Ebru Ersan
+- Ed Dudenhoefer
+- Elizabeth Keyser
+- Eric Brown
+- Eric Gubbels
+- Eric Kurjan
+- Erin Hagens
+- Eugene Kogan
+- Eugene Zabokritski
+- Fadi Fakhouri
+- François Ajenstat
+- Frank Lee
+- Frank Martinez
+- Frank Miller
+- Frank Pellow
+- Fred Northup
+- Fukiko Ogisu
+- Gabe Mares
+- Gail Erickson
+- Garrett Vargas
+- Garrett Young
+- Gary Altman
+- Gary Yukish
+- George Li
+- Gigi Matthew
+- Gordon Hee
+- Grant Culbertson
+- Greg Alderson
+- Guy Gilbert
+- Hanying Feng
+- Hao Chen
+- Hazem Abolrous
+- Houman Pournasseh
+- Hung-Fu Ting
+- Ivo Salmre
+- Jack Creasey
+- Jack Richins
+- Jae Pak
+- James Hamilton
+- James Kramer
+- Jan Miksovsky
+- Janaina Bueno
+- Janet Sheperdigian
+- Janeth Esteves
+- Janice Galvin
+- Jason Watters
+- Jay Adams
+- Jean Trenary
+- Jeff Hay
+- Jeffrey Ford
+- Jian Shuo Wang
+- Jill Williams
+- Jillian Carson
+- Jim Scardelis
+- Jimmy Bischoff
+- Jinghao Liu
+- Jo Berry
+- Jo Brown
+- John Campbell
+- John Chen
+- John Evans
+- John Frum
+- John Kane
+- John Wood
+- JoLynn Dobney
+- Jose Lugo
+- José Saraiva
+- Jossef Goldberg
+- Jun Cao
+- Karan Khanna
+- Karen Berg
+- Karen Berge
+- Kathie Flood
+- Katie McAskill-White
+- Ken Myer
+- Ken Sánchez
+- Kendall Keil
+- Kevin Brown
+- Kevin Homer
+- Kevin Liu
+- Kim Abercrombie
+- Kim Ralls
+- Kimberly Zimmerman
+- Kirk Koenigsbauer
+- Kitti Lertpiriyasuwat
+- Kok-Ho Loh
+- Krishna Sunkammurali
+- Lane Sacksteder
+- Laura Norman
+- Laura Steele
+- Linda Meisner
+- Linda Mitchell
+- Linda Moschell
+- Linda Randall
+- Lionel Penuchot
+- Lolan Song
+- Lori Kane
+- Lori Penor
+- Lorraine Nay
+- Lynn Tsoflias
+- Maciej Dusza
+- Magnus Hedlund
+- Mandar Samant
+- Marc Ingle
+- Margie Shoop
+- Mark Harrington
+- Mark McArthur
+- Mary Baker
+- Mary Dempsey
+- Mary Gibson
+- Matthias Berndt
+- Merav Netz
+- Michael Blythe
+- Michael Entin
+- Michael Hines
+- Michael Patten
+- Michael Raheem
+- Michael Ray
+- Michael Rothkugel
+- Michael Sullivan
+- Michael Vanderhyde
+- Michael Zwilling
+- Michiko Osada
+- Mihail Frintu
+- Mikael Sandberg
+- Mike Seamans
+- Min Su
+- Mindaugas Krapauskas
+- Mindy Martin
+- Nancy Anderson
+- Nicole Holliday
+- Nitin Mirchandani
+- Nuan Yu
+- Olinda Turner
+- Ovidiu Cracium
+- Pamela Ansman-Wolfe
+- Pat Coleman
+- Patrick Cook
+- Patrick Wedge
+- Paul Komosinski
+- Paul Singh
+- Paula Barreto de Mattos
+- Paula Nartker
+- Peng Wu
+- Pete Male
+- Peter Connelly
+- Peter Krebs
+- Pilar Ackerman
+- Prasanna Samarawickrama
+- Rachel Valdez
+- Rajesh Patel
+- Ramesh Meyyappan
+- Randy Reeves
+- Ranjit Varkey Chudukatil
+- Raymond Sam
+- Rebecca Laszlo
+- Reed Koch
+- Reinout Hillmann
+- Reuben D'sa
+- Rob Caron
+- Rob Walters
+- Robert Rounthwaite
+- Roberto Tamburello
+- Rostislav Shabalin
+- Russell Hunter
+- Russell King
+- Ruth Ellerbrock
+- Ryan Cornelsen
+- Sairaj Uddin
+- Samantha Smith
+- Sameer Tejani
+- Sandeep Kaliyath
+- Sandra Reátegui Alayo
+- Sariya Harnpadoungsataya
+- Scott Gode
+- Sean Alexander
+- Sean Chai
+- Shammi Mohamed
+- Shane Kim
+- Sharon Salavaria
+- Sheela Word
+- Shelley Dyck
+- Shu Ito
+- Sidney Higa
+- Simon Rapier
+- Sootha Charncherngkha
+- Stefen Hesse
+- Stephanie Conroy
+- Stephen Jiang
+- Steve Masters
+- Steven Selikoff
+- Stuart Macrae
+- Stuart Munson
+- Suchitra Mohan
+- Suroor Fatima
+- Susan Eaton
+- Susan Metters
+- Syed Abbas
+- Sylvester Valdez
+- Tawana Nusbaum
+- Taylor Maxwell
+- Tengiz Kharatishvili
+- Terrence Earls
+- Terri Duffy
+- Terry Eminhizer
+- Tete Mensa-Annan
+- Thierry D'Hers
+- Thomas Michaels
+- Tom Vande Velde
+- Tsvi Reiter
+- Vamsi Kuppa
+- Vidur Luthra
+- Wanida Benshoof
+- Wendy Kahn
+- William Vong
+- Willis Johnson
+- Yuhong Li
+- Yvonne McKay
+- Zainal Arifin
+- Zheng Mu
+
+## lookup:JobTitle
+- Accountant
+- Accounts Manager
+- Accounts Payable Specialist
+- Accounts Receivable Specialist
+- Application Specialist
+- Assistant to the Chief Financial Officer
+- Benefits Specialist
+- Buyer
+- Chief Executive Officer
+- Chief Financial Officer
+- Control Specialist
+- Database Administrator
+- Design Engineer
+- Document Control Assistant
+- Document Control Manager
+- Engineering Manager
+- European Sales Manager
+- Facilities Administrative Assistant
+- Facilities Manager
+- Finance Manager
+- Human Resources Administrative Assistant
+- Human Resources Manager
+- Information Services Manager
+- Janitor
+- Maintenance Supervisor
+- Marketing Assistant
+- Marketing Manager
+- Marketing Specialist
+- Master Scheduler
+- Network Administrator
+- Network Manager
+- North American Sales Manager
+- Pacific Sales Manager
+- Production Control Manager
+- Production Supervisor - WC10
+- Production Supervisor - WC20
+- Production Supervisor - WC30
+- Production Supervisor - WC40
+- Production Supervisor - WC45
+- Production Supervisor - WC50
+- Production Supervisor - WC60
+- Production Technician - WC10
+- Production Technician - WC20
+- Production Technician - WC30
+- Production Technician - WC40
+- Production Technician - WC45
+- Production Technician - WC50
+- Production Technician - WC60
+- Purchasing Assistant
+- Purchasing Manager
+- Quality Assurance Manager
+- Quality Assurance Supervisor
+- Quality Assurance Technician
+- Recruiter
+- Research and Development Engineer
+- Research and Development Manager
+- Sales Representative
+- Scheduling Assistant
+- Senior Design Engineer
+- Senior Tool Designer
+- Shipping and Receiving Clerk
+- Shipping and Receiving Supervisor
+- Stocker
+- Tool Designer
+- Vice President of Engineering
+- Vice President of Production
+- Vice President of Sales
+
+## lookup:DepartmentName
+- Document Control
+- Engineering
+- Executive
+- Facilities and Maintenance
+- Finance
+- Human Resources
+- Information Services
+- Marketing
+- Production
+- Production Control
+- Purchasing
+- Quality Assurance
+- Research and Development
+- Sales
+- Shipping and Receiving
+- Tool Design
+
+## lookup:ProductName
+- Adjustable Race
+- All-Purpose Bike Stand
+- AWC Logo Cap
+- BB Ball Bearing
+- Bearing Ball
+- Bike Wash - Dissolver
+- Blade
+- Cable Lock
+- Chain
+- Chain Stays
+- Chainring
+- Chainring Bolts
+- Chainring Nut
+- Classic Vest, L
+- Classic Vest, M
+- Classic Vest, S
+- Cone-Shaped Race
+- Crown Race
+- Cup-Shaped Race
+- Decal 1
+- Decal 2
+- Down Tube
+- External Lock Washer 1
+- External Lock Washer 2
+- External Lock Washer 3
+- External Lock Washer 4
+- External Lock Washer 5
+- External Lock Washer 6
+- External Lock Washer 7
+- External Lock Washer 8
+- External Lock Washer 9
+- Fender Set - Mountain
+- Flat Washer 1
+- Flat Washer 2
+- Flat Washer 3
+- Flat Washer 4
+- Flat Washer 5
+- Flat Washer 6
+- Flat Washer 7
+- Flat Washer 8
+- Flat Washer 9
+- Fork Crown
+- Fork End
+- Freewheel
+- Front Brakes
+- Front Derailleur
+- Front Derailleur Cage
+- Front Derailleur Linkage
+- Full-Finger Gloves, L
+- Full-Finger Gloves, M
+- Full-Finger Gloves, S
+- Guide Pulley
+- Half-Finger Gloves, L
+- Half-Finger Gloves, M
+- Half-Finger Gloves, S
+- Handlebar Tube
+- Head Tube
+- Headlights - Dual-Beam
+- Headlights - Weatherproof
+- Headset Ball Bearings
+- Hex Nut 1
+- Hex Nut 10
+- Hex Nut 11
+- Hex Nut 12
+- Hex Nut 13
+- Hex Nut 14
+- Hex Nut 15
+- Hex Nut 16
+- Hex Nut 17
+- Hex Nut 18
+- Hex Nut 19
+- Hex Nut 2
+- Hex Nut 20
+- Hex Nut 21
+- Hex Nut 22
+- Hex Nut 23
+- Hex Nut 3
+- Hex Nut 4
+- Hex Nut 5
+- Hex Nut 6
+- Hex Nut 7
+- Hex Nut 8
+- Hex Nut 9
+- Hitch Rack - 4-Bike
+- HL Bottom Bracket
+- HL Crankarm
+- HL Crankset
+- HL Fork
+- HL Grip Tape
+- HL Headset
+- HL Hub
+- HL Mountain Frame - Black, 38
+- HL Mountain Frame - Black, 42
+- HL Mountain Frame - Black, 44
+- HL Mountain Frame - Black, 46
+- HL Mountain Frame - Black, 48
+- HL Mountain Frame - Silver, 38
+- HL Mountain Frame - Silver, 42
+- HL Mountain Frame - Silver, 44
+- HL Mountain Frame - Silver, 46
+- HL Mountain Frame - Silver, 48
+- HL Mountain Front Wheel
+- HL Mountain Handlebars
+- HL Mountain Pedal
+- HL Mountain Rear Wheel
+- HL Mountain Rim
+- HL Mountain Seat Assembly
+- HL Mountain Seat/Saddle
+- HL Mountain Tire
+- HL Nipple
+- HL Road Frame - Black, 44
+- HL Road Frame - Black, 48
+- HL Road Frame - Black, 52
+- HL Road Frame - Black, 58
+- HL Road Frame - Black, 62
+- HL Road Frame - Red, 44
+- HL Road Frame - Red, 48
+- HL Road Frame - Red, 52
+- HL Road Frame - Red, 56
+- HL Road Frame - Red, 58
+- HL Road Frame - Red, 62
+- HL Road Front Wheel
+- HL Road Handlebars
+- HL Road Pedal
+- HL Road Rear Wheel
+- HL Road Rim
+- HL Road Seat Assembly
+- HL Road Seat/Saddle
+- HL Road Tire
+- HL Shell
+- HL Spindle/Axle
+- HL Touring Frame - Blue, 46
+- HL Touring Frame - Blue, 50
+- HL Touring Frame - Blue, 54
+- HL Touring Frame - Blue, 60
+- HL Touring Frame - Yellow, 46
+- HL Touring Frame - Yellow, 50
+- HL Touring Frame - Yellow, 54
+- HL Touring Frame - Yellow, 60
+- HL Touring Handlebars
+- HL Touring Seat Assembly
+- HL Touring Seat/Saddle
+- Hydration Pack - 70 oz.
+- Internal Lock Washer 1
+- Internal Lock Washer 10
+- Internal Lock Washer 2
+- Internal Lock Washer 3
+- Internal Lock Washer 4
+- Internal Lock Washer 5
+- Internal Lock Washer 6
+- Internal Lock Washer 7
+- Internal Lock Washer 8
+- Internal Lock Washer 9
+- Keyed Washer
+- LL Bottom Bracket
+- LL Crankarm
+- LL Crankset
+- LL Fork
+- LL Grip Tape
+- LL Headset
+- LL Hub
+- LL Mountain Frame - Black, 40
+- LL Mountain Frame - Black, 42
+- LL Mountain Frame - Black, 44
+- LL Mountain Frame - Black, 48
+- LL Mountain Frame - Black, 52
+- LL Mountain Frame - Silver, 40
+- LL Mountain Frame - Silver, 42
+- LL Mountain Frame - Silver, 44
+- LL Mountain Frame - Silver, 48
+- LL Mountain Frame - Silver, 52
+- LL Mountain Front Wheel
+- LL Mountain Handlebars
+- LL Mountain Pedal
+- LL Mountain Rear Wheel
+- LL Mountain Rim
+- LL Mountain Seat Assembly
+- LL Mountain Seat/Saddle
+- LL Mountain Tire
+- LL Nipple
+- LL Road Frame - Black, 44
+- LL Road Frame - Black, 48
+- LL Road Frame - Black, 52
+- LL Road Frame - Black, 58
+- LL Road Frame - Black, 60
+- LL Road Frame - Black, 62
+- LL Road Frame - Red, 44
+- LL Road Frame - Red, 48
+- LL Road Frame - Red, 52
+- LL Road Frame - Red, 58
+- LL Road Frame - Red, 60
+- LL Road Frame - Red, 62
+- LL Road Front Wheel
+- LL Road Handlebars
+- LL Road Pedal
+- LL Road Rear Wheel
+- LL Road Rim
+- LL Road Seat Assembly
+- LL Road Seat/Saddle
+- LL Road Tire
+- LL Shell
+- LL Spindle/Axle
+- LL Touring Frame - Blue, 44
+- LL Touring Frame - Blue, 50
+- LL Touring Frame - Blue, 54
+- LL Touring Frame - Blue, 58
+- LL Touring Frame - Blue, 62
+- LL Touring Frame - Yellow, 44
+- LL Touring Frame - Yellow, 50
+- LL Touring Frame - Yellow, 54
+- LL Touring Frame - Yellow, 58
+- LL Touring Frame - Yellow, 62
+- LL Touring Handlebars
+- LL Touring Seat Assembly
+- LL Touring Seat/Saddle
+- Lock Nut 1
+- Lock Nut 10
+- Lock Nut 11
+- Lock Nut 12
+- Lock Nut 13
+- Lock Nut 14
+- Lock Nut 15
+- Lock Nut 16
+- Lock Nut 17
+- Lock Nut 18
+- Lock Nut 19
+- Lock Nut 2
+- Lock Nut 20
+- Lock Nut 21
+- Lock Nut 22
+- Lock Nut 23
+- Lock Nut 3
+- Lock Nut 4
+- Lock Nut 5
+- Lock Nut 6
+- Lock Nut 7
+- Lock Nut 8
+- Lock Nut 9
+- Lock Ring
+- Lock Washer 1
+- Lock Washer 10
+- Lock Washer 11
+- Lock Washer 12
+- Lock Washer 13
+- Lock Washer 2
+- Lock Washer 3
+- Lock Washer 4
+- Lock Washer 5
+- Lock Washer 6
+- Lock Washer 7
+- Lock Washer 8
+- Lock Washer 9
+- Long-Sleeve Logo Jersey, L
+- Long-Sleeve Logo Jersey, M
+- Long-Sleeve Logo Jersey, S
+- Long-Sleeve Logo Jersey, XL
+- Lower Head Race
+- Men's Bib-Shorts, L
+- Men's Bib-Shorts, M
+- Men's Bib-Shorts, S
+- Men's Sports Shorts, L
+- Men's Sports Shorts, M
+- Men's Sports Shorts, S
+- Men's Sports Shorts, XL
+- Metal Angle
+- Metal Bar 1
+- Metal Bar 2
+- Metal Plate 1
+- Metal Plate 2
+- Metal Plate 3
+- Metal Sheet 1
+- Metal Sheet 2
+- Metal Sheet 3
+- Metal Sheet 4
+- Metal Sheet 5
+- Metal Sheet 6
+- Metal Sheet 7
+- Metal Tread Plate
+- Minipump
+- ML Bottom Bracket
+- ML Crankarm
+- ML Crankset
+- ML Fork
+- ML Grip Tape
+- ML Headset
+- ML Mountain Frame - Black, 38
+- ML Mountain Frame - Black, 40
+- ML Mountain Frame - Black, 44
+- ML Mountain Frame - Black, 48
+- ML Mountain Frame-W - Silver, 38
+- ML Mountain Frame-W - Silver, 40
+- ML Mountain Frame-W - Silver, 42
+- ML Mountain Frame-W - Silver, 46
+- ML Mountain Front Wheel
+- ML Mountain Handlebars
+- ML Mountain Pedal
+- ML Mountain Rear Wheel
+- ML Mountain Rim
+- ML Mountain Seat Assembly
+- ML Mountain Seat/Saddle
+- ML Mountain Tire
+- ML Road Frame - Red, 44
+- ML Road Frame - Red, 48
+- ML Road Frame - Red, 52
+- ML Road Frame - Red, 58
+- ML Road Frame - Red, 60
+- ML Road Frame-W - Yellow, 38
+- ML Road Frame-W - Yellow, 40
+- ML Road Frame-W - Yellow, 42
+- ML Road Frame-W - Yellow, 44
+- ML Road Frame-W - Yellow, 48
+- ML Road Front Wheel
+- ML Road Handlebars
+- ML Road Pedal
+- ML Road Rear Wheel
+- ML Road Rim
+- ML Road Seat Assembly
+- ML Road Seat/Saddle
+- ML Road Tire
+- ML Touring Seat Assembly
+- ML Touring Seat/Saddle
+- Mountain Bike Socks, L
+- Mountain Bike Socks, M
+- Mountain Bottle Cage
+- Mountain End Caps
+- Mountain Pump
+- Mountain Tire Tube
+- Mountain-100 Black, 38
+- Mountain-100 Black, 42
+- Mountain-100 Black, 44
+- Mountain-100 Black, 48
+- Mountain-100 Silver, 38
+- Mountain-100 Silver, 42
+- Mountain-100 Silver, 44
+- Mountain-100 Silver, 48
+- Mountain-200 Black, 38
+- Mountain-200 Black, 42
+- Mountain-200 Black, 46
+- Mountain-200 Silver, 38
+- Mountain-200 Silver, 42
+- Mountain-200 Silver, 46
+- Mountain-300 Black, 38
+- Mountain-300 Black, 40
+- Mountain-300 Black, 44
+- Mountain-300 Black, 48
+- Mountain-400-W Silver, 38
+- Mountain-400-W Silver, 40
+- Mountain-400-W Silver, 42
+- Mountain-400-W Silver, 46
+- Mountain-500 Black, 40
+- Mountain-500 Black, 42
+- Mountain-500 Black, 44
+- Mountain-500 Black, 48
+- Mountain-500 Black, 52
+- Mountain-500 Silver, 40
+- Mountain-500 Silver, 42
+- Mountain-500 Silver, 44
+- Mountain-500 Silver, 48
+- Mountain-500 Silver, 52
+- Paint - Black
+- Paint - Blue
+- Paint - Red
+- Paint - Silver
+- Paint - Yellow
+- Patch Kit/8 Patches
+- Pinch Bolt
+- Racing Socks, L
+- Racing Socks, M
+- Rear Brakes
+- Rear Derailleur
+- Rear Derailleur Cage
+- Reflector
+- Road Bottle Cage
+- Road End Caps
+- Road Tire Tube
+- Road-150 Red, 44
+- Road-150 Red, 48
+- Road-150 Red, 52
+- Road-150 Red, 56
+- Road-150 Red, 62
+- Road-250 Black, 44
+- Road-250 Black, 48
+- Road-250 Black, 52
+- Road-250 Black, 58
+- Road-250 Red, 44
+- Road-250 Red, 48
+- Road-250 Red, 52
+- Road-250 Red, 58
+- Road-350-W Yellow, 40
+- Road-350-W Yellow, 42
+- Road-350-W Yellow, 44
+- Road-350-W Yellow, 48
+- Road-450 Red, 44
+- Road-450 Red, 48
+- Road-450 Red, 52
+- Road-450 Red, 58
+- Road-450 Red, 60
+- Road-550-W Yellow, 38
+- Road-550-W Yellow, 40
+- Road-550-W Yellow, 42
+- Road-550-W Yellow, 44
+- Road-550-W Yellow, 48
+- Road-650 Black, 44
+- Road-650 Black, 48
+- Road-650 Black, 52
+- Road-650 Black, 58
+- Road-650 Black, 60
+- Road-650 Black, 62
+- Road-650 Red, 44
+- Road-650 Red, 48
+- Road-650 Red, 52
+- Road-650 Red, 58
+- Road-650 Red, 60
+- Road-650 Red, 62
+- Road-750 Black, 44
+- Road-750 Black, 48
+- Road-750 Black, 52
+- Road-750 Black, 58
+- Seat Lug
+- Seat Post
+- Seat Stays
+- Seat Tube
+- Short-Sleeve Classic Jersey, L
+- Short-Sleeve Classic Jersey, M
+- Short-Sleeve Classic Jersey, S
+- Short-Sleeve Classic Jersey, XL
+- Spokes
+- Sport-100 Helmet, Black
+- Sport-100 Helmet, Blue
+- Sport-100 Helmet, Red
+- Steerer
+- Stem
+- Taillights - Battery-Powered
+- Tension Pulley
+- Thin-Jam Hex Nut 1
+- Thin-Jam Hex Nut 10
+- Thin-Jam Hex Nut 11
+- Thin-Jam Hex Nut 12
+- Thin-Jam Hex Nut 13
+- Thin-Jam Hex Nut 14
+- Thin-Jam Hex Nut 15
+- Thin-Jam Hex Nut 16
+- Thin-Jam Hex Nut 2
+- Thin-Jam Hex Nut 3
+- Thin-Jam Hex Nut 4
+- Thin-Jam Hex Nut 5
+- Thin-Jam Hex Nut 6
+- Thin-Jam Hex Nut 7
+- Thin-Jam Hex Nut 8
+- Thin-Jam Hex Nut 9
+- Thin-Jam Lock Nut 1
+- Thin-Jam Lock Nut 10
+- Thin-Jam Lock Nut 11
+- Thin-Jam Lock Nut 12
+- Thin-Jam Lock Nut 13
+- Thin-Jam Lock Nut 14
+- Thin-Jam Lock Nut 15
+- Thin-Jam Lock Nut 16
+- Thin-Jam Lock Nut 2
+- Thin-Jam Lock Nut 3
+- Thin-Jam Lock Nut 4
+- Thin-Jam Lock Nut 5
+- Thin-Jam Lock Nut 6
+- Thin-Jam Lock Nut 7
+- Thin-Jam Lock Nut 8
+- Thin-Jam Lock Nut 9
+- Top Tube
+- Touring End Caps
+- Touring Front Wheel
+- Touring Pedal
+- Touring Rear Wheel
+- Touring Rim
+- Touring Tire
+- Touring Tire Tube
+- Touring-1000 Blue, 46
+- Touring-1000 Blue, 50
+- Touring-1000 Blue, 54
+- Touring-1000 Blue, 60
+- Touring-1000 Yellow, 46
+- Touring-1000 Yellow, 50
+- Touring-1000 Yellow, 54
+- Touring-1000 Yellow, 60
+- Touring-2000 Blue, 46
+- Touring-2000 Blue, 50
+- Touring-2000 Blue, 54
+- Touring-2000 Blue, 60
+- Touring-3000 Blue, 44
+- Touring-3000 Blue, 50
+- Touring-3000 Blue, 54
+- Touring-3000 Blue, 58
+- Touring-3000 Blue, 62
+- Touring-3000 Yellow, 44
+- Touring-3000 Yellow, 50
+- Touring-3000 Yellow, 54
+- Touring-3000 Yellow, 58
+- Touring-3000 Yellow, 62
+- Touring-Panniers, Large
+- Water Bottle - 30 oz.
+- Women's Mountain Shorts, L
+- Women's Mountain Shorts, M
+- Women's Mountain Shorts, S
+- Women's Tights, L
+- Women's Tights, M
+- Women's Tights, S
+
+## lookup:ProductNumber
+- AR-5381
+- BA-8327
+- BB-7421
+- BB-8107
+- BB-9108
+- BC-M005
+- BC-R205
+- BE-2349
+- BE-2908
+- BK-M18B-40
+- BK-M18B-42
+- BK-M18B-44
+- BK-M18B-48
+- BK-M18B-52
+- BK-M18S-40
+- BK-M18S-42
+- BK-M18S-44
+- BK-M18S-48
+- BK-M18S-52
+- BK-M38S-38
+- BK-M38S-40
+- BK-M38S-42
+- BK-M38S-46
+- BK-M47B-38
+- BK-M47B-40
+- BK-M47B-44
+- BK-M47B-48
+- BK-M68B-38
+- BK-M68B-42
+- BK-M68B-46
+- BK-M68S-38
+- BK-M68S-42
+- BK-M68S-46
+- BK-M82B-38
+- BK-M82B-42
+- BK-M82B-44
+- BK-M82B-48
+- BK-M82S-38
+- BK-M82S-42
+- BK-M82S-44
+- BK-M82S-48
+- BK-R19B-44
+- BK-R19B-48
+- BK-R19B-52
+- BK-R19B-58
+- BK-R50B-44
+- BK-R50B-48
+- BK-R50B-52
+- BK-R50B-58
+- BK-R50B-60
+- BK-R50B-62
+- BK-R50R-44
+- BK-R50R-48
+- BK-R50R-52
+- BK-R50R-58
+- BK-R50R-60
+- BK-R50R-62
+- BK-R64Y-38
+- BK-R64Y-40
+- BK-R64Y-42
+- BK-R64Y-44
+- BK-R64Y-48
+- BK-R68R-44
+- BK-R68R-48
+- BK-R68R-52
+- BK-R68R-58
+- BK-R68R-60
+- BK-R79Y-40
+- BK-R79Y-42
+- BK-R79Y-44
+- BK-R79Y-48
+- BK-R89B-44
+- BK-R89B-48
+- BK-R89B-52
+- BK-R89B-58
+- BK-R89R-44
+- BK-R89R-48
+- BK-R89R-52
+- BK-R89R-58
+- BK-R93R-44
+- BK-R93R-48
+- BK-R93R-52
+- BK-R93R-56
+- BK-R93R-62
+- BK-T18U-44
+- BK-T18U-50
+- BK-T18U-54
+- BK-T18U-58
+- BK-T18U-62
+- BK-T18Y-44
+- BK-T18Y-50
+- BK-T18Y-54
+- BK-T18Y-58
+- BK-T18Y-62
+- BK-T44U-46
+- BK-T44U-50
+- BK-T44U-54
+- BK-T44U-60
+- BK-T79U-46
+- BK-T79U-50
+- BK-T79U-54
+- BK-T79U-60
+- BK-T79Y-46
+- BK-T79Y-50
+- BK-T79Y-54
+- BK-T79Y-60
+- BL-2036
+- CA-1098
+- CA-5965
+- CA-6738
+- CA-7457
+- CB-2903
+- CH-0234
+- CL-9009
+- CN-6137
+- CR-7833
+- CR-9981
+- CS-2812
+- CS-4759
+- CS-6583
+- CS-9183
+- DC-8732
+- DC-9824
+- DT-2377
+- EC-M092
+- EC-R098
+- EC-T209
+- FB-9873
+- FC-3654
+- FC-3982
+- FD-2342
+- FE-3760
+- FE-6654
+- FH-2981
+- FK-1639
+- FK-5136
+- FK-9939
+- FL-2301
+- FR-M21B-40
+- FR-M21B-42
+- FR-M21B-44
+- FR-M21B-48
+- FR-M21B-52
+- FR-M21S-40
+- FR-M21S-42
+- FR-M21S-44
+- FR-M21S-48
+- FR-M21S-52
+- FR-M63B-38
+- FR-M63B-40
+- FR-M63B-44
+- FR-M63B-48
+- FR-M63S-38
+- FR-M63S-40
+- FR-M63S-42
+- FR-M63S-46
+- FR-M94B-38
+- FR-M94B-42
+- FR-M94B-44
+- FR-M94B-46
+- FR-M94B-48
+- FR-M94S-38
+- FR-M94S-42
+- FR-M94S-44
+- FR-M94S-46
+- FR-M94S-52
+- FR-R38B-44
+- FR-R38B-48
+- FR-R38B-52
+- FR-R38B-58
+- FR-R38B-60
+- FR-R38B-62
+- FR-R38R-44
+- FR-R38R-48
+- FR-R38R-52
+- FR-R38R-58
+- FR-R38R-60
+- FR-R38R-62
+- FR-R72R-44
+- FR-R72R-48
+- FR-R72R-52
+- FR-R72R-58
+- FR-R72R-60
+- FR-R72Y-38
+- FR-R72Y-40
+- FR-R72Y-42
+- FR-R72Y-44
+- FR-R72Y-48
+- FR-R92B-44
+- FR-R92B-48
+- FR-R92B-52
+- FR-R92B-58
+- FR-R92B-62
+- FR-R92R-44
+- FR-R92R-48
+- FR-R92R-52
+- FR-R92R-56
+- FR-R92R-58
+- FR-R92R-62
+- FR-T67U-44
+- FR-T67U-50
+- FR-T67U-54
+- FR-T67U-58
+- FR-T67U-62
+- FR-T67Y-44
+- FR-T67Y-50
+- FR-T67Y-54
+- FR-T67Y-58
+- FR-T67Y-62
+- FR-T98U-46
+- FR-T98U-50
+- FR-T98U-54
+- FR-T98U-60
+- FR-T98Y-46
+- FR-T98Y-50
+- FR-T98Y-54
+- FR-T98Y-60
+- FW-1000
+- FW-1200
+- FW-1400
+- FW-3400
+- FW-3800
+- FW-5160
+- FW-5800
+- FW-7160
+- FW-9160
+- FW-M423
+- FW-M762
+- FW-M928
+- FW-R623
+- FW-R762
+- FW-R820
+- FW-T905
+- GL-F110-L
+- GL-F110-M
+- GL-F110-S
+- GL-H102-L
+- GL-H102-M
+- GL-H102-S
+- GP-0982
+- GT-0820
+- GT-1209
+- GT-2908
+- HB-M243
+- HB-M763
+- HB-M918
+- HB-R504
+- HB-R720
+- HB-R956
+- HB-T721
+- HB-T928
+- HJ-1213
+- HJ-1220
+- HJ-1420
+- HJ-1428
+- HJ-3410
+- HJ-3416
+- HJ-3816
+- HJ-3824
+- HJ-5161
+- HJ-5162
+- HJ-5811
+- HJ-5818
+- HJ-7161
+- HJ-7162
+- HJ-9080
+- HJ-9161
+- HL-U509
+- HL-U509-B
+- HL-U509-R
+- HN-1024
+- HN-1032
+- HN-1213
+- HN-1220
+- HN-1224
+- HN-1420
+- HN-1428
+- HN-3410
+- HN-3416
+- HN-3816
+- HN-3824
+- HN-4402
+- HN-5161
+- HN-5162
+- HN-5400
+- HN-5811
+- HN-5818
+- HN-6320
+- HN-7161
+- HN-7162
+- HN-8320
+- HN-9161
+- HN-9168
+- HS-0296
+- HS-2451
+- HS-3479
+- HT-2981
+- HT-8019
+- HU-6280
+- HU-8998
+- HY-1023-70
+- KW-4091
+- LE-1000
+- LE-1200
+- LE-1201
+- LE-1400
+- LE-3800
+- LE-5160
+- LE-6000
+- LE-7160
+- LE-8000
+- LI-1000
+- LI-1200
+- LI-1201
+- LI-1400
+- LI-3800
+- LI-5160
+- LI-5800
+- LI-6000
+- LI-7160
+- LI-8000
+- LJ-0192-L
+- LJ-0192-M
+- LJ-0192-S
+- LJ-0192-X
+- LJ-1213
+- LJ-1220
+- LJ-1420
+- LJ-1428
+- LJ-3410
+- LJ-3416
+- LJ-3816
+- LJ-3824
+- LJ-5161
+- LJ-5162
+- LJ-5811
+- LJ-5818
+- LJ-7161
+- LJ-7162
+- LJ-9080
+- LJ-9161
+- LN-1024
+- LN-1032
+- LN-1213
+- LN-1220
+- LN-1224
+- LN-1420
+- LN-1428
+- LN-3410
+- LN-3416
+- LN-3816
+- LN-3824
+- LN-4400
+- LN-5161
+- LN-5162
+- LN-5400
+- LN-5811
+- LN-5818
+- LN-6320
+- LN-7161
+- LN-7162
+- LN-8320
+- LN-9080
+- LN-9161
+- LO-C100
+- LR-2398
+- LR-8520
+- LT-H902
+- LT-H903
+- LT-T990
+- LW-1000
+- LW-1200
+- LW-1201
+- LW-1400
+- LW-3400
+- LW-3800
+- LW-4000
+- LW-5160
+- LW-5800
+- LW-6000
+- LW-7160
+- LW-8000
+- LW-9160
+- MA-7075
+- MB-2024
+- MB-6061
+- MP-2066
+- MP-2503
+- MP-4960
+- MS-0253
+- MS-1256
+- MS-1981
+- MS-2259
+- MS-2341
+- MS-2348
+- MS-6061
+- MT-1000
+- NI-4127
+- NI-9522
+- PA-187B
+- PA-361R
+- PA-529S
+- PA-632U
+- PA-823Y
+- PA-T100
+- PB-6109
+- PD-M282
+- PD-M340
+- PD-M562
+- PD-R347
+- PD-R563
+- PD-R853
+- PD-T852
+- PK-7098
+- PU-0452
+- PU-M044
+- RA-2345
+- RA-7490
+- RA-H123
+- RB-9231
+- RC-0291
+- RD-2308
+- RF-9198
+- RM-M464
+- RM-M692
+- RM-M823
+- RM-R436
+- RM-R600
+- RM-R800
+- RM-T801
+- RW-M423
+- RW-M762
+- RW-M928
+- RW-R623
+- RW-R762
+- RW-R820
+- RW-T905
+- SA-M198
+- SA-M237
+- SA-M687
+- SA-R127
+- SA-R430
+- SA-R522
+- SA-T467
+- SA-T612
+- SA-T872
+- SB-M891-L
+- SB-M891-M
+- SB-M891-S
+- SD-2342
+- SD-9872
+- SE-M236
+- SE-M798
+- SE-M940
+- SE-R581
+- SE-R908
+- SE-R995
+- SE-T312
+- SE-T762
+- SE-T924
+- SH-4562
+- SH-9312
+- SH-M897-L
+- SH-M897-M
+- SH-M897-S
+- SH-M897-X
+- SH-W890-L
+- SH-W890-M
+- SH-W890-S
+- SJ-0194-L
+- SJ-0194-M
+- SJ-0194-S
+- SJ-0194-X
+- SK-9283
+- SL-0931
+- SM-9087
+- SO-B909-L
+- SO-B909-M
+- SO-R809-L
+- SO-R809-M
+- SP-2981
+- SR-2098
+- SS-2985
+- ST-1401
+- ST-9828
+- TG-W091-L
+- TG-W091-M
+- TG-W091-S
+- TI-M267
+- TI-M602
+- TI-M823
+- TI-R092
+- TI-R628
+- TI-R982
+- TI-T723
+- TO-2301
+- TP-0923
+- TT-M928
+- TT-R982
+- TT-T092
+- VE-C304-L
+- VE-C304-M
+- VE-C304-S
+- WB-H098
+
+## lookup:ProductSubcategoryName
+- Bib-Shorts
+- Bike Racks
+- Bike Stands
+- Bottles and Cages
+- Bottom Brackets
+- Brakes
+- Caps
+- Chains
+- Cleaners
+- Cranksets
+- Derailleurs
+- Fenders
+- Forks
+- Gloves
+- Handlebars
+- Headsets
+- Helmets
+- Hydration Packs
+- Jerseys
+- Lights
+- Locks
+- Mountain Bikes
+- Mountain Frames
+- Panniers
+- Pedals
+- Pumps
+- Road Bikes
+- Road Frames
+- Saddles
+- Shorts
+- Socks
+- Tights
+- Tires and Tubes
+- Touring Bikes
+- Touring Frames
+- Vests
+- Wheels
+
+## lookup:ProductCategoryName
+- Accessories
+- Bikes
+- Clothing
+- Components
+
+##lookup:ShipMethodName
+- XRQ - TRUCK GROUND
+- ZY - EXPRESS
+- OVERSEAS - DELUXE
+- OVERNIGHT J-FAST
+- CARGO TRANSPORT 5
+
+## lookup:VendorAccountNumber
+- ADATUM0001
+- ADVANCED0001
+- ALLENSON0001
+- AMERICAN0001
+- AMERICAN0002
+- ANDERSON0001
+- AURORAB0001
+- AUSTRALI0001
+- BEAUMONT0001
+- BERGERON0001
+- BICYCLE0001
+- BIKESAT0001
+- BLOOMING0001
+- BURNETT0001
+- BUSINESS0001
+- CAPITAL0001
+- CARLSON0001
+- CHICAGO0001
+- CHICAGO0002
+- CIRCUIT0001
+- COMFORT0001
+- COMPETE0001
+- COMPETE0002
+- COMPETIT0001
+- CONSUMER0001
+- CONTINEN0001
+- CROWLEY0001
+- CRUGERB0001
+- CUSTOMF0001
+- CYCLING0001
+- ELECTRON0001
+- ELECTRON0002
+- EXPERTB0001
+- FEDERAL0001
+- FIRSTNA0001
+- FIRSTRA0001
+- FITNESS0001
+- G&KBI0001
+- GARDNER0001
+- GMASKI0001
+- GREENLA0001
+- GREENWOO0001
+- HILLBIC0001
+- HILLSBI0001
+- HOLIDAY0001
+- HYBRIDB0001
+- ILLINOIS0001
+- IMAGEMA0001
+- INDIANA0001
+- INLINEA0001
+- INNERCI0001
+- INTEGRAT0001
+- INTERNAT0001
+- INTERNAT0002
+- INTERNAT0003
+- INTERNAT0004
+- JACKSON0001
+- JEFFSSP0001
+- KNOPFLER0001
+- LAKEWOOD0001
+- LEAFRIV0001
+- LEGENDC0001
+- LIGHTSP0001
+- LINDELL0001
+- LITWARE0001
+- MAGICCY0001
+- MARSH0001
+- MERITBI0001
+- METROSP0001
+- MIDWEST0001
+- MITCHELL0001
+- MORGANB0001
+- MOUNTAIN0001
+- NATIONAL0001
+- NORSTAN0001
+- NORTHERN0001
+- NORTHW0001
+- PREMIER0001
+- PROFESSI0001
+- PROSE0001
+- PROSPOR0001
+- READYRE0001
+- RECREATI0001
+- RELIANCE0001
+- SIGNATUR0001
+- SPEEDCO0001
+- SPORTFA0001
+- SPORTPL0001
+- SPORTSH0001
+- SUPERIOR0001
+- SUPERSAL0001
+- TEAMATH0001
+- TOURING0001
+- TRAINING0001
+- TREYRE0001
+- TRIKES0001
+- VARSITY0001
+- VICTORY0001
+- VISIONC0001
+- VISTARO0001
+- WESTAMER0001
+- WESTJUN0001
+- WIDEWOR0001
+- WOODFIT0001
+
+## lookup:VendorName
+- A. Datum Corporation
+- Advanced Bicycles
+- Allenson Cycles
+- American Bicycles and Wheels
+- American Bikes
+- Anderson's Custom Bikes
+- Aurora Bike Center
+- Australia Bike Retailer
+- Beaumont Bikes
+- Bergeron Off-Roads
+- Bicycle Specialists
+- Bike Satellite Inc.
+- Bloomington Multisport
+- Burnett Road Warriors
+- Business Equipment Center
+- Capital Road Cycles
+- Carlson Specialties
+- Chicago City Saddles
+- Chicago Rent-All
+- Circuit Cycles
+- Comfort Road Bicycles
+- Compete Enterprises, Inc
+- Compete, Inc.
+- Competition Bike Training Systems
+- Consumer Cycles
+- Continental Pro Cycles
+- Crowley Sport
+- Cruger Bike Company
+- Custom Frames, Inc.
+- Cycling Master
+- Electronic Bike Co.
+- Electronic Bike Repair & Supplies
+- Expert Bike Co
+- Federal Sport
+- First National Sport Co.
+- First Rate Bicycles
+- Fitness Association
+- G & K Bicycle Corp.
+- Gardner Touring Cycles
+- GMA Ski & Bike
+- Green Lake Bike Company
+- Greenwood Athletic Company
+- Hill Bicycle Center
+- Hill's Bicycle Service
+- Holiday Skate & Cycle
+- Hybrid Bicycle Center
+- Illinois Trek & Clothing
+- Image Makers Bike Center
+- Indiana Bicycle Center
+- Inline Accessories
+- Inner City Bikes
+- Integrated Sport Products
+- International
+- International Bicycles
+- International Sport Assoc.
+- International Trek Center
+- Jackson Authority
+- Jeff's Sporting Goods
+- Knopfler Cycles
+- Lakewood Bicycle
+- Leaf River Terrain
+- Legend Cycles
+- Light Speed
+- Lindell
+- Litware, Inc.
+- Magic Cycles
+- Marsh
+- Merit Bikes
+- Metro Sport Equipment
+- Midwest Sport, Inc.
+- Mitchell Sports
+- Morgan Bike Accessories
+- Mountain Works
+- National Bike Association
+- Norstan Bike Hut
+- Northern Bike Travel
+- Northwind Traders
+- Premier Sport, Inc.
+- Pro Sport Industries
+- Professional Athletic Consultants
+- Proseware, Inc.
+- Ready Rentals
+- Recreation Place
+- Reliance Fitness, Inc.
+- Signature Cycles
+- Speed Corporation
+- Sport Fan Co.
+- Sport Playground
+- Sports House
+- Superior Bicycles
+- SUPERSALES INC.
+- Team Athletic Co.
+- Touring Equipment Center
+- Training Systems
+- Trey Research
+- Trikes, Inc.
+- Varsity Sport Co.
+- Victory Bikes
+- Vision Cycles, Inc.
+- Vista Road Bikes
+- West Junction Cycles
+- WestAmerica Bicycle Co.
+- Wide World Importers
+- Wood Fitness
+
+##lookup:VendorCreditRating
+- 1
+- 2
+- 3
+- 4
+- 5
+
+## synonym:equal_to
+- for
+- in
+- on
+- equal to
+- equals
+- equalto
+- equal
+- same
+- like
+- equalled
+- equaled
+- equaling
+- equalingto
+- equal-to
+- equals to
+
+## synonym:greater_than
+- after
+- from
+- between
+- greater than
+- greater
+- greaterthan
+- greater-than
+- larger
+- largerthan
+- large
+- more
+- morethan
+- major
+- more than
+- above
+
+## synonym:lesser_than
+- before
+- to
+- until
+- since
+- and
+- smaller than
+- less
+- lessthan
+- smaller
+- lesser
+- minor
+- small
+- lesser-than
+- lesserthan
+- lesser than
+- less than
+- small than
+- untill
+- under
+- below
+- till
+
+## synonym:greater_than_equal
+- greater than equal to
+- greater-than-equal
+- greater or equal
+- greater than or equal to
+- more than equal
+
+## synonym:sum
+- total
+- full
+- summation
+- whole
+- sum of
+
+## synonym:mean
+- avg
+- average
+- expected
+
+## synonym:count
+- total number of
+- count of
+- number
+- no. of
+
+## synonym:min
+- minimum
+- least
+- smallest
+- lowest
+
+## synonym:max
+- maximum
+- peak
+- topmost
+- highest
+- largest
+- extreme
+
+## synonym:top
+- best
+- supreme
+- prime
+- most profitable
+- Most profitable
+- TOP
+- ideal
+
+## synonym:bottom
+- worst
+- least profitable
+- BOTTOM
+- Least Profitable
+
+## synonym:MTD
+- month to date
+- mtd
+- m-t-d
+- month-to-date
+- month/to/date
+- m/t/d
+
+## synonym:QTD
+- qtd
+- quarter to date
+- q-t-d
+- quarter-to-date
+- quarter/to/date
+- q/t/d
+
+## synonym:YTD
+- year to date
+- ytd
+- y-t-d
+- year-to-date
+- year/to/date
+- y/t/d
+
+## synonym:MOM
+- month over month
+- mom
+- m-o-m
+- this month vs last month
+- current month vs previous month
+- current month vs last month
+- previous month vs this month
+- prev month vs this month
+- prev month vs current month
+- month-over-month
+- month/over/month
+- m/o/m
+- Month on month
+- last month vs current month
+- month on month
+- month-on-month
+- monthon month
+- monthonmonth
+- this month vs previous month
+
+## synonym:QOQ
+- quarter over quarter
+- qoq
+- q-o-q
+- this quarter vs last quarter
+- current quarter vs previous quarter
+- current quarter vs last quarter
+- previous quarter vs this quarter
+- prev quarter vs this quarter
+- prev quarter vs current quarter
+- quarter on quarter
+- quarter-on-quarter
+- quarter-over-quarter
+- quarter/over/quarter
+- q/o/q
+- qtr on qtr
+- qtr over qtr
+- qtr-o-qtr
+- qtr-on-qtr
+- qtroqtr
+- quarteron quarter
+- quarteronquarter
+
+## synonym:YOY
+- year over year
+- yoy
+- y-o-y
+- current year vs previous year
+- current year vs last year
+- prev year vs this year
+- prev year vs current year
+- year on year
+- year-on-year
+- year-over-year
+- year/over/year
+- y/o/y
+- last year vs current year
+- last year vs this year
+- previous year vs current year
+- previous year vs this year
+- this year vs last year
+- this year vs previous year
+- year-on year
+- yearon year
+- yearonyear
+
+## synonym:lesser_than_equal
+- lesser-than-equal
+- lesser than equal to
+- lesser or equal
+- lesser than or equal to
+- less than equal
+
+## synonym:table
+- tabel
+- relational table
+- list
+
+## synonym:bar
+- bar chart
+- column chart
+
+## synonym:line
+- line chart
+- trend chart
+
+## synonym:pie
+- pei
+- pie chart
+- circle chart
+
+## synonym:donut
+- donaught
+- dnut
+
+## synonym:CalendarDate
+- daily
+- SalesDate
+- date
+- sales date
+- calendar date
+- datewise
+- day
+- days
+
+## synonym:Month
+- month
+- monthly
+- monthwise
+- each months
+
+## synonym:Year
+- year
+- yearly
+- Yearwise
+- yrwise
+- years
+
+## synonym:SubTotal
+- Order amount
+- subtotal
+- sub total
+- order total
+- Order Total
+
+## synonym:TaxAmt
+- Tax Amount
+- taxable amt
+
+## synonym:Freight
+- transportation
+- cost of transport
+- freight charge
+- frieght
+
+## synonym:TotalDue
+- total due
+- due amount
+- order amount
+
+## synonym:OrderQty
+- order quantity
+- order qty
+- quantity of order
+
+## synonym:UnitPrice
+- unit price
+- price of one order
+- order unit price
+- unitprice
+
+## synonym:LineTotal
+- total cost
+- line total
+- total line cost
+- product total cost
+
+## synonym:EmployeeName
+- employee
+- emp
+- employees
+- Employee Name
+- EmployeeName
+- Emp Wise
+- Emp Name
+- employee name
+- name
+- resource
+- employeewise
+- empwise
+- staff
+- personnel
+- all employee
+
+## synonym:JobTitle
+- job wise
+- job title wise
+- jobtitlewise
+- jobwise
+
+## synonym:DepartmentName
+- department wise
+- departmentwise
+- departmentname wise
+- departmentnamewise
+
+## synonym:ProductName
+- product
+- proddesc
+- prod
+- products
+- prod desc
+- prodDesc
+- productwise
+- item
+- goods
+- commodity
+
+## synonym:ProductCategoryName
+- product category
+- product group
+- prodgroup
+- prodcategory
+- PG Wise
+- product group wise
+- prod grp
+- productgroupwise
+- productgroup
+- product groups
+- prod groups
+- product type
+- prod category
+
+## synonym:ProductSubcategoryName
+- product sub category
+- product subgroup
+- prod sub group
+- prod sub category
+- subcategory
+- product sub group wise
+- prod sub grp
+- productsubgroupwise
+- productsubgroup
+- product subgroups
+- prod subgroups
+- product subtype
+- prod subcategory
+
+## synonym:ShipMethodName
+- shipment method
+- shipmethod
+- shipmentmethod
+- ship method
+- shipment
+- ship
+- transportation method
+- transport method
+
+## synonym:VendorAccountNumber
+- Vendor Account Number
+
+## synonym:Quarter
+- quarter
+- quarterly
+- qtr
+- Quarterwise
+- qtrwise
+- Quarterly
+- quarters
+
+## synonym:MonthYear
+- month year
+- monthyear
+- month-year
+- year month
+- MonthYearwise
+- monthyearwise
+- month-yearwise
+
+## synonym:QuarterYear
+- qtryear
+- qtr year
+- quarter year
+- quateryearwise
+- quateryear
+- quarter-year
+- qtr-year
+
