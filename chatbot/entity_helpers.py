@@ -110,8 +110,7 @@ def get_fact_condition_formatted(entities):
 		i += 1
 	raw_fact_conditions = fact_conditions
 	if not raw_fact_conditions:
-		return {'aggregation': {'SalesAmount': ['sum']}, 'conditions': [{
-			'fact_name': 'SalesAmount sum', 'conditions': np.nan, 'fact_value': np.nan}]}
+		return {}
 
 	# try to fill aggregations in raw_fact_conditions
 	df = pd.DataFrame(raw_fact_conditions)
