@@ -82,6 +82,23 @@ def fact_table_logic(df, entities):
 def action_po_header_details(df, entities):
     df = helpers.apply_date_condition(df, entities['date_condition'])
     df = helpers.apply_dim_filters(df, entities['dim_filters'])
+    order_group_columns = ['PurchaseOrderID', 'EmployeeName', 'JobTitle', 'DepartmentName', 'VendorAccountNumber',
+                           'VendorName', 'VendorCreditRating', 'Status', 'ShipMethodName', 'OrderDate', 'ShipDate']
+    order_agg = {'SubTotal': 'mean', 'TaxAmt': 'mean', 'Freight': 'mean', 'TotalDue': 'mean'}
+    order_df = df.groupby(order_group_columns).agg(order_agg)
+    order_df = order_df.reset_index()
+
+    order_details_group_columns = ['PurchaseOrderID', 'ProductName', 'ProductNumber', 'ProductSubcategoryName',
+                                   'ProductCategoryName']
+    order_details_agg = {'OrderQty': 'sum', 'UnitPrice': 'sum', 'LineTotal': 'sum', 'ReceivedQty': 'sum',
+                         'RejectedQty': 'sum'}
+    order_details_df = df.groupby(order_details_group_columns).agg(order_details_agg)
+    order_details_df = order_details_df.reset_index()
+
+    data = []
+    for index, row in order_df.iterrows():
+        print(row)
+    return True
 
 
 def utter_agent_acquaintance(*argv):

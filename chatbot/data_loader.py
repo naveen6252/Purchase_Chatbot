@@ -69,7 +69,7 @@ def load_table_rls_filtered(intent, entities, rls_json):
     if intent == 'POHeaderDetails':
         columns = get_columns_from_rls(rls_json) + ['PurchaseOrderID', 'EmployeeName', 'JobTitle', 'DepartmentName',
                                                     'VendorAccountNumber', 'VendorName', 'VendorCreditRating', 'Status',
-                                                    'ShipMethodName', 'CalendarDate', 'ShipDate', 'SubTotal', 'TaxAmt',
+                                                    'ShipMethodName', 'OrderDate', 'ShipDate', 'SubTotal', 'TaxAmt',
                                                     'Freight', 'TotalDue', 'ProductName', 'ProductNumber',
                                                     'ProductSubcategoryName', 'ProductCategoryName', 'OrderQty',
                                                     'UnitPrice', 'LineTotal', 'ReceivedQty', 'RejectedQty']

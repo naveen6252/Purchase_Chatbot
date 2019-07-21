@@ -209,11 +209,11 @@ def get_date_condition_formatted(entities):
 					if val['to'] and val['from']:
 						date_condition['DateRange'] = val
 					if val['to']:
-						date_condition['CalendarDate'] = val['to']
+						date_condition['OrderDate'] = val['to']
 					else:
-						date_condition['CalendarDate'] = val['from']
+						date_condition['OrderDate'] = val['from']
 				else:
-					date_condition['CalendarDate'] = val
+					date_condition['OrderDate'] = val
 			date_conditions.append(date_condition)
 		elif ent == 'time':
 			date_condition = {}
@@ -235,11 +235,11 @@ def get_date_condition_formatted(entities):
 				if date['to'] and date['from']:
 					date_condition['DateRange'] = date
 				elif date['to']:
-					date_condition['CalendarDate'] = date['to']
+					date_condition['OrderDate'] = date['to']
 				else:
-					date_condition['CalendarDate'] = date['from']
+					date_condition['OrderDate'] = date['from']
 			else:
-				date_condition['CalendarDate'] = date
+				date_condition['OrderDate'] = date
 			date_condition['text'] = text
 			date_conditions.append(date_condition)
 		i += 1
@@ -253,10 +253,10 @@ def get_date_condition_formatted(entities):
 			condition['date_condition'] = 'equal_to'
 
 		if 'DateRange' not in condition.keys():
-			date = condition['CalendarDate']
+			date = condition['OrderDate']
 			date = date[0:10]
 			date = datetime.strptime(date, '%Y-%m-%d')
-			date_dict = {'conditions': condition['date_condition'], 'CalendarDate': date}
+			date_dict = {'conditions': condition['date_condition'], 'OrderDate': date}
 			formatted_date_condition.append(date_dict)
 		else:
 			date_period = condition['DateRange']
@@ -265,27 +265,27 @@ def get_date_condition_formatted(entities):
 				date_period_to = date_period['to']
 				date_period_to = date_period_to[0:10]
 				date_period_to = datetime.strptime(date_period_to, '%Y-%m-%d')
-				date_dict = {'conditions': 'lesser_than', 'CalendarDate': date_period_to}
+				date_dict = {'conditions': 'lesser_than', 'OrderDate': date_period_to}
 				formatted_date_condition.append(date_dict)
 
 				date_period_from = date_period['from']
 				date_period_from = date_period_from[0:10]
 				date_period_from = datetime.strptime(date_period_from, '%Y-%m-%d')
-				date_dict = {'conditions': 'greater_than_equal', 'CalendarDate': date_period_from}
+				date_dict = {'conditions': 'greater_than_equal', 'OrderDate': date_period_from}
 				formatted_date_condition.append(date_dict)
 
 			elif condition['date_condition'] == 'greater_than' or condition['date_condition'] == 'greater_than_equal':
 				date_period_to = date_period['to']
 				date_period_to = date_period_to[0:10]
 				date_period_to = datetime.strptime(date_period_to, '%Y-%m-%d')
-				date_dict = {'conditions': 'greater_than_equal', 'CalendarDate': date_period_to}
+				date_dict = {'conditions': 'greater_than_equal', 'OrderDate': date_period_to}
 				formatted_date_condition.append(date_dict)
 
 			elif condition['date_condition'] == 'lesser_than' or condition['date_condition'] == 'lesser_than_equal':
 				date_period_from = date_period['from']
 				date_period_from = date_period_from[0:10]
 				date_period_from = datetime.strptime(date_period_from, '%Y-%m-%d')
-				date_dict = {'conditions': 'greater_than_equal', 'CalendarDate': date_period_from}
+				date_dict = {'conditions': 'greater_than_equal', 'OrderDate': date_period_from}
 				formatted_date_condition.append(date_dict)
 
 	return formatted_date_condition
@@ -403,7 +403,7 @@ def get_nlu_parameters(text):
 def get_dimension_names():
 	return ['EmployeeName', 'JobTitle', 'DepartmentName', 'ProductName', 'ProductNumber', 'ProductSubcategoryName',
 			'ProductCategoryName', 'ShipMethodName', 'VendorAccountNumber', 'VendorName', 'VendorCreditRating',
-			'CalendarDate', 'Month', 'Year', 'MonthYear', 'Quarter', 'QuarterYear']
+			'OrderDate', 'Month', 'Year', 'MonthYear', 'Quarter', 'QuarterYear']
 
 
 if __name__ == '__main__':
