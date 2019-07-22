@@ -55,7 +55,8 @@
                                                 <p>User Role</p>
                                                 <span>
                                                 <input type="text" id="userRole" class="form-control"
-                                                       value="{{ user_details.role }}" disabled="disabled"/>
+                                                       value="{{ user_details.role }}" disabled="disabled"
+                                                       onkeyup="this.value = this.value.toLowerCase();"/>
                                             </span>
                                             </div>
                                             <div class="col-sm-6">
@@ -119,7 +120,8 @@
                                                 <div class="col-sm-6" id="newUserRoleDiv">
                                                     <p>User Role</p>
                                                     <input type="text" id="newUserRole" title="User Role is Required"
-                                                           data-toggle="tooltip" class="form-control"/>
+                                                           data-toggle="tooltip" class="form-control"
+                                                           onkeyup="this.value = this.value.toLowerCase();"/>
                                                     <span id="newUserRoleError" class="help-block"></span>
                                                 </div>
                                                 <div class="col-sm-6">

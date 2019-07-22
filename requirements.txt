@@ -123,4 +123,4 @@ pandas
 flask-sqlalchemy
 flask-bcrypt
 flask-WTF
-duckling
+duckling==1.8.0

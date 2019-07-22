@@ -180,7 +180,7 @@ def interactive_learning():
 		if role != 'admin':
 			return render_template("notAuthorized.html")
 		lookup_tables = read_nlu_data(MAIN_NLU_DATA_PATH)['lookup']
-		lookup_tables = {k: v for k, v in lookup_tables.items() if k not in ('CustomerName', 'Name', 'ProductDesc')}
+
 		return render_template('interactiveLearning.html', username=username, role=role, token=token,
 							   title='Reinforcement Learning', lookup=lookup_tables)
 

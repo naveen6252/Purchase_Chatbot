@@ -107,7 +107,7 @@ body {
     margin: 0 0 10px 0;
     border-radius: 2px;
     overflow: auto;
-    max-height: 48vh;
+    max-height: 64vh;
     max-width: 75%;
 }
 

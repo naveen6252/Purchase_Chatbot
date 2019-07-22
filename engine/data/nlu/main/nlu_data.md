@@ -1,10 +1,64 @@
 ## intent:POHeaderDetails
 - purchase order details of last month
+- order details [before](date_condition:lesser_than) february 2019]
+- order details [after](date_condition:greater_than) 2 january 2019
+- order details [for](date_condition:equal_to) this month
 - purchase order details of [American Bikes](VendorName:American Bikes)
+- purchase order details of [American Bikes](VendorName:American Bikes) [for](date_condition:equal_to) this month
+- purchase order details of [Beaumont Bikes](VendorName:Beaumont Bikes)
+- purchase order details of [Circuit Cycles](VendorName:Circuit Cycles) [from](date_condition:greater_than) january 2019 [to](date_condition:lesser_than) march 2019
+- purchase order details of [Merit Bikes](VendorName:Merit Bikes)
 - order from [Aurora Bike Center](VendorName:Aurora Bike Center)
-- order details of vendor account [AMERICAN0001](VendorAccountNumber:AMERICAN0001)
+- order details of vendor account [AMERICAN0001](VendorAccountNumber:AMERICAN0001) [after](date_condition:greater_than) january 2019
 - order details of vendor account [BICYCLE0001](VendorAccountNumber:BICYCLE0001)
-- order details of vendor account [COMPETE0001](VendorAccountNumber:COMPETE0001)
+- order details of vendor account [COMPETE0001](VendorAccountNumber:COMPETE0001) [before](date_condition:lesser_than) march 2019
+- order details of order number [2001](PurchaseOrderID:2001)
+- order details of PO Number [2700](PurchaseOrderID:2700) [from](date_condition:greater_than) february 2019 [to](date_condition:lesser_than) december 2019
+- order details of po [1](PurchaseOrderID:1)
+- order details of order number [1166](PurchaseOrderID:1166) [for](date_condition:equal_to) last month
+- order details of [Anibal Sousa](EmployeeName:Anibal Sousa)
+- order details of [Andy Ruth](EmployeeName:Andy Ruth) [for](date_condition:equal_to) this month
+- order details of [Andrew Hill](EmployeeName:Andrew Hill)
+- order details of [Rajesh Patel](EmployeeName:Rajesh Patel) [after](date_condition:greater_than) march 2019
+- previous month order details
+- order details [from](date_condition:greater_than) august 2019 [to](date_condition:lesser_than) december 2018
+
+- [completed](Status:Complete) order details [for](date_condition:equal_to) august 2016
+- [pending](Status:Pending) order details
+- [pending](Status:Pending) PO
+- [rejected](Status:Rejected) order details [before](date_condition:lesser_than) february 2017
+- [approved](Status:Approved) order details
+- PO of [OVERNIGHT J-FAST](ShipMethodName:OVERNIGHT J-FAST)
+- order details of [CARGO TRANSPORT 5](ShipMethodName:CARGO TRANSPORT 5)
+- order details of [Accountants](JobTitle:Accountant) [for](date_condition:equal_to) august 2016
+- order details of [Design Engineers](JobTitle:Design Engineer) [from](date_condition:greater_than) january 2018 [to](date_condition:lesser_than) december 2019
+- order details of [Network Managers](JobTitle:Network Manager)
+- order details of [Janitors](JobTitle:Janitor)
+- order details for [Minipump](ProductName:Minipump) [from](date_condition:greater_than) february 2019 [to](date_condition:lesser_than) december 2019
+- order details for [Cable Lock](ProductName:Cable Lock) [for](date_condition:equal_to) September 2016
+- order details of product [Blade](ProductName:Blade)
+- order details for [Freewheel](ProductName:Freewheel) [after](date_condition:greater_than) october 2019
+- order details of product number [BA-8327](ProductNumber:BA-8327)
+- order details for [BK-M47B-40](ProductNumber:BK-M47B-40) [for](date_condition:equal_to) April 2015
+- order details for [BK-R68R-44](ProductNumber:BK-R68R-44)
+- order details for [CL-9009](ProductNumber:CL-9009) [before](date_condition:lesser_than) december 2017
+- order details for [Gloves](ProductSubcategoryName:Gloves)
+- order details for [Helmets](ProductSubcategoryName:Helmets) [for](date_condition:equal_to) November 2017
+- order details for [Lights](ProductSubcategoryName:Lights) [after](date_condition:greater_than) january 2019
+- order details for [Pedals](ProductSubcategoryName:Pedals) [before](date_condition:lesser_than) march 2017
+- order details for [Accessories](ProductCategoryName:Accessories) [for](date_condition:equal_to) December 2013
+- order details for [Components](ProductCategoryName:Components)
+- order details for vendor credit rating [1](VendorCreditRating:1)
+- order details for vendor credit rating [5](VendorCreditRating:5) [for](date_condition:equal_to) January 2015
+
+- order details for [Anibal Sousa](EmployeeName:Anibal Sousa) and product = [Blade](ProductName:Blade) [for](date_condition:equal_to) last year
+- order details for [Alice Ciccu](EmployeeName:Alice Ciccu) and vendor = [Beaumont Bikes](VendorName:Beaumont Bikes)
+- order details for [Alejandro McGuel](EmployeeName:Alejandro McGuel) and ship method = [OVERNIGHT J-FAST](ShipMethodName:OVERNIGHT J-FAST)
+- order details for [Chain](ProductName:Chain) and vendor = [Circuit Cycles](VendorName:Circuit Cycles [for](date_condition:equal_to) last year
+- order details for [Guide Pulley](ProductName:Guide Pulley) and ship method = [XRQ - TRUCK GROUND](ShipMethodName:XRQ - TRUCK GROUND)
+
+- order details of [David Liu](EmployeeName:David Liu) for product = [Head Tube](ProductName:Head Tube) and vendor = [Cycling Master](VendorName:Cycling Master)
+- order details of [Guy Gilbert](EmployeeName:Guy Gilbert) for product = [AWC Logo Cap](ProductName:AWC Logo Cap) and vendor = [Fitness Association](VendorName:Fitness Association)
 
 
 ## lookup:agg
@@ -14,12 +68,11 @@
 - mean
 - count
 
-## lookup:Condition
-- equal_to
-- greater_than
-- lesser_than
-- greater_than_equal
-- lesser_than_equal
+## lookup:Status
+- Complete
+- Pending
+- Approved
+- Rejected
 
 ## lookup: graph
 - table
@@ -1984,7 +2037,6 @@
 - years
 
 ## synonym:SubTotal
-- Order amount
 - subtotal
 - sub total
 - order total
@@ -2133,3 +2185,5 @@
 - quarter-year
 - qtr-year
 
+## intent:POHeaderDetails
+- [pending](Status:Pending) po of [Mountain Works](VendorName:mountain works)

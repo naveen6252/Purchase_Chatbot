@@ -71,20 +71,78 @@ function drawTable() {
     chart.draw(chart_data, options);
 }
 
+function showHideCustomMsg(id) {
+    content = document.getElementById('customMsg' + id);
+    if (content.style.display === 'none') {
+        content.style.display = 'block'
+    } else {
+        content.style.display = 'none'
+    }
+}
+
+function drawCustomHeadingTables(data) {
+    var purchaseOrderHeaderData = data.PurchaseOrderHeader.value;
+    var bot_message = '<button class="collapsible" onclick="showHideCustomMsg(' + bot_message_id + ')">PurchaseOrderID: ' +
+        purchaseOrderHeaderData.PurchaseOrderID + '</button><li class="other"><div class="msg" id="customMsg' + bot_message_id + '" ' +
+        'style="display: none">';
+    bot_message += '<div class="container" id="PurchaseOrderHeaderDiv"><h3 class="text-center">PurchaseOrderHeader</h3>' +
+        '<div class="row">' +
+        '<div class="col-xs-4">PurchaseOrderID: ' + purchaseOrderHeaderData.PurchaseOrderID + '</div>' +
+        '<div class="col-xs-4">EmployeeName: ' + purchaseOrderHeaderData.EmployeeName + '</div>' +
+        '<div class="col-xs-4">JobTitle: ' + purchaseOrderHeaderData.JobTitle + '</div>' +
+        '</div><div class="row">' +
+        '<div class="col-xs-4">DepartmentName: ' + purchaseOrderHeaderData.DepartmentName + '</div>' +
+        '<div class="col-xs-4">VendorAccountNumber: ' + purchaseOrderHeaderData.VendorAccountNumber + '</div>' +
+        '<div class="col-xs-4">VendorName: ' + purchaseOrderHeaderData.VendorName + '</div>' +
+        '</div><div class="row">' +
+        '<div class="col-xs-4">VendorCreditRating: ' + purchaseOrderHeaderData.VendorCreditRating + '</div>' +
+        '<div class="col-xs-4">ShipMethodName: ' + purchaseOrderHeaderData.ShipMethodName + '</div>' +
+        '<div class="col-xs-4">Status: ' + purchaseOrderHeaderData.Status + '</div>' +
+        '</div><div class="row">' +
+        '<div class="col-xs-4">OrderDate: ' + purchaseOrderHeaderData.OrderDate + '</div>' +
+        '<div class="col-xs-4">ShipDate: ' + purchaseOrderHeaderData.ShipDate + '</div>' +
+        '<div class="col-xs-4">SubTotal: ' + purchaseOrderHeaderData.SubTotal + '</div>' +
+        '</div><div class="row">' +
+        '<div class="col-xs-4">TaxAmt: ' + purchaseOrderHeaderData.TaxAmt + '</div>' +
+        '<div class="col-xs-4">Freight: ' + purchaseOrderHeaderData.Freight + '</div>' +
+        '<div class="col-xs-4">TotalDue: ' + purchaseOrderHeaderData.TotalDue + '</div>' +
+        '</div></div><br><br>';
+
+    var purchaseOrderDetailsData = data.PurchaseOrderDetails.value;
+    chart_data = google.visualization.arrayToDataTable(purchaseOrderDetailsData);
+    chart_title = 'PurchaseOrderDetails';
+
+    bot_message += '<div class="container" id="msg' + bot_message_id + '"></div></li>';
+
+    $('.chat').append(bot_message).ready(function () {
+        $("html, body").animate({
+            scrollTop: $('.chat').height()
+        }, 1);
+    });
+    drawTable();
+}
+
+function drawTextMessage(data) {
+    var bot_message = '<li class="other"><div class="msg" id="msg' + bot_message_id + '">' + data + '</div></li>';
+    // append the bot message to the ol
+    $('.chat').append(bot_message).ready(function () {
+        $("html, body").animate({
+            scrollTop: $('.chat').height()
+        }, 1);
+    });
+}
 
 function draw_charts(data) {
     $("#waiting").remove();
     $(data.response).each(function () {
         bot_message_id = bot_message_id + 1;
-        var bot_message;
         if (this.chart === 'text') {
-            bot_message = '<li class="other"><div class="msg" id="msg' + bot_message_id + '">' + this.data + '</div></li>';
-            // append the bot message to the ol
-            $('.chat').append(bot_message).ready(function () {
-                $("html, body").animate({
-                    scrollTop: $('.chat').height()
-                }, 1);
-            });
+            drawTextMessage(this.data);
+        } else if (this.chart === 'customHeadingTables') {
+            for (var i = 0; i < this.data.length; ++i) {
+                drawCustomHeadingTables(this.data[i]);
+                bot_message_id++;
+            }
         } else {
             chart_data = google.visualization.arrayToDataTable(this.data);
             chart_title = this.chart_title;

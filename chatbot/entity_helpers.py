@@ -330,9 +330,11 @@ def format_entities(entities):
 
 
 def convert_text_md_format(text, entities):
+	if not entities:
+		return text
 	length_to_add = 0
 	for entity in entities:
-		if entity['entity'] not in ['DATE', 'time', 'CARDINAL']:
+		if entity['entity'] in get_dimension_names() + ['date_condition']:
 			start = entity['start'] + length_to_add
 			end = entity['end'] + length_to_add
 			value = entity['value']
@@ -353,7 +355,7 @@ def read_nlu_data(path):
 
 	intents = []
 	for d in json_data['rasa_nlu_data']['common_examples']:
-		intents.append({'intent': d['intent'], 'text': convert_text_md_format(d['text'], d['entities'])})
+		intents.append({'intent': d['intent'], 'text': convert_text_md_format(d['text'], d.get('entities'))})
 
 	intent_dict = {}
 	for example in intents:
@@ -401,9 +403,9 @@ def get_nlu_parameters(text):
 
 
 def get_dimension_names():
-	return ['EmployeeName', 'JobTitle', 'DepartmentName', 'ProductName', 'ProductNumber', 'ProductSubcategoryName',
-			'ProductCategoryName', 'ShipMethodName', 'VendorAccountNumber', 'VendorName', 'VendorCreditRating',
-			'OrderDate', 'Month', 'Year', 'MonthYear', 'Quarter', 'QuarterYear']
+	return ['PurchaseOrderID', 'EmployeeName', 'JobTitle', 'DepartmentName', 'ProductName', 'ProductNumber', 'Status',
+			'ProductSubcategoryName', 'ProductCategoryName', 'ShipMethodName', 'VendorAccountNumber', 'VendorName',
+			'VendorCreditRating', 'OrderDate', 'Month', 'Year', 'MonthYear', 'Quarter', 'QuarterYear']
 
 
 if __name__ == '__main__':
