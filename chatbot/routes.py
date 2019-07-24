@@ -618,10 +618,10 @@ def api_get_popular_queries(current_user):
 	return jsonify(response)
 
 
-def get_query_response(user_query, current_user, logging=True):
+def get_query_response(user_query, current_user, logging=True, page_num=0):
 	security_access_string = user_roles.query.filter_by(role=current_user.role).first().access_json
 	try:
-		query_response, entities = bot.get_json_from_query(user_query, security_access_string)
+		query_response, entities = bot.get_json_from_query(user_query, security_access_string, page_num=page_num)
 		query_parameters = str(entities)
 		status = 'SUCCESS'
 		error_name = None
@@ -720,4 +720,22 @@ def api_resolve_query(current_user):
 
 	if status == 'FAIL':
 		return jsonify(response), 400
+	return jsonify(response)
+
+
+# noinspection PyBroadException
+@app.route('/api/show_data_page_wise')
+@token_required
+def api_show_page_wise(current_user):
+	user_query = request.args.get('message')
+	page_num = int(request.args.get('page_num'))
+	if not user_query:
+		return jsonify({'message': 'could not find message in request!'}), 400
+
+	response, status = get_query_response(user_query=user_query, current_user=current_user, logging=False,
+										  page_num=page_num)
+
+	if status == 'FAIL':
+		return jsonify(response), 400
+
 	return jsonify(response)

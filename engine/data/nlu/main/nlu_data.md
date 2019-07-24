@@ -12,14 +12,34 @@
 - order details of vendor account [AMERICAN0001](VendorAccountNumber:AMERICAN0001) [after](date_condition:greater_than) january 2019
 - order details of vendor account [BICYCLE0001](VendorAccountNumber:BICYCLE0001)
 - order details of vendor account [COMPETE0001](VendorAccountNumber:COMPETE0001) [before](date_condition:lesser_than) march 2019
-- order details of order number [2001](PurchaseOrderID:2001)
-- order details of PO Number [2700](PurchaseOrderID:2700) [from](date_condition:greater_than) february 2019 [to](date_condition:lesser_than) december 2019
-- order details of po [1](PurchaseOrderID:1)
-- order details of order number [1166](PurchaseOrderID:1166) [for](date_condition:equal_to) last month
-- order details of [Anibal Sousa](EmployeeName:Anibal Sousa)
-- order details of [Andy Ruth](EmployeeName:Andy Ruth) [for](date_condition:equal_to) this month
+- order details of [order number](filter:PurchaseOrderID) 2001
+- order details of [PO Number](filter:PurchaseOrderID) 2700
+- order details of [po](filter:PurchaseOrderID) 1
+- order details of [order number](filter:PurchaseOrderID) 1166
+- [PO](filter:PurchaseOrderID) 1
+- [order id](filter:PurchaseOrderID) 7
+- [po](filter:PurchaseOrderID) 11
+- [purchase order](filter:PurchaseOrderID) 27
+- [purchaseorder](filter:PurchaseOrderID) 31
+- [po](filter:PurchaseOrderID) 234
+- [po](filter:PurchaseOrderID) 123
+- [po](filter:PurchaseOrderID) 345
+- [po](filter:PurchaseOrderID) 45
+- [po](filter:PurchaseOrderID) 34
+- [po](filter:PurchaseOrderID) 23
+- [po](filter:PurchaseOrderID) 21
+- [po](filter:PurchaseOrderID) 462
+- [po](filter:PurchaseOrderID) 123123
+- [purchase id](filter:PurchaseOrderID) 1236
+- [purchase order id](filter:PurchaseOrderID) 1645
+- [purchaseorderid](filter:PurchaseOrderID) 1875
+- [orderid](filter:PurchaseOrderID) 2001
+- order details of [Annette Hill](EmployeeName:Annette Hill)
+- order details of [Ben Miller](EmployeeName:Ben Miller) [for](date_condition:equal_to) this month
 - order details of [Andrew Hill](EmployeeName:Andrew Hill)
-- order details of [Rajesh Patel](EmployeeName:Rajesh Patel) [after](date_condition:greater_than) march 2019
+- order details of [Sheela Word](EmployeeName:Sheela Word) [after](date_condition:greater_than) march 2019
+- po of employee [Eric Kurjan](EmployeeName:Eric Kurjan)
+- po of [linda](EmployeeName:linda)
 - previous month order details
 - order details [from](date_condition:greater_than) august 2019 [to](date_condition:lesser_than) december 2018
 
@@ -28,16 +48,23 @@
 - [pending](Status:Pending) PO
 - [rejected](Status:Rejected) order details [before](date_condition:lesser_than) february 2017
 - [approved](Status:Approved) order details
+
+- [pending](Status:Pending) po of [Mountain Works](VendorName:Mountain Works)
 - PO of [OVERNIGHT J-FAST](ShipMethodName:OVERNIGHT J-FAST)
 - order details of [CARGO TRANSPORT 5](ShipMethodName:CARGO TRANSPORT 5)
 - order details of [Accountants](JobTitle:Accountant) [for](date_condition:equal_to) august 2016
 - order details of [Design Engineers](JobTitle:Design Engineer) [from](date_condition:greater_than) january 2018 [to](date_condition:lesser_than) december 2019
 - order details of [Network Managers](JobTitle:Network Manager)
 - order details of [Janitors](JobTitle:Janitor)
-- order details for [Minipump](ProductName:Minipump) [from](date_condition:greater_than) february 2019 [to](date_condition:lesser_than) december 2019
-- order details for [Cable Lock](ProductName:Cable Lock) [for](date_condition:equal_to) September 2016
-- order details of product [Blade](ProductName:Blade)
-- order details for [Freewheel](ProductName:Freewheel) [after](date_condition:greater_than) october 2019
+- order details for [ML Crankarm](ProductName:ML Crankarm) [from](date_condition:greater_than) february 2019 [to](date_condition:lesser_than) december 2019
+- order details for [HL Crankarm](ProductName:HL Crankarm) [for](date_condition:equal_to) September 2016
+- po of product [Chainring](ProductName:Chainring)
+- po of product [Bearing Ball](ProductName:Bearing Ball)
+- po of product [Crown Race](ProductName:Crown Race)
+- po of product [Freewheel](ProductName:Freewheel)
+- po of product [Front Derailleur Cage](ProductName:Front Derailleur Cage)
+- po of product [Guide Pulley](ProductName:Guide Pulley)
+- order details for [Chain](ProductName:Chain) [after](date_condition:greater_than) october 2019
 - order details of product number [BA-8327](ProductNumber:BA-8327)
 - order details for [BK-M47B-40](ProductNumber:BK-M47B-40) [for](date_condition:equal_to) April 2015
 - order details for [BK-R68R-44](ProductNumber:BK-R68R-44)
@@ -51,14 +78,118 @@
 - order details for vendor credit rating [1](VendorCreditRating:1)
 - order details for vendor credit rating [5](VendorCreditRating:5) [for](date_condition:equal_to) January 2015
 
-- order details for [Anibal Sousa](EmployeeName:Anibal Sousa) and product = [Blade](ProductName:Blade) [for](date_condition:equal_to) last year
-- order details for [Alice Ciccu](EmployeeName:Alice Ciccu) and vendor = [Beaumont Bikes](VendorName:Beaumont Bikes)
-- order details for [Alejandro McGuel](EmployeeName:Alejandro McGuel) and ship method = [OVERNIGHT J-FAST](ShipMethodName:OVERNIGHT J-FAST)
+- order details for [Anibal Sousa](EmployeeName:Anibal Sousa)
+- order details for [Mikael](EmployeeName:Mikael)
+- order details for [Miller](EmployeeName:Miller) 
+- order details for [Linda](EmployeeName:Linda) and product = [Blade](ProductName:Blade) [for](date_condition:equal_to) last year
+- order details for [Ben Miller](EmployeeName:Ben Miller) and vendor = [Beaumont Bikes](VendorName:Beaumont Bikes)
+- order details for [Sheela](EmployeeName:Sheela) and ship method = [OVERNIGHT J-FAST](ShipMethodName:OVERNIGHT J-FAST)
 - order details for [Chain](ProductName:Chain) and vendor = [Circuit Cycles](VendorName:Circuit Cycles [for](date_condition:equal_to) last year
-- order details for [Guide Pulley](ProductName:Guide Pulley) and ship method = [XRQ - TRUCK GROUND](ShipMethodName:XRQ - TRUCK GROUND)
+- order details for [Front Brakes](ProductName:Front Brakes) and ship method = [XRQ - TRUCK GROUND](ShipMethodName:XRQ - TRUCK GROUND)
+- po of [Spokes](ProductName:Spokes)
 
-- order details of [David Liu](EmployeeName:David Liu) for product = [Head Tube](ProductName:Head Tube) and vendor = [Cycling Master](VendorName:Cycling Master)
-- order details of [Guy Gilbert](EmployeeName:Guy Gilbert) for product = [AWC Logo Cap](ProductName:AWC Logo Cap) and vendor = [Fitness Association](VendorName:Fitness Association)
+- order details of [David Liu](EmployeeName:David Liu) for product = [Reflector](ProductName:Reflector) and vendor = [Cycling Master](VendorName:Cycling Master)
+- order details of [Guy Gilbert](EmployeeName:Guy Gilbert) for product = [Metal Angle](ProductName:Metal Angle) and vendor = [Fitness Association](VendorName:Fitness Association)
+
+
+## intent:POHeader
+- [total](agg:sum) [purchase amount](fact:SubTotal)
+- [total](agg:sum) [purchase amount](fact:SubTotal) [vendor wise](dim:VendorName)
+- [total](agg:sum) [purchase amount](fact:SubTotal) [vendor account number wise](dim:VendorAccountNumber)
+- [total](agg:sum) [purchase amount](fact:SubTotal) of [completed orders](Status:Complete)
+- [total](agg:sum) [purchase amount](fact:SubTotal) [for](date_condition:equal_to) last month
+
+- [completed orders](Status:Complete) [total amount](fact:SubTotal)
+- [completed orders](Status:Complete) [total amount](fact:SubTotal) [yearly](dim:Year)
+- [completed orders](Status:Complete) [total amount](fact:SubTotal) in [bar](graph:bar)
+- [pending orders](Status:Pending) [total amount](fact:SubTotal)
+- [approved orders](Status:Approved) [total amount](fact:SubTotal) in [pie](graph:pie) chart
+- [completed orders](Status:Complete) [total amount](fact:SubTotal) [after](date_condition:greater_than) january 2019
+
+- [year wise](dim:Year) [completed orders](Status:Complete) [total amount](fact:SubTotal) in [bar](graph:bar) [from](date_condition:greater_than) 2015 [to](date_condition:lesser_than) 2018
+- [employee wise](dim:EmployeeName) [purchases](fact:SubTotal)
+- [order wise](dim:PurchaseOrderID) [subtotal](fact:SubTotal) amount
+- [employee wise](dim:EmployeeName) [purchases](fact:SubTotal) [for](date_condition:equal_to) last year
+- [vendor wise](dim:VendorName) [purchases](fact:SubTotal) in [line](graph:line) chart [after](date_condition:greater_than) 2015
+- [status wise](dim:Status) PO in [pie](graph:pie) chart
+- [employee wise](dim:EmployeeName) po on [pie](graph:pie)
+- [vendor account number wise](dim:VendorAccountNumber) PO
+- [ship method wise](dim:ShipMethodName) PO [from](date_condition:greater_than) 2015 [to](date_condition:lesser_than) 2019
+- [department wise](dim:DepartmentName) [purchases](fact:SubTotal) on [donut](graph:donut)
+- [vendor wise](dim:VendorName) po of employee [Arvind Rao](EmployeeName:Arvind Rao)
+- [employeewise](dim:EmployeeName) [monthly](dim:Month) [purchases](fact:SubTotal)
+- [employee wise](dim:EmployeeName) [yearly](dim:Year) PO in [pie](graph:pie) chart
+- [vendor wise](dim:VendorName) [monthly](dim:Month) [purchases](fact:SubTotal)
+- [vendor wise](dim:VendorName) [yearly](dim:Year) PO
+- [vendor wise](dim:VendorName) [yearly](dim:Year) PO in [bar](graph:bar)
+- po for each [vendor](dim:VendorName)
+- [monthwise](dim:Month) [purchase amount](fact:SubTotal)
+- [month wise](dim:Month) PO
+- [monthwise](dim:Month) PO [from](date_condition:greater_than) 2015 [to](date_condition:lesser_than) 2019
+- [year wise](dim:Year) PO [from](date_condition:greater_than) 2015 [to](date_condition:lesser_than) 2019
+- [year wise](dim:Year) [completed](Status:Complete) PO
+- [quarterly](dim:Quarter) [purchases](fact:SubTotal) of [pending orders](Status:Pending)
+- [quartly](dim:Quarter) [purchases](fact:SubTotal) of [rejected orders](Status:Reject)
+- [employee wise](dim:EmployeeName) [quartly](dim:Quarter) PO
+- [freight](fact:Freight) for [approved](Status:Approved) orders
+- [monthly](dim:Month) [frieght](fact:Freight) for [pending](Status:Pending) orders
+- [yearly](dim:Year) [frieght](fact:Freight) for [completed](Status:Complete) orders
+- [frieght](fact:Freight) for [completed](Status:Complete) orders [after](date_condition:greater_than) january 2018
+- [tax amount](fact:TaxAmt) for [complete](Status:Complete) orders
+- [monthly](dim:Month) [tax amount](fact:TaxAmt) for [pending](Status:Pending) orders
+- [monthwise](dim:Month) [tax amount](fact:TaxAmt) [for](date_condition:equal_to) Last Month
+
+- [top](selection:top) 3 [employees](adject:EmployeeName)
+- [best](selection:top) 5 [employees](adject:EmployeeName)
+- [top](selection:top) 10 [vendors](adject:VendorName) 
+- [top](selection:top) 3 [vendors](adject:VendorName) according to [transportation cost](fact:Freight)
+- [worst](selection:bottom) 3 [employees](adject:EmployeeName) [of](date_condition:equal_to) last year
+- [bottom](selection:bottom) 3 [employee](adject:EmployeeName) [of](date_condition:equal_to) last month
+- [top](selection:top) 10 [vendors](adject:VendorName) in [bar](graph:bar) graph
+
+
+## intent:PODetails
+- [product wise](dim:ProductName) [purchase total](fact:LineTotal) in [pie](graph:pie)
+- [product wise](dim:ProductName) [order quantity](fact:OrderQty) [for](date_condition:equal_to) Last Month
+- [product wise](dim:ProductName) [received quantity](fact:ReceivedQty)
+- [product wise](dim:ProductName) [rejected quantity](fact:RejectedQty) [from](date_condition:greater_than) 2015 [to](date_condition:lesser_than) 2019
+- [product number wise](dim:ProductNumber) [Line Total](fact:LineTotal)
+- [product number wise](dim:ProductNumber) [order quantity](fact:OrderQty) in [pie](graph:pie)
+- [product number wise](dim:ProductNumber) [order quantity](fact:OrderQty) in [bar](graph:bar) graph
+- [product number wise](dim:ProductNumber) [received quantity](fact:ReceivedQty) [for](date_condition:equal_to) Last Month
+- [product number wise](dim:ProductNumber) [rejected quantity](fact:RejectedQty) [from](date_condition:greater_than) 2015 [to](date_condition:lesser_than) 2019
+- [monthly](dim:Month) [product wise](dim:ProductName) [line total](fact:LineTotal)
+- [monthly](dim:Month) [product wise](dim:ProductName) [order quantity](fact:OrderQty)
+- [maximum](agg:max) [unit price](fact:UnitPrice) for [each product](dim:ProductName)
+- [average](agg:mean) [unit price](fact:UnitPrice) for [each product](dim:ProductName)
+- [product wise](dim:ProductName) [minimum](agg:min) [unit price](fact:UnitPrice)
+- [monthly](dim:Month) [minimum](agg:min) [product](dim:ProductName) [price](fact:UnitPrice)
+- [monthly](dim:Month) [lowest](agg:min) [price](fact:UnitPrice) of [LL Crankarm](ProductName:LL Crankarm)
+- [minimum](agg:min) [purchased](fact:LineTotal) [product](dim:ProductName) in [each month](dim:Month)
+- [month wise](dim:Month) [max](agg:max) [unit price](fact:UnitPrice)) of product [HL Crankarm](ProductName:HL Crankarm)
+
+- [top](selection:top) 3 [products](adject:ProductName) 
+- [best](selection:top) 5 [products](adject:ProductName) [of](date_condition:equal_to) Last Month
+- [bottom](selection:bottom) 3 [[products](adject:ProductName) [of](date_condition:equal_to) last year
+- [worst](selection:bottom) 3 [products](adject:ProductName) [from](date_condition:greater_than) 2015 [to](date_condition:lesser_than) 2019
+- [monthly](dim:Month) [top](selection:top) 3 [products](adject:ProductName) [for](date_condition:equal_to) Last year
+- [top](selection:top) 3 [products](adject:ProductName) by [order quantity](fact:OrderQty)
+- [bottom](selection:bottom) 3 [products](adject:ProductName) by [order quantity](fact:OrderQty)
+- [worst](selection:bottom) [product](adject:ProductName) in [each month](dim:Month)
+- [best](selection:top) [product](adject:ProductName) in [each month year](dim:MonthYear)
+- [worst](selection:bottom) [product](adject:ProductName) in [each month](dim:Month) by [order quantity](fact:OrderQty)
+- [best](selection:top) [product](adject:ProductName) in [each month](dim:Month) by [order quantity](fact:OrderQty)
+
+
+## intent:ProductDescription
+- Product description [Hex Nut 13](ProductName:Hex Nut 13)
+- Product description [Rear Derailleur Cage](ProductName:Rear Derailleur Cage)
+- Product description [Seat Lug](ProductName:Seat Lug)
+- Product description [Touring Pedal](ProductName:Touring Pedal)
+- [HL Road Rim](ProductName:HL Road Rim)
+- [HL Nipple](ProductName:HL Nipple)
+- [Tension Pulley](ProductName:Tension Pulley)
+- [Touring Rim](ProductName:Touring Rim)
 
 
 ## lookup:agg
@@ -100,11 +231,14 @@
 - UnitPrice
 - LineTotal
 - ReceivedQty
+- RejectedQty
 
 ## lookup:dim
 - EmployeeName
+- PurchaseOrderID
 - JobTitle
 - DepartmentName
+- Status
 - ProductName
 - ProductNumber
 - ProductSubcategoryName
@@ -120,890 +254,321 @@
 - Quarter
 - QuarterYear
 
+
 ## lookup:EmployeeName
-- A. Scott Wright
-- Alan Brewer
-- Alejandro McGuel
-- Alex Nayberg
-- Alice Ciccu
-- Amy Alberts
-- Andreas Berglund
-- Andrew Cencini
-- Andrew Hill
-- Andy Ruth
-- Angela Barbariol
-- Anibal Sousa
 - Annette Hill
-- Annik Stahl
 - Arvind Rao
-- Ashvini Sharma
-- Barbara Decker
-- Barbara Moreland
-- Baris Cetinok
-- Barry Johnson
-- Belinda Newman
 - Ben Miller
-- Benjamin Martin
-- Betsy Stadick
-- Bjorn Rettig
-- Bob Hohman
-- Bonnie Kearney
-- Brandon Heidepriem
-- Brenda Diaz
-- Brian Goldstein
-- Brian LaMee
-- Brian Lloyd
-- Brian Welcker
-- Britta Simon
-- Bryan Baker
-- Bryan Walton
-- Candy Spoon
-- Carol Philips
-- Carole Poland
-- Chad Niswonger
-- Charles Fitzgerald
-- Chris Norred
-- Chris Okelberry
-- Chris Preston
-- Christian Kleinerman
-- Christopher Hill
-- Cristian Petculescu
-- Cynthia Randall
-- Dan Bacon
-- Dan Wilson
-- Danielle Tiedt
-- David Barber
-- David Bradley
-- David Campbell
-- David Hamilton
-- David Johnson
-- David Lawrence
-- David Liu
-- David Ortiz
-- David Yalovsky
-- Deborah Poe
-- Denise Smith
-- Diane Glimp
-- Diane Margheim
-- Diane Tibbott
-- Don Hall
-- Doris Hartwig
-- Douglas Hite
-- Dragan Tomic
-- Dylan Miller
-- Ebru Ersan
-- Ed Dudenhoefer
-- Elizabeth Keyser
-- Eric Brown
-- Eric Gubbels
 - Eric Kurjan
 - Erin Hagens
-- Eugene Kogan
-- Eugene Zabokritski
-- Fadi Fakhouri
-- François Ajenstat
-- Frank Lee
-- Frank Martinez
-- Frank Miller
 - Frank Pellow
-- Fred Northup
 - Fukiko Ogisu
-- Gabe Mares
-- Gail Erickson
-- Garrett Vargas
-- Garrett Young
-- Gary Altman
-- Gary Yukish
-- George Li
-- Gigi Matthew
 - Gordon Hee
-- Grant Culbertson
-- Greg Alderson
-- Guy Gilbert
-- Hanying Feng
-- Hao Chen
-- Hazem Abolrous
-- Houman Pournasseh
-- Hung-Fu Ting
-- Ivo Salmre
-- Jack Creasey
-- Jack Richins
-- Jae Pak
-- James Hamilton
-- James Kramer
-- Jan Miksovsky
-- Janaina Bueno
-- Janet Sheperdigian
-- Janeth Esteves
-- Janice Galvin
-- Jason Watters
-- Jay Adams
-- Jean Trenary
-- Jeff Hay
-- Jeffrey Ford
-- Jian Shuo Wang
-- Jill Williams
-- Jillian Carson
-- Jim Scardelis
-- Jimmy Bischoff
-- Jinghao Liu
-- Jo Berry
-- Jo Brown
-- John Campbell
-- John Chen
-- John Evans
-- John Frum
-- John Kane
-- John Wood
-- JoLynn Dobney
-- Jose Lugo
-- José Saraiva
-- Jossef Goldberg
-- Jun Cao
-- Karan Khanna
-- Karen Berg
-- Karen Berge
-- Kathie Flood
-- Katie McAskill-White
-- Ken Myer
-- Ken Sánchez
-- Kendall Keil
-- Kevin Brown
-- Kevin Homer
-- Kevin Liu
-- Kim Abercrombie
-- Kim Ralls
-- Kimberly Zimmerman
-- Kirk Koenigsbauer
-- Kitti Lertpiriyasuwat
-- Kok-Ho Loh
-- Krishna Sunkammurali
-- Lane Sacksteder
-- Laura Norman
-- Laura Steele
 - Linda Meisner
-- Linda Mitchell
-- Linda Moschell
-- Linda Randall
-- Lionel Penuchot
-- Lolan Song
-- Lori Kane
-- Lori Penor
-- Lorraine Nay
-- Lynn Tsoflias
-- Maciej Dusza
-- Magnus Hedlund
-- Mandar Samant
-- Marc Ingle
-- Margie Shoop
-- Mark Harrington
-- Mark McArthur
-- Mary Baker
-- Mary Dempsey
-- Mary Gibson
-- Matthias Berndt
-- Merav Netz
-- Michael Blythe
-- Michael Entin
-- Michael Hines
-- Michael Patten
-- Michael Raheem
-- Michael Ray
-- Michael Rothkugel
-- Michael Sullivan
-- Michael Vanderhyde
-- Michael Zwilling
-- Michiko Osada
-- Mihail Frintu
 - Mikael Sandberg
-- Mike Seamans
-- Min Su
-- Mindaugas Krapauskas
-- Mindy Martin
-- Nancy Anderson
-- Nicole Holliday
-- Nitin Mirchandani
-- Nuan Yu
-- Olinda Turner
-- Ovidiu Cracium
-- Pamela Ansman-Wolfe
-- Pat Coleman
-- Patrick Cook
-- Patrick Wedge
-- Paul Komosinski
-- Paul Singh
-- Paula Barreto de Mattos
-- Paula Nartker
-- Peng Wu
-- Pete Male
-- Peter Connelly
-- Peter Krebs
-- Pilar Ackerman
-- Prasanna Samarawickrama
-- Rachel Valdez
-- Rajesh Patel
-- Ramesh Meyyappan
-- Randy Reeves
-- Ranjit Varkey Chudukatil
-- Raymond Sam
-- Rebecca Laszlo
-- Reed Koch
 - Reinout Hillmann
-- Reuben D'sa
-- Rob Caron
-- Rob Walters
-- Robert Rounthwaite
-- Roberto Tamburello
-- Rostislav Shabalin
-- Russell Hunter
-- Russell King
-- Ruth Ellerbrock
-- Ryan Cornelsen
-- Sairaj Uddin
-- Samantha Smith
-- Sameer Tejani
-- Sandeep Kaliyath
-- Sandra Reátegui Alayo
-- Sariya Harnpadoungsataya
-- Scott Gode
-- Sean Alexander
-- Sean Chai
-- Shammi Mohamed
-- Shane Kim
-- Sharon Salavaria
 - Sheela Word
-- Shelley Dyck
-- Shu Ito
-- Sidney Higa
-- Simon Rapier
-- Sootha Charncherngkha
-- Stefen Hesse
-- Stephanie Conroy
-- Stephen Jiang
-- Steve Masters
-- Steven Selikoff
-- Stuart Macrae
-- Stuart Munson
-- Suchitra Mohan
-- Suroor Fatima
-- Susan Eaton
-- Susan Metters
-- Syed Abbas
-- Sylvester Valdez
-- Tawana Nusbaum
-- Taylor Maxwell
-- Tengiz Kharatishvili
-- Terrence Earls
-- Terri Duffy
-- Terry Eminhizer
-- Tete Mensa-Annan
-- Thierry D'Hers
-- Thomas Michaels
-- Tom Vande Velde
-- Tsvi Reiter
-- Vamsi Kuppa
-- Vidur Luthra
-- Wanida Benshoof
-- Wendy Kahn
-- William Vong
-- Willis Johnson
-- Yuhong Li
-- Yvonne McKay
-- Zainal Arifin
-- Zheng Mu
+- Sheela
+- Linda
+- Annette
+- Eric
+- Arvind
+- Ben
+- Erin
+- Frank
+- Fukiko
+- Gordon
+- Mikael
+- Reinout
+- Hill
+- Rao
+- Miller
+- Kurjan
+- Hagens
+- Pellow
+- Ogisu
+- Hee
+- Meisner
+- Sandberg
+- Hillmann
+- Word
+- Naveen
+- Ankit
+- Prem
+- Saurabh
 
 ## lookup:JobTitle
-- Accountant
-- Accounts Manager
-- Accounts Payable Specialist
-- Accounts Receivable Specialist
-- Application Specialist
-- Assistant to the Chief Financial Officer
-- Benefits Specialist
 - Buyer
-- Chief Executive Officer
-- Chief Financial Officer
-- Control Specialist
-- Database Administrator
-- Design Engineer
-- Document Control Assistant
-- Document Control Manager
-- Engineering Manager
-- European Sales Manager
-- Facilities Administrative Assistant
-- Facilities Manager
-- Finance Manager
-- Human Resources Administrative Assistant
-- Human Resources Manager
-- Information Services Manager
-- Janitor
-- Maintenance Supervisor
-- Marketing Assistant
-- Marketing Manager
-- Marketing Specialist
-- Master Scheduler
-- Network Administrator
-- Network Manager
-- North American Sales Manager
-- Pacific Sales Manager
-- Production Control Manager
-- Production Supervisor - WC10
-- Production Supervisor - WC20
-- Production Supervisor - WC30
-- Production Supervisor - WC40
-- Production Supervisor - WC45
-- Production Supervisor - WC50
-- Production Supervisor - WC60
-- Production Technician - WC10
-- Production Technician - WC20
-- Production Technician - WC30
-- Production Technician - WC40
-- Production Technician - WC45
-- Production Technician - WC50
-- Production Technician - WC60
 - Purchasing Assistant
 - Purchasing Manager
-- Quality Assurance Manager
-- Quality Assurance Supervisor
-- Quality Assurance Technician
-- Recruiter
-- Research and Development Engineer
-- Research and Development Manager
-- Sales Representative
-- Scheduling Assistant
-- Senior Design Engineer
-- Senior Tool Designer
-- Shipping and Receiving Clerk
-- Shipping and Receiving Supervisor
-- Stocker
-- Tool Designer
-- Vice President of Engineering
-- Vice President of Production
-- Vice President of Sales
-
-## lookup:DepartmentName
-- Document Control
-- Engineering
-- Executive
-- Facilities and Maintenance
-- Finance
-- Human Resources
-- Information Services
-- Marketing
-- Production
-- Production Control
-- Purchasing
-- Quality Assurance
-- Research and Development
-- Sales
-- Shipping and Receiving
-- Tool Design
 
 ## lookup:ProductName
 - Adjustable Race
-- All-Purpose Bike Stand
-- AWC Logo Cap
-- BB Ball Bearing
 - Bearing Ball
-- Bike Wash - Dissolver
-- Blade
-- Cable Lock
-- Chain
-- Chain Stays
-- Chainring
+- Headset Ball Bearings
+- LL Crankarm
+- ML Crankarm
+- HL Crankarm
 - Chainring Bolts
 - Chainring Nut
-- Classic Vest, L
-- Classic Vest, M
-- Classic Vest, S
-- Cone-Shaped Race
+- Chainring
 - Crown Race
-- Cup-Shaped Race
 - Decal 1
 - Decal 2
-- Down Tube
-- External Lock Washer 1
-- External Lock Washer 2
-- External Lock Washer 3
-- External Lock Washer 4
-- External Lock Washer 5
-- External Lock Washer 6
-- External Lock Washer 7
-- External Lock Washer 8
-- External Lock Washer 9
-- Fender Set - Mountain
-- Flat Washer 1
-- Flat Washer 2
-- Flat Washer 3
-- Flat Washer 4
-- Flat Washer 5
-- Flat Washer 6
-- Flat Washer 7
-- Flat Washer 8
-- Flat Washer 9
-- Fork Crown
-- Fork End
 - Freewheel
-- Front Brakes
-- Front Derailleur
+- Flat Washer 1
+- Flat Washer 6
+- Flat Washer 2
+- Flat Washer 9
+- Flat Washer 4
+- Flat Washer 3
+- Flat Washer 8
+- Flat Washer 5
+- Flat Washer 7
 - Front Derailleur Cage
 - Front Derailleur Linkage
-- Full-Finger Gloves, L
-- Full-Finger Gloves, M
-- Full-Finger Gloves, S
 - Guide Pulley
-- Half-Finger Gloves, L
-- Half-Finger Gloves, M
-- Half-Finger Gloves, S
-- Handlebar Tube
-- Head Tube
-- Headlights - Dual-Beam
-- Headlights - Weatherproof
-- Headset Ball Bearings
-- Hex Nut 1
-- Hex Nut 10
-- Hex Nut 11
-- Hex Nut 12
-- Hex Nut 13
-- Hex Nut 14
-- Hex Nut 15
-- Hex Nut 16
-- Hex Nut 17
-- Hex Nut 18
-- Hex Nut 19
-- Hex Nut 2
-- Hex Nut 20
-- Hex Nut 21
-- Hex Nut 22
-- Hex Nut 23
-- Hex Nut 3
-- Hex Nut 4
+- LL Grip Tape
+- ML Grip Tape
+- HL Grip Tape
+- Thin-Jam Hex Nut 9
+- Thin-Jam Hex Nut 10
+- Thin-Jam Hex Nut 1
+- Thin-Jam Hex Nut 2
+- Thin-Jam Hex Nut 15
+- Thin-Jam Hex Nut 16
+- Thin-Jam Hex Nut 5
+- Thin-Jam Hex Nut 6
+- Thin-Jam Hex Nut 3
+- Thin-Jam Hex Nut 4
+- Thin-Jam Hex Nut 13
+- Thin-Jam Hex Nut 14
+- Thin-Jam Hex Nut 7
+- Thin-Jam Hex Nut 8
+- Thin-Jam Hex Nut 12
+- Thin-Jam Hex Nut 11
 - Hex Nut 5
 - Hex Nut 6
+- Hex Nut 16
+- Hex Nut 17
 - Hex Nut 7
 - Hex Nut 8
 - Hex Nut 9
-- Hitch Rack - 4-Bike
-- HL Bottom Bracket
-- HL Crankarm
-- HL Crankset
-- HL Fork
-- HL Grip Tape
-- HL Headset
-- HL Hub
-- HL Mountain Frame - Black, 38
-- HL Mountain Frame - Black, 42
-- HL Mountain Frame - Black, 44
-- HL Mountain Frame - Black, 46
-- HL Mountain Frame - Black, 48
-- HL Mountain Frame - Silver, 38
-- HL Mountain Frame - Silver, 42
-- HL Mountain Frame - Silver, 44
-- HL Mountain Frame - Silver, 46
-- HL Mountain Frame - Silver, 48
-- HL Mountain Front Wheel
-- HL Mountain Handlebars
-- HL Mountain Pedal
-- HL Mountain Rear Wheel
-- HL Mountain Rim
-- HL Mountain Seat Assembly
-- HL Mountain Seat/Saddle
-- HL Mountain Tire
-- HL Nipple
-- HL Road Frame - Black, 44
-- HL Road Frame - Black, 48
-- HL Road Frame - Black, 52
-- HL Road Frame - Black, 58
-- HL Road Frame - Black, 62
-- HL Road Frame - Red, 44
-- HL Road Frame - Red, 48
-- HL Road Frame - Red, 52
-- HL Road Frame - Red, 56
-- HL Road Frame - Red, 58
-- HL Road Frame - Red, 62
-- HL Road Front Wheel
-- HL Road Handlebars
-- HL Road Pedal
-- HL Road Rear Wheel
-- HL Road Rim
-- HL Road Seat Assembly
-- HL Road Seat/Saddle
-- HL Road Tire
-- HL Shell
-- HL Spindle/Axle
-- HL Touring Frame - Blue, 46
-- HL Touring Frame - Blue, 50
-- HL Touring Frame - Blue, 54
-- HL Touring Frame - Blue, 60
-- HL Touring Frame - Yellow, 46
-- HL Touring Frame - Yellow, 50
-- HL Touring Frame - Yellow, 54
-- HL Touring Frame - Yellow, 60
-- HL Touring Handlebars
-- HL Touring Seat Assembly
-- HL Touring Seat/Saddle
-- Hydration Pack - 70 oz.
-- Internal Lock Washer 1
-- Internal Lock Washer 10
-- Internal Lock Washer 2
+- Hex Nut 22
+- Hex Nut 23
+- Hex Nut 12
+- Hex Nut 13
+- Hex Nut 1
+- Hex Nut 10
+- Hex Nut 11
+- Hex Nut 2
+- Hex Nut 20
+- Hex Nut 21
+- Hex Nut 3
+- Hex Nut 14
+- Hex Nut 15
+- Hex Nut 4
+- Hex Nut 18
+- Hex Nut 19
+- Keyed Washer
+- External Lock Washer 3
+- External Lock Washer 4
+- External Lock Washer 9
+- External Lock Washer 5
+- External Lock Washer 7
+- External Lock Washer 6
+- External Lock Washer 1
+- External Lock Washer 8
+- External Lock Washer 2
 - Internal Lock Washer 3
 - Internal Lock Washer 4
-- Internal Lock Washer 5
-- Internal Lock Washer 6
-- Internal Lock Washer 7
-- Internal Lock Washer 8
 - Internal Lock Washer 9
-- Keyed Washer
-- LL Bottom Bracket
-- LL Crankarm
-- LL Crankset
-- LL Fork
-- LL Grip Tape
-- LL Headset
-- LL Hub
-- LL Mountain Frame - Black, 40
-- LL Mountain Frame - Black, 42
-- LL Mountain Frame - Black, 44
-- LL Mountain Frame - Black, 48
-- LL Mountain Frame - Black, 52
-- LL Mountain Frame - Silver, 40
-- LL Mountain Frame - Silver, 42
-- LL Mountain Frame - Silver, 44
-- LL Mountain Frame - Silver, 48
-- LL Mountain Frame - Silver, 52
-- LL Mountain Front Wheel
-- LL Mountain Handlebars
-- LL Mountain Pedal
-- LL Mountain Rear Wheel
-- LL Mountain Rim
-- LL Mountain Seat Assembly
-- LL Mountain Seat/Saddle
-- LL Mountain Tire
-- LL Nipple
-- LL Road Frame - Black, 44
-- LL Road Frame - Black, 48
-- LL Road Frame - Black, 52
-- LL Road Frame - Black, 58
-- LL Road Frame - Black, 60
-- LL Road Frame - Black, 62
-- LL Road Frame - Red, 44
-- LL Road Frame - Red, 48
-- LL Road Frame - Red, 52
-- LL Road Frame - Red, 58
-- LL Road Frame - Red, 60
-- LL Road Frame - Red, 62
-- LL Road Front Wheel
-- LL Road Handlebars
-- LL Road Pedal
-- LL Road Rear Wheel
-- LL Road Rim
-- LL Road Seat Assembly
-- LL Road Seat/Saddle
-- LL Road Tire
-- LL Shell
-- LL Spindle/Axle
-- LL Touring Frame - Blue, 44
-- LL Touring Frame - Blue, 50
-- LL Touring Frame - Blue, 54
-- LL Touring Frame - Blue, 58
-- LL Touring Frame - Blue, 62
-- LL Touring Frame - Yellow, 44
-- LL Touring Frame - Yellow, 50
-- LL Touring Frame - Yellow, 54
-- LL Touring Frame - Yellow, 58
-- LL Touring Frame - Yellow, 62
-- LL Touring Handlebars
-- LL Touring Seat Assembly
-- LL Touring Seat/Saddle
-- Lock Nut 1
-- Lock Nut 10
-- Lock Nut 11
-- Lock Nut 12
-- Lock Nut 13
-- Lock Nut 14
-- Lock Nut 15
-- Lock Nut 16
-- Lock Nut 17
-- Lock Nut 18
-- Lock Nut 19
-- Lock Nut 2
-- Lock Nut 20
-- Lock Nut 21
-- Lock Nut 22
-- Lock Nut 23
-- Lock Nut 3
-- Lock Nut 4
+- Internal Lock Washer 5
+- Internal Lock Washer 7
+- Internal Lock Washer 6
+- Internal Lock Washer 10
+- Internal Lock Washer 1
+- Internal Lock Washer 8
+- Internal Lock Washer 2
+- Thin-Jam Lock Nut 9
+- Thin-Jam Lock Nut 10
+- Thin-Jam Lock Nut 1
+- Thin-Jam Lock Nut 2
+- Thin-Jam Lock Nut 15
+- Thin-Jam Lock Nut 16
+- Thin-Jam Lock Nut 5
+- Thin-Jam Lock Nut 6
+- Thin-Jam Lock Nut 3
+- Thin-Jam Lock Nut 4
+- Thin-Jam Lock Nut 13
+- Thin-Jam Lock Nut 14
+- Thin-Jam Lock Nut 7
+- Thin-Jam Lock Nut 8
+- Thin-Jam Lock Nut 12
+- Thin-Jam Lock Nut 11
 - Lock Nut 5
 - Lock Nut 6
+- Lock Nut 16
+- Lock Nut 17
 - Lock Nut 7
 - Lock Nut 8
 - Lock Nut 9
+- Lock Nut 22
+- Lock Nut 23
+- Lock Nut 12
+- Lock Nut 13
+- Lock Nut 1
+- Lock Nut 10
+- Lock Nut 11
+- Lock Nut 2
+- Lock Nut 20
+- Lock Nut 21
+- Lock Nut 3
+- Lock Nut 14
+- Lock Nut 15
+- Lock Nut 4
+- Lock Nut 19
+- Lock Nut 18
 - Lock Ring
-- Lock Washer 1
-- Lock Washer 10
-- Lock Washer 11
-- Lock Washer 12
-- Lock Washer 13
-- Lock Washer 2
-- Lock Washer 3
+- Lower Head Race
 - Lock Washer 4
 - Lock Washer 5
+- Lock Washer 10
 - Lock Washer 6
-- Lock Washer 7
+- Lock Washer 13
 - Lock Washer 8
+- Lock Washer 1
+- Lock Washer 7
+- Lock Washer 12
+- Lock Washer 2
 - Lock Washer 9
-- Long-Sleeve Logo Jersey, L
-- Long-Sleeve Logo Jersey, M
-- Long-Sleeve Logo Jersey, S
-- Long-Sleeve Logo Jersey, XL
-- Lower Head Race
-- Men's Bib-Shorts, L
-- Men's Bib-Shorts, M
-- Men's Bib-Shorts, S
-- Men's Sports Shorts, L
-- Men's Sports Shorts, M
-- Men's Sports Shorts, S
-- Men's Sports Shorts, XL
+- Lock Washer 3
+- Lock Washer 11
 - Metal Angle
 - Metal Bar 1
 - Metal Bar 2
-- Metal Plate 1
 - Metal Plate 2
+- Metal Plate 1
 - Metal Plate 3
-- Metal Sheet 1
 - Metal Sheet 2
 - Metal Sheet 3
+- Metal Sheet 7
 - Metal Sheet 4
 - Metal Sheet 5
 - Metal Sheet 6
-- Metal Sheet 7
+- Metal Sheet 1
 - Metal Tread Plate
-- Minipump
-- ML Bottom Bracket
-- ML Crankarm
-- ML Crankset
-- ML Fork
-- ML Grip Tape
-- ML Headset
-- ML Mountain Frame - Black, 38
-- ML Mountain Frame - Black, 40
-- ML Mountain Frame - Black, 44
-- ML Mountain Frame - Black, 48
-- ML Mountain Frame-W - Silver, 38
-- ML Mountain Frame-W - Silver, 40
-- ML Mountain Frame-W - Silver, 42
-- ML Mountain Frame-W - Silver, 46
-- ML Mountain Front Wheel
-- ML Mountain Handlebars
-- ML Mountain Pedal
-- ML Mountain Rear Wheel
-- ML Mountain Rim
-- ML Mountain Seat Assembly
-- ML Mountain Seat/Saddle
-- ML Mountain Tire
-- ML Road Frame - Red, 44
-- ML Road Frame - Red, 48
-- ML Road Frame - Red, 52
-- ML Road Frame - Red, 58
-- ML Road Frame - Red, 60
-- ML Road Frame-W - Yellow, 38
-- ML Road Frame-W - Yellow, 40
-- ML Road Frame-W - Yellow, 42
-- ML Road Frame-W - Yellow, 44
-- ML Road Frame-W - Yellow, 48
-- ML Road Front Wheel
-- ML Road Handlebars
-- ML Road Pedal
-- ML Road Rear Wheel
-- ML Road Rim
-- ML Road Seat Assembly
-- ML Road Seat/Saddle
-- ML Road Tire
-- ML Touring Seat Assembly
-- ML Touring Seat/Saddle
-- Mountain Bike Socks, L
-- Mountain Bike Socks, M
-- Mountain Bottle Cage
-- Mountain End Caps
-- Mountain Pump
-- Mountain Tire Tube
-- Mountain-100 Black, 38
-- Mountain-100 Black, 42
-- Mountain-100 Black, 44
-- Mountain-100 Black, 48
-- Mountain-100 Silver, 38
-- Mountain-100 Silver, 42
-- Mountain-100 Silver, 44
-- Mountain-100 Silver, 48
-- Mountain-200 Black, 38
-- Mountain-200 Black, 42
-- Mountain-200 Black, 46
-- Mountain-200 Silver, 38
-- Mountain-200 Silver, 42
-- Mountain-200 Silver, 46
-- Mountain-300 Black, 38
-- Mountain-300 Black, 40
-- Mountain-300 Black, 44
-- Mountain-300 Black, 48
-- Mountain-400-W Silver, 38
-- Mountain-400-W Silver, 40
-- Mountain-400-W Silver, 42
-- Mountain-400-W Silver, 46
-- Mountain-500 Black, 40
-- Mountain-500 Black, 42
-- Mountain-500 Black, 44
-- Mountain-500 Black, 48
-- Mountain-500 Black, 52
-- Mountain-500 Silver, 40
-- Mountain-500 Silver, 42
-- Mountain-500 Silver, 44
-- Mountain-500 Silver, 48
-- Mountain-500 Silver, 52
+- LL Nipple
+- HL Nipple
 - Paint - Black
-- Paint - Blue
 - Paint - Red
 - Paint - Silver
+- Paint - Blue
 - Paint - Yellow
-- Patch Kit/8 Patches
 - Pinch Bolt
-- Racing Socks, L
-- Racing Socks, M
-- Rear Brakes
-- Rear Derailleur
-- Rear Derailleur Cage
+- Cup-Shaped Race
+- Cone-Shaped Race
 - Reflector
-- Road Bottle Cage
-- Road End Caps
-- Road Tire Tube
-- Road-150 Red, 44
-- Road-150 Red, 48
-- Road-150 Red, 52
-- Road-150 Red, 56
-- Road-150 Red, 62
-- Road-250 Black, 44
-- Road-250 Black, 48
-- Road-250 Black, 52
-- Road-250 Black, 58
-- Road-250 Red, 44
-- Road-250 Red, 48
-- Road-250 Red, 52
-- Road-250 Red, 58
-- Road-350-W Yellow, 40
-- Road-350-W Yellow, 42
-- Road-350-W Yellow, 44
-- Road-350-W Yellow, 48
-- Road-450 Red, 44
-- Road-450 Red, 48
-- Road-450 Red, 52
-- Road-450 Red, 58
-- Road-450 Red, 60
-- Road-550-W Yellow, 38
-- Road-550-W Yellow, 40
-- Road-550-W Yellow, 42
-- Road-550-W Yellow, 44
-- Road-550-W Yellow, 48
-- Road-650 Black, 44
-- Road-650 Black, 48
-- Road-650 Black, 52
-- Road-650 Black, 58
-- Road-650 Black, 60
-- Road-650 Black, 62
-- Road-650 Red, 44
-- Road-650 Red, 48
-- Road-650 Red, 52
-- Road-650 Red, 58
-- Road-650 Red, 60
-- Road-650 Red, 62
-- Road-750 Black, 44
-- Road-750 Black, 48
-- Road-750 Black, 52
-- Road-750 Black, 58
+- LL Mountain Rim
+- ML Mountain Rim
+- HL Mountain Rim
+- LL Road Rim
+- ML Road Rim
+- HL Road Rim
+- Touring Rim
+- LL Spindle/Axle
+- HL Spindle/Axle
+- LL Shell
+- HL Shell
+- Spokes
 - Seat Lug
 - Seat Post
-- Seat Stays
-- Seat Tube
-- Short-Sleeve Classic Jersey, L
-- Short-Sleeve Classic Jersey, M
-- Short-Sleeve Classic Jersey, S
-- Short-Sleeve Classic Jersey, XL
-- Spokes
-- Sport-100 Helmet, Black
-- Sport-100 Helmet, Blue
-- Sport-100 Helmet, Red
-- Steerer
-- Stem
-- Taillights - Battery-Powered
 - Tension Pulley
-- Thin-Jam Hex Nut 1
-- Thin-Jam Hex Nut 10
-- Thin-Jam Hex Nut 11
-- Thin-Jam Hex Nut 12
-- Thin-Jam Hex Nut 13
-- Thin-Jam Hex Nut 14
-- Thin-Jam Hex Nut 15
-- Thin-Jam Hex Nut 16
-- Thin-Jam Hex Nut 2
-- Thin-Jam Hex Nut 3
-- Thin-Jam Hex Nut 4
-- Thin-Jam Hex Nut 5
-- Thin-Jam Hex Nut 6
-- Thin-Jam Hex Nut 7
-- Thin-Jam Hex Nut 8
-- Thin-Jam Hex Nut 9
-- Thin-Jam Lock Nut 1
-- Thin-Jam Lock Nut 10
-- Thin-Jam Lock Nut 11
-- Thin-Jam Lock Nut 12
-- Thin-Jam Lock Nut 13
-- Thin-Jam Lock Nut 14
-- Thin-Jam Lock Nut 15
-- Thin-Jam Lock Nut 16
-- Thin-Jam Lock Nut 2
-- Thin-Jam Lock Nut 3
-- Thin-Jam Lock Nut 4
-- Thin-Jam Lock Nut 5
-- Thin-Jam Lock Nut 6
-- Thin-Jam Lock Nut 7
-- Thin-Jam Lock Nut 8
-- Thin-Jam Lock Nut 9
-- Top Tube
-- Touring End Caps
-- Touring Front Wheel
-- Touring Pedal
-- Touring Rear Wheel
-- Touring Rim
-- Touring Tire
-- Touring Tire Tube
-- Touring-1000 Blue, 46
-- Touring-1000 Blue, 50
-- Touring-1000 Blue, 54
-- Touring-1000 Blue, 60
-- Touring-1000 Yellow, 46
-- Touring-1000 Yellow, 50
-- Touring-1000 Yellow, 54
-- Touring-1000 Yellow, 60
-- Touring-2000 Blue, 46
-- Touring-2000 Blue, 50
-- Touring-2000 Blue, 54
-- Touring-2000 Blue, 60
-- Touring-3000 Blue, 44
-- Touring-3000 Blue, 50
-- Touring-3000 Blue, 54
-- Touring-3000 Blue, 58
-- Touring-3000 Blue, 62
-- Touring-3000 Yellow, 44
-- Touring-3000 Yellow, 50
-- Touring-3000 Yellow, 54
-- Touring-3000 Yellow, 58
-- Touring-3000 Yellow, 62
+- Rear Derailleur Cage
+- Sport-100 Helmet, Red
+- Sport-100 Helmet, Black
+- Mountain Bike Socks, M
+- Mountain Bike Socks, L
+- Sport-100 Helmet, Blue
+- AWC Logo Cap
+- Long-Sleeve Logo Jersey, S
+- Long-Sleeve Logo Jersey, M
+- Long-Sleeve Logo Jersey, L
+- Long-Sleeve Logo Jersey, XL
+- Men's Sports Shorts, S
 - Touring-Panniers, Large
-- Water Bottle - 30 oz.
-- Women's Mountain Shorts, L
-- Women's Mountain Shorts, M
-- Women's Mountain Shorts, S
-- Women's Tights, L
-- Women's Tights, M
+- Cable Lock
+- Minipump
+- Mountain Pump
+- Taillights - Battery-Powered
+- Headlights - Dual-Beam
+- Headlights - Weatherproof
+- Men's Sports Shorts, M
+- Men's Sports Shorts, L
+- Men's Sports Shorts, XL
 - Women's Tights, S
+- Women's Tights, M
+- Women's Tights, L
+- Men's Bib-Shorts, S
+- Men's Bib-Shorts, M
+- Men's Bib-Shorts, L
+- Half-Finger Gloves, S
+- Half-Finger Gloves, M
+- Half-Finger Gloves, L
+- Full-Finger Gloves, S
+- Full-Finger Gloves, M
+- Full-Finger Gloves, L
+- Classic Vest, S
+- Classic Vest, M
+- Classic Vest, L
+- Women's Mountain Shorts, S
+- Women's Mountain Shorts, M
+- Women's Mountain Shorts, L
+- Water Bottle - 30 oz.
+- Mountain Bottle Cage
+- Road Bottle Cage
+- Patch Kit/8 Patches
+- Racing Socks, M
+- Racing Socks, L
+- Hitch Rack - 4-Bike
+- Bike Wash - Dissolver
+- Fender Set - Mountain
+- All-Purpose Bike Stand
+- Hydration Pack - 70 oz.
+- Short-Sleeve Classic Jersey, S
+- Short-Sleeve Classic Jersey, M
+- Short-Sleeve Classic Jersey, L
+- Short-Sleeve Classic Jersey, XL
+- Rear Brakes
+- LL Mountain Seat/Saddle
+- ML Mountain Seat/Saddle
+- HL Mountain Seat/Saddle
+- LL Road Seat/Saddle
+- ML Road Seat/Saddle
+- HL Road Seat/Saddle
+- LL Touring Seat/Saddle
+- ML Touring Seat/Saddle
+- HL Touring Seat/Saddle
+- Mountain Tire Tube
+- Road Tire Tube
+- Touring Tire Tube
+- LL Mountain Tire
+- ML Mountain Tire
+- HL Mountain Tire
+- LL Road Tire
+- ML Road Tire
+- HL Road Tire
+- Touring Tire
+- LL Mountain Pedal
+- ML Mountain Pedal
+- HL Mountain Pedal
+- LL Road Pedal
+- ML Road Pedal
+- HL Road Pedal
+- Touring Pedal
+- Front Brakes
+- Chain
+
 
 ## lookup:ProductNumber
 - AR-5381
@@ -2090,6 +1655,28 @@
 - staff
 - personnel
 - all employee
+- all employees
+
+## synonym:VendorName
+- vendor
+- vendor name
+- Vendorname
+- vendorwise
+- vendornamewise
+- all vendor
+- allvendor
+- eachvendor
+
+## synonym:VendorAccountNumber
+- vendor a/c 
+- account wise
+- a/c wise
+- vendor act number
+- acc wise
+- ACC
+- A/C
+- Account
+
 
 ## synonym:JobTitle
 - job wise
@@ -2097,11 +1684,6 @@
 - jobtitlewise
 - jobwise
 
-## synonym:DepartmentName
-- department wise
-- departmentwise
-- departmentname wise
-- departmentnamewise
 
 ## synonym:ProductName
 - product
@@ -2185,5 +1767,9 @@
 - quarter-year
 - qtr-year
 
-## intent:POHeaderDetails
-- [pending](Status:Pending) po of [Mountain Works](VendorName:mountain works)
+
+## intent:POHeader
+- [employee wise](dim:EmployeeName) [month wise](dim:Month) po
+- [vendor wise](dim:VendorName) [monthly](dim:Month) po
+- [yearly](dim:Year) [freight](fact:Freight) of each [employee](dim:EmployeeName)
+- [month year wise](dim:MonthYear) [taxamount](fact:TaxAmt)

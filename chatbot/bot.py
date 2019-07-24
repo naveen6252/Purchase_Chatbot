@@ -9,7 +9,7 @@ pd.set_option('display.float_format', lambda x: '%.2f' % x)
 pd.set_option('display.max_columns', 10)
 
 
-def get_json_from_query(query, rls_access_string):
+def get_json_from_query(query, rls_access_string, page_num=0):
 	parameters = get_nlu_parameters(query)
 	intent = parameters['intent']['name']
 	entities = parameters['entities']
@@ -21,8 +21,8 @@ def get_json_from_query(query, rls_access_string):
 	# format entities after loading data
 	entities = en_helpers.format_entities(entities)
 
-	tables = actions.get(intent)(df, entities)
-	final_data = {'response': []}
+	tables, total_pages = actions.get(intent)(df, entities, page_num=page_num)
+	final_data = {'page_num': page_num, 'total_pages': total_pages, 'query': query, 'response': []}
 
 	for data in tables:
 		if data['chart'] == 'text':

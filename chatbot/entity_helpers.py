@@ -5,7 +5,7 @@ from rasa_nlu import train
 from datetime import datetime
 from rasa_nlu.model import Interpreter
 from rasa_nlu import training_data
-from custom_exceptions import NoFactError, NoFactInOperand
+from custom_exceptions import NoFactError, NoFactInOperand, FilterAndCardinalNotBound
 from chatbot import duckling
 from settings import NLU_MODEL_PATH, RASA_CONFIG_PATH, RASA_NLU_DATA_PATH, RASA_MODEL_SAVE_PATH
 
@@ -312,6 +312,21 @@ def format_entities(entities):
 				formatted_entity['dim_filters'][ent].append(val)
 			else:
 				formatted_entity['dim_filters'][ent] = [val]
+		elif ent == 'filter':
+			filter_column = val
+			prev_ent = entities[i - 1]['entity'] if i - 1 < -1 else 'NULL'
+			next_ent = entities[i + 1]['entity'] if i + 1 < len(entities) else 'NULL'
+			filter_value = ''
+			if next_ent == 'CARDINAL':
+				filter_value = entities[i + 1]['value']
+			elif prev_ent == 'CARDINAL':
+				filter_value = entities[i - 1]['value']
+			if filter_value:
+				if filter_column in formatted_entity['dim_filters'].keys():
+					formatted_entity['dim_filters'][filter_column].append(filter_value)
+				else:
+					formatted_entity['dim_filters'][filter_column] = [filter_value]
+
 		elif ent == 'selection':
 			upto = 1
 			prev_ent = entities[i - 1]['entity'] if i - 1 < -1 else 'NULL'
@@ -334,7 +349,9 @@ def convert_text_md_format(text, entities):
 		return text
 	length_to_add = 0
 	for entity in entities:
-		if entity['entity'] in get_dimension_names() + ['date_condition']:
+		if entity['entity'] not in ('ORG', 'PERSON', 'CARDINAL', 'DATE', 'NORP', 'FAC', 'LOC', 'PRODUCT', 'EVENT',
+									'LANGUAGE', 'LAW', 'WORK_OF_ART', 'TIME', 'PERCENT', 'MONEY', 'QUANTITY',
+									'ORDINAL', 'GPE', 'date'):
 			start = entity['start'] + length_to_add
 			end = entity['end'] + length_to_add
 			value = entity['value']

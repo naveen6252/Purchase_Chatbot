@@ -1,5 +1,6 @@
 var prev_message = '';
 var bot_message_id = 0;
+var customTableHeaderId = 0;
 var chart_data = [['Title 0'], ['Title 1']];
 var chart_title = 'test';
 
@@ -114,12 +115,41 @@ function drawCustomHeadingTables(data) {
 
     bot_message += '<div class="container" id="msg' + bot_message_id + '"></div></li>';
 
-    $('.chat').append(bot_message).ready(function () {
+    $('#customHeadTable' + customTableHeaderId).append(bot_message).ready(function () {
         $("html, body").animate({
             scrollTop: $('.chat').height()
         }, 1);
     });
     drawTable();
+}
+
+function showSpecificPage(page_num, query, divId) {
+    $('#customHeadTable' + divId).remove();
+    $.ajax({
+        type: 'GET',
+        url: "/api/show_data_page_wise",
+        data: {
+            message: query,
+            page_num: page_num,
+        },
+        contentType: 'application/json;charset=UTF-8',
+        headers: {
+            "x-access-token": sessionStorage.getItem('accessToken')
+        },
+        success: function (response) {
+            draw_charts(response);
+        },
+        error: function (error) {
+            $("#waiting").remove();
+            var bot_message = '<li class="other"><div class="msg"><p>' + error.responseJSON.message + '</p></div></li>';
+            // append the bot message to the ol
+            $('.chat').append(bot_message).ready(function () {
+                $("html, body").animate({
+                    scrollTop: $('.chat').height()
+                }, 1);
+            });
+        }
+    });
 }
 
 function drawTextMessage(data) {
@@ -139,10 +169,38 @@ function draw_charts(data) {
         if (this.chart === 'text') {
             drawTextMessage(this.data);
         } else if (this.chart === 'customHeadingTables') {
+            var bot_message = '<div id="customHeadTable' + customTableHeaderId + '"></div>';
+
+            $('.chat').append(bot_message).ready(function () {
+                $("html, body").animate({
+                    scrollTop: $('.chat').height()
+                }, 1);
+            });
+
             for (var i = 0; i < this.data.length; ++i) {
                 drawCustomHeadingTables(this.data[i]);
                 bot_message_id++;
             }
+            var bot_message = '<li class="other"><div class="row" id="customHeadTablePageButton' + customTableHeaderId + '"><div class="col-xs-4">';
+            if (data.page_num) {
+                bot_message += '<button class="btn btn-primary" style="z-index: 65;" onclick="showSpecificPage(' +
+                    (data.page_num - 1) + ', \'' + data.query + '\', ' + customTableHeaderId + ')">' +
+                    '<i class="glyphicon glyphicon-chevron-left"></i></button>';
+            }
+            bot_message += '</div><div class="col-xs-4 col-xs-offset-4">';
+            if (data.page_num < data.total_pages) {
+                bot_message += '<button class="btn btn-primary" style="z-index: 65;" onclick="showSpecificPage(' +
+                    (data.page_num + 1) + ', \'' + data.query + '\', ' + customTableHeaderId + ')">' +
+                    '<i class="glyphicon glyphicon-chevron-right"></i></button>';
+            }
+            bot_message += '</div></div></li>';
+            $('#customHeadTable' + customTableHeaderId).append(bot_message).ready(function () {
+                $("html, body").animate({
+                    scrollTop: $('.chat').height()
+                }, 1);
+            });
+            customTableHeaderId++;
+
         } else {
             chart_data = google.visualization.arrayToDataTable(this.data);
             chart_title = this.chart_title;

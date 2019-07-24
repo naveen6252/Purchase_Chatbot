@@ -24,3 +24,9 @@
 "VendorAccountNumber","Vendor.csv",
 "VendorName","Vendor.csv",
 "VendorCreditRating","Vendor.csv",
+"CalendarDate","Calendar.csv","['CalendarDate']"
+"Month","Calendar.csv","['CalendarDate']"
+"Year","Calendar.csv","['CalendarDate']"
+"MonthYear","Calendar.csv","['CalendarDate']"
+"Quarter","Calendar.csv","['CalendarDate']"
+"QuarterYear","Calendar.csv","['CalendarDate']"

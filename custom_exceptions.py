@@ -22,6 +22,12 @@ class NoLeftOperandInPercentage(Exception):
 	"""Raised when there is no filter on either of dim_filters or date_condition"""
 	pass
 
+
 class NoCardinalForFactCondition(Exception):
 	"""Raised when Cardinal not found for fact condition"""
+	pass
+
+
+class FilterAndCardinalNotBound(Exception):
+	"""Raised when Cardinal not found for filter"""
 	pass
