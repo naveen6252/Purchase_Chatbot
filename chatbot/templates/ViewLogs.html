@@ -88,7 +88,6 @@
                     "x-access-token": sessionStorage.getItem('accessToken')
                 },
                 success: function (response) {
-                    window.alert(response.message);
                     window.location.href = '{{ url_for("view_logs") }}';
                 }
             });

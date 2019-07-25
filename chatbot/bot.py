@@ -19,7 +19,7 @@ def get_json_from_query(query, rls_access_string, page_num=0):
 	df = data_loader.load_table_rls_filtered(intent, entities, rls_access_string)
 
 	# format entities after loading data
-	entities = en_helpers.format_entities(entities)
+	entities = en_helpers.format_entities(entities, intent)
 
 	tables, total_pages = actions.get(intent)(df, entities, page_num=page_num)
 	final_data = {'page_num': page_num, 'total_pages': total_pages, 'query': query, 'response': []}

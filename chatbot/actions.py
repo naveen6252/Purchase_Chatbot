@@ -131,6 +131,48 @@ def action_po_header_details(df, entities, page_num=0, length=100, *args, **kwar
 	return data, total_pages
 
 
+def action_product_description(df, entities, page_num=0, length=100, *args, **kwargs):
+	df = helpers.apply_date_condition(df, entities['date_condition'])
+	df = helpers.apply_dim_filters(df, entities['dim_filters'])
+
+	product_group_columns = ['ProductID', 'ProductName', 'ProductNumber', 'ProductSubcategoryName',
+							 'ProductCategoryName']
+	product_agg = {'OrderDate': 'max', 'OrderQty': 'sum', 'LineTotal': 'sum', 'ReceivedQty': 'sum',
+				   'RejectedQty': 'sum'}
+	product_df = df.groupby(product_group_columns).agg(product_agg)
+	product_df = product_df.reset_index()
+	product_df['Return Rate'] = product_df['RejectedQty'] / product_df['OrderQty']
+	product_df['Pending Order'] = df[df['Status'] == 'Pending'].groupby(product_group_columns).agg({'OrderQty': 'sum'})[
+		'OrderQty']
+
+	order_details_group_columns = [
+		'PurchaseOrderID', 'OrderDate', 'ProductName', 'ProductNumber', 'ProductSubcategoryName',
+		'ProductCategoryName', 'OrderQty', 'UnitPrice', 'LineTotal', 'ReceivedQty', 'RejectedQty']
+
+	order_details_agg = ['OrderQty', 'UnitPrice', 'LineTotal', 'ReceivedQty', 'RejectedQty']
+
+	order_details_df = df[order_details_group_columns + order_details_agg]
+
+	data = []
+	for index, row in order_df.iterrows():
+		row_order_details_df = order_details_df[order_details_df['PurchaseOrderID'] == row['PurchaseOrderID']].round(2)
+		for col in row_order_details_df:
+			dt = row_order_details_df[col].dtype
+			if dt == int or dt == float:
+				row_order_details_df[col].fillna(0, inplace=True)
+			else:
+				row_order_details_df[col].fillna("", inplace=True)
+
+		row_order_data = [row_order_details_df.columns.to_list()] + row_order_details_df.to_numpy().tolist()
+		row_data = {'PurchaseOrderHeader': {'type': 'values', 'value': row.to_dict()},
+					'PurchaseOrderDetails': {'type': 'table', 'value': row_order_data}}
+		data.append(row_data)
+	if not data:
+		return [{'chart': 'text', 'chart_title': 'Message', 'data': 'No data found!'}], 1
+	data = [{'chart': 'customHeadingTables', 'data': data}]
+	return data, 1
+
+
 def utter_agent_acquaintance(*argv, **kwargs):
 	l = ["I'm a virtual agent",
 		 "Think of me as a virtual agent",

@@ -24,12 +24,18 @@
 - [po](filter:PurchaseOrderID) 234
 - [po](filter:PurchaseOrderID) 123
 - [po](filter:PurchaseOrderID) 345
+- [po](filter:PurchaseOrderID) 354
 - [po](filter:PurchaseOrderID) 45
 - [po](filter:PurchaseOrderID) 34
 - [po](filter:PurchaseOrderID) 23
 - [po](filter:PurchaseOrderID) 21
+- [po](filter:PurchaseOrderID) 10
 - [po](filter:PurchaseOrderID) 462
 - [po](filter:PurchaseOrderID) 123123
+- [po](filter:PurchaseOrderID) 123
+- [po](filter:PurchaseOrderID) 2123
+- [po](filter:PurchaseOrderID) 1231
+- [po](filter:PurchaseOrderID) 453
 - [purchase id](filter:PurchaseOrderID) 1236
 - [purchase order id](filter:PurchaseOrderID) 1645
 - [purchaseorderid](filter:PurchaseOrderID) 1875
@@ -42,13 +48,11 @@
 - po of [linda](EmployeeName:linda)
 - previous month order details
 - order details [from](date_condition:greater_than) august 2019 [to](date_condition:lesser_than) december 2018
-
 - [completed](Status:Complete) order details [for](date_condition:equal_to) august 2016
 - [pending](Status:Pending) order details
 - [pending](Status:Pending) PO
 - [rejected](Status:Rejected) order details [before](date_condition:lesser_than) february 2017
 - [approved](Status:Approved) order details
-
 - [pending](Status:Pending) po of [Mountain Works](VendorName:Mountain Works)
 - PO of [OVERNIGHT J-FAST](ShipMethodName:OVERNIGHT J-FAST)
 - order details of [CARGO TRANSPORT 5](ShipMethodName:CARGO TRANSPORT 5)
@@ -77,7 +81,6 @@
 - order details for [Components](ProductCategoryName:Components)
 - order details for vendor credit rating [1](VendorCreditRating:1)
 - order details for vendor credit rating [5](VendorCreditRating:5) [for](date_condition:equal_to) January 2015
-
 - order details for [Anibal Sousa](EmployeeName:Anibal Sousa)
 - order details for [Mikael](EmployeeName:Mikael)
 - order details for [Miller](EmployeeName:Miller) 
@@ -87,10 +90,11 @@
 - order details for [Chain](ProductName:Chain) and vendor = [Circuit Cycles](VendorName:Circuit Cycles [for](date_condition:equal_to) last year
 - order details for [Front Brakes](ProductName:Front Brakes) and ship method = [XRQ - TRUCK GROUND](ShipMethodName:XRQ - TRUCK GROUND)
 - po of [Spokes](ProductName:Spokes)
-
 - order details of [David Liu](EmployeeName:David Liu) for product = [Reflector](ProductName:Reflector) and vendor = [Cycling Master](VendorName:Cycling Master)
 - order details of [Guy Gilbert](EmployeeName:Guy Gilbert) for product = [Metal Angle](ProductName:Metal Angle) and vendor = [Fitness Association](VendorName:Fitness Association)
-
+- PO for [year](filter:Year) 2017
+- po of [year](filter:Year) 2017
+- po for [year](filter:Year) 2016
 
 ## intent:POHeader
 - [total](agg:sum) [purchase amount](fact:SubTotal)
@@ -98,39 +102,37 @@
 - [total](agg:sum) [purchase amount](fact:SubTotal) [vendor account number wise](dim:VendorAccountNumber)
 - [total](agg:sum) [purchase amount](fact:SubTotal) of [completed orders](Status:Complete)
 - [total](agg:sum) [purchase amount](fact:SubTotal) [for](date_condition:equal_to) last month
-
 - [completed orders](Status:Complete) [total amount](fact:SubTotal)
 - [completed orders](Status:Complete) [total amount](fact:SubTotal) [yearly](dim:Year)
 - [completed orders](Status:Complete) [total amount](fact:SubTotal) in [bar](graph:bar)
 - [pending orders](Status:Pending) [total amount](fact:SubTotal)
 - [approved orders](Status:Approved) [total amount](fact:SubTotal) in [pie](graph:pie) chart
 - [completed orders](Status:Complete) [total amount](fact:SubTotal) [after](date_condition:greater_than) january 2019
-
 - [year wise](dim:Year) [completed orders](Status:Complete) [total amount](fact:SubTotal) in [bar](graph:bar) [from](date_condition:greater_than) 2015 [to](date_condition:lesser_than) 2018
 - [employee wise](dim:EmployeeName) [purchases](fact:SubTotal)
 - [order wise](dim:PurchaseOrderID) [subtotal](fact:SubTotal) amount
 - [employee wise](dim:EmployeeName) [purchases](fact:SubTotal) [for](date_condition:equal_to) last year
 - [vendor wise](dim:VendorName) [purchases](fact:SubTotal) in [line](graph:line) chart [after](date_condition:greater_than) 2015
 - [status wise](dim:Status) PO in [pie](graph:pie) chart
-- [employee wise](dim:EmployeeName) po on [pie](graph:pie)
-- [vendor account number wise](dim:VendorAccountNumber) PO
+- [employee wise](dim:EmployeeName) [subtotal](fact:SubTotal) on [pie](graph:pie)
+- [vendor account number wise](dim:VendorAccountNumber) [subtotal](fact:SubTotal)
 - [ship method wise](dim:ShipMethodName) PO [from](date_condition:greater_than) 2015 [to](date_condition:lesser_than) 2019
 - [department wise](dim:DepartmentName) [purchases](fact:SubTotal) on [donut](graph:donut)
-- [vendor wise](dim:VendorName) po of employee [Arvind Rao](EmployeeName:Arvind Rao)
+- [vendor wise](dim:VendorName) [subtotal](fact:SubTotal) of employee [Arvind Rao](EmployeeName:Arvind Rao)
 - [employeewise](dim:EmployeeName) [monthly](dim:Month) [purchases](fact:SubTotal)
 - [employee wise](dim:EmployeeName) [yearly](dim:Year) PO in [pie](graph:pie) chart
 - [vendor wise](dim:VendorName) [monthly](dim:Month) [purchases](fact:SubTotal)
 - [vendor wise](dim:VendorName) [yearly](dim:Year) PO
 - [vendor wise](dim:VendorName) [yearly](dim:Year) PO in [bar](graph:bar)
-- po for each [vendor](dim:VendorName)
+- [subtotal](fact:SubTotal) for each [vendor](dim:VendorName)
 - [monthwise](dim:Month) [purchase amount](fact:SubTotal)
-- [month wise](dim:Month) PO
-- [monthwise](dim:Month) PO [from](date_condition:greater_than) 2015 [to](date_condition:lesser_than) 2019
-- [year wise](dim:Year) PO [from](date_condition:greater_than) 2015 [to](date_condition:lesser_than) 2019
-- [year wise](dim:Year) [completed](Status:Complete) PO
+- [month wise](dim:Month) [tax amount](fact:TaxAmt)
+- [monthwise](dim:Month) [tax amount](fact:TaxAmt) [from](date_condition:greater_than) 2015 [to](date_condition:lesser_than) 2019
+- [year wise](dim:Year) [tax amount](fact:TaxAmt) [from](date_condition:greater_than) 2015 [to](date_condition:lesser_than) 2019
+- [year wise](dim:Year) [completed](Status:Complete) [transportation](fact:Freight)
 - [quarterly](dim:Quarter) [purchases](fact:SubTotal) of [pending orders](Status:Pending)
 - [quartly](dim:Quarter) [purchases](fact:SubTotal) of [rejected orders](Status:Reject)
-- [employee wise](dim:EmployeeName) [quartly](dim:Quarter) PO
+- [employee wise](dim:EmployeeName) [quartly](dim:Quarter) [transportation](fact:Freight)
 - [freight](fact:Freight) for [approved](Status:Approved) orders
 - [monthly](dim:Month) [frieght](fact:Freight) for [pending](Status:Pending) orders
 - [yearly](dim:Year) [frieght](fact:Freight) for [completed](Status:Complete) orders
@@ -138,15 +140,21 @@
 - [tax amount](fact:TaxAmt) for [complete](Status:Complete) orders
 - [monthly](dim:Month) [tax amount](fact:TaxAmt) for [pending](Status:Pending) orders
 - [monthwise](dim:Month) [tax amount](fact:TaxAmt) [for](date_condition:equal_to) Last Month
-
 - [top](selection:top) 3 [employees](adject:EmployeeName)
 - [best](selection:top) 5 [employees](adject:EmployeeName)
-- [top](selection:top) 10 [vendors](adject:VendorName) 
+- [top](selection:top) 10 [vendors](adject:VendorName)
 - [top](selection:top) 3 [vendors](adject:VendorName) according to [transportation cost](fact:Freight)
 - [worst](selection:bottom) 3 [employees](adject:EmployeeName) [of](date_condition:equal_to) last year
 - [bottom](selection:bottom) 3 [employee](adject:EmployeeName) [of](date_condition:equal_to) last month
 - [top](selection:top) 10 [vendors](adject:VendorName) in [bar](graph:bar) graph
-
+- [employee wise](dim:EmployeeName) [month wise](dim:Month) [subtotal](fact:SubTotal)
+- [vendor wise](dim:VendorName) [monthly](dim:Month) [subtotal](fact:SubTotal)
+- [yearly](dim:Year) [freight](fact:Freight) of each [employee](dim:EmployeeName)
+- [month year wise](dim:MonthYear) [taxamount](fact:TaxAmt)
+- [month wise](dim:Month) PO for [year](filter:Year) 2016
+- [worst](selection:bottom) [employee](dim:EmployeeName)
+- [month wise](dim:Month) PO for [year](filter:Year) 2017
+- [Status wise](dim:Status) PO [count](agg:count)
 
 ## intent:PODetails
 - [product wise](dim:ProductName) [purchase total](fact:LineTotal) in [pie](graph:pie)
@@ -160,26 +168,28 @@
 - [product number wise](dim:ProductNumber) [rejected quantity](fact:RejectedQty) [from](date_condition:greater_than) 2015 [to](date_condition:lesser_than) 2019
 - [monthly](dim:Month) [product wise](dim:ProductName) [line total](fact:LineTotal)
 - [monthly](dim:Month) [product wise](dim:ProductName) [order quantity](fact:OrderQty)
-- [maximum](agg:max) [unit price](fact:UnitPrice) for [each product](dim:ProductName)
-- [average](agg:mean) [unit price](fact:UnitPrice) for [each product](dim:ProductName)
+- [maximum](agg:max) [unit price](fact:UnitPrice) for each [product](dim:ProductName)
+- [average](agg:mean) [unit price](fact:UnitPrice) for each [product](dim:ProductName)
 - [product wise](dim:ProductName) [minimum](agg:min) [unit price](fact:UnitPrice)
 - [monthly](dim:Month) [minimum](agg:min) [product](dim:ProductName) [price](fact:UnitPrice)
 - [monthly](dim:Month) [lowest](agg:min) [price](fact:UnitPrice) of [LL Crankarm](ProductName:LL Crankarm)
-- [minimum](agg:min) [purchased](fact:LineTotal) [product](dim:ProductName) in [each month](dim:Month)
+- [minimum](agg:min) [purchased](fact:LineTotal) [product](dim:ProductName) in each [month](dim:Month)
 - [month wise](dim:Month) [max](agg:max) [unit price](fact:UnitPrice)) of product [HL Crankarm](ProductName:HL Crankarm)
-
-- [top](selection:top) 3 [products](adject:ProductName) 
+- [top](selection:top) 3 [products](adject:ProductName)
 - [best](selection:top) 5 [products](adject:ProductName) [of](date_condition:equal_to) Last Month
 - [bottom](selection:bottom) 3 [[products](adject:ProductName) [of](date_condition:equal_to) last year
 - [worst](selection:bottom) 3 [products](adject:ProductName) [from](date_condition:greater_than) 2015 [to](date_condition:lesser_than) 2019
 - [monthly](dim:Month) [top](selection:top) 3 [products](adject:ProductName) [for](date_condition:equal_to) Last year
 - [top](selection:top) 3 [products](adject:ProductName) by [order quantity](fact:OrderQty)
 - [bottom](selection:bottom) 3 [products](adject:ProductName) by [order quantity](fact:OrderQty)
-- [worst](selection:bottom) [product](adject:ProductName) in [each month](dim:Month)
-- [best](selection:top) [product](adject:ProductName) in [each month year](dim:MonthYear)
-- [worst](selection:bottom) [product](adject:ProductName) in [each month](dim:Month) by [order quantity](fact:OrderQty)
-- [best](selection:top) [product](adject:ProductName) in [each month](dim:Month) by [order quantity](fact:OrderQty)
-
+- [worst](selection:bottom) [product](adject:ProductName) in each [month](dim:Month)
+- [best](selection:top) [product](adject:ProductName) in each [month year](dim:MonthYear)
+- [worst](selection:bottom) [product](adject:ProductName) in each [month](dim:Month) by [order quantity](fact:OrderQty)
+- [best](selection:top) [product](adject:ProductName) in each [month](dim:Month) by [order quantity](fact:OrderQty)
+- list of [products](dim:ProductName)
+- [maximum](agg:max) [price](fact:UnitPrice) of each [product](dim:ProductName)
+- [maximum](agg:max) [unit price](fact:UnitPrice) of each [product](dim:ProductName)
+- [avg](agg:mean) [unit price](fact:UnitPrice) of each [product](dim:ProductName)
 
 ## intent:ProductDescription
 - Product description [Hex Nut 13](ProductName:Hex Nut 13)
@@ -190,7 +200,6 @@
 - [HL Nipple](ProductName:HL Nipple)
 - [Tension Pulley](ProductName:Tension Pulley)
 - [Touring Rim](ProductName:Touring Rim)
-
 
 ## lookup:agg
 - sum
@@ -253,7 +262,6 @@
 - MonthYear
 - Quarter
 - QuarterYear
-
 
 ## lookup:EmployeeName
 - Annette Hill
@@ -568,7 +576,6 @@
 - Touring Pedal
 - Front Brakes
 - Chain
-
 
 ## lookup:ProductNumber
 - AR-5381
@@ -1121,7 +1128,7 @@
 - Clothing
 - Components
 
-##lookup:ShipMethodName
+## lookup:ShipMethodName
 - XRQ - TRUCK GROUND
 - ZY - EXPRESS
 - OVERSEAS - DELUXE
@@ -1340,46 +1347,12 @@
 - Wide World Importers
 - Wood Fitness
 
-##lookup:VendorCreditRating
+## lookup:VendorCreditRating
 - 1
 - 2
 - 3
 - 4
 - 5
-
-## synonym:equal_to
-- for
-- in
-- on
-- equal to
-- equals
-- equalto
-- equal
-- same
-- like
-- equalled
-- equaled
-- equaling
-- equalingto
-- equal-to
-- equals to
-
-## synonym:greater_than
-- after
-- from
-- between
-- greater than
-- greater
-- greaterthan
-- greater-than
-- larger
-- largerthan
-- large
-- more
-- morethan
-- major
-- more than
-- above
 
 ## synonym:lesser_than
 - before
@@ -1404,12 +1377,85 @@
 - below
 - till
 
-## synonym:greater_than_equal
-- greater than equal to
-- greater-than-equal
-- greater or equal
-- greater than or equal to
-- more than equal
+## synonym:greater_than
+- after
+- from
+- between
+- greater than
+- greater
+- greaterthan
+- greater-than
+- larger
+- largerthan
+- large
+- more
+- morethan
+- major
+- more than
+- above
+
+## synonym:equal_to
+- for
+- of
+- in
+- on
+- equal to
+- equals
+- equalto
+- equal
+- same
+- like
+- equalled
+- equaled
+- equaling
+- equalingto
+- equal-to
+- equals to
+
+## synonym:PurchaseOrderID
+- order number
+- PO Number
+- po
+- PO
+- order id
+- purchase order
+- purchaseorder
+- purchase id
+- purchase order id
+- purchaseorderid
+- orderid
+- order wise
+
+## synonym:Complete
+- completed
+- completed orders
+- complete
+
+## synonym:Pending
+- pending
+- pending orders
+
+## synonym:Rejected
+- rejected
+
+## synonym:Approved
+- approved
+- approved orders
+
+## synonym:Accountant
+- Accountants
+
+## synonym:Design Engineer
+- Design Engineers
+
+## synonym:Network Manager
+- Network Managers
+
+## synonym:Janitor
+- Janitors
+
+## synonym:Circuit Cycles
+- Circuit Cycles
 
 ## synonym:sum
 - total
@@ -1418,30 +1464,116 @@
 - whole
 - sum of
 
-## synonym:mean
-- avg
-- average
-- expected
+## synonym:SubTotal
+- purchase amount
+- total amount
+- purchases
+- subtotal
+- sub total
+- order total
+- Order Total
 
-## synonym:count
-- total number of
-- count of
-- number
-- no. of
+## synonym:VendorName
+- vendor wise
+- vendor
+- vendors
+- vendor name
+- Vendorname
+- vendorwise
+- vendornamewise
+- all vendor
+- allvendor
+- eachvendor
 
-## synonym:min
-- minimum
-- least
-- smallest
-- lowest
+## synonym:VendorAccountNumber
+- vendor account number wise
+- vendor a/c
+- account wise
+- a/c wise
+- vendor act number
+- acc wise
+- ACC
+- A/C
+- Account
+- Vendor Account Number
 
-## synonym:max
-- maximum
-- peak
-- topmost
-- highest
-- largest
-- extreme
+## synonym:Year
+- yearly
+- year wise
+- year
+- Yearwise
+- yrwise
+- years
+
+## synonym:EmployeeName
+- employee wise
+- employeewise
+- employees
+- employee
+- emp
+- Employee Name
+- Emp Wise
+- Emp Name
+- employee name
+- name
+- resource
+- empwise
+- staff
+- personnel
+- all employee
+- all employees
+
+## synonym:Status
+- status wise
+
+## synonym:ShipMethodName
+- ship method wise
+- shipment method
+- shipmethod
+- shipmentmethod
+- ship method
+- shipment
+- ship
+- transportation method
+- transport method
+
+## synonym:DepartmentName
+- department wise
+
+## synonym:Month
+- monthly
+- monthwise
+- month wise
+- each month
+- month
+- each months
+
+## synonym:Quarter
+- quarterly
+- quartly
+- quarter
+- qtr
+- Quarterwise
+- qtrwise
+- Quarterly
+- quarters
+
+## synonym:Reject
+- rejected orders
+
+## synonym:Freight
+- freight
+- frieght
+- transportation cost
+- transportation
+- cost of transport
+- freight charge
+
+## synonym:TaxAmt
+- tax amount
+- Tax Amount
+- taxable amt
+- taxamount
 
 ## synonym:top
 - best
@@ -1457,6 +1589,94 @@
 - least profitable
 - BOTTOM
 - Least Profitable
+
+## synonym:ProductName
+- product wise
+- each product
+- product
+- products
+- [products
+- proddesc
+- prod
+- prod desc
+- prodDesc
+- productwise
+- item
+- goods
+- commodity
+
+## synonym:LineTotal
+- purchase total
+- Line Total
+- line total
+- purchased
+- total cost
+- total line cost
+- product total cost
+
+## synonym:OrderQty
+- order quantity
+- order qty
+- quantity of order
+
+## synonym:ReceivedQty
+- received quantity
+
+## synonym:RejectedQty
+- rejected quantity
+
+## synonym:ProductNumber
+- product number wise
+
+## synonym:max
+- maximum
+- peak
+- topmost
+- highest
+- largest
+- extreme
+
+## synonym:UnitPrice
+- unit price
+- price
+- price of one order
+- order unit price
+- unitprice
+
+## synonym:mean
+- average
+- avg
+- expected
+
+## synonym:min
+- minimum
+- lowest
+- least
+- smallest
+
+## synonym:MonthYear
+- each month year
+- month year
+- monthyear
+- month-year
+- year month
+- MonthYearwise
+- monthyearwise
+- month-yearwise
+- month year wise
+
+## synonym:greater_than_equal
+- greater than equal to
+- greater-than-equal
+- greater or equal
+- greater than or equal to
+- more than equal
+
+## synonym:count
+- total number of
+- count of
+- number
+- no. of
 
 ## synonym:MTD
 - month to date
@@ -1588,114 +1808,16 @@
 - day
 - days
 
-## synonym:Month
-- month
-- monthly
-- monthwise
-- each months
-
-## synonym:Year
-- year
-- yearly
-- Yearwise
-- yrwise
-- years
-
-## synonym:SubTotal
-- subtotal
-- sub total
-- order total
-- Order Total
-
-## synonym:TaxAmt
-- Tax Amount
-- taxable amt
-
-## synonym:Freight
-- transportation
-- cost of transport
-- freight charge
-- frieght
-
 ## synonym:TotalDue
 - total due
 - due amount
 - order amount
-
-## synonym:OrderQty
-- order quantity
-- order qty
-- quantity of order
-
-## synonym:UnitPrice
-- unit price
-- price of one order
-- order unit price
-- unitprice
-
-## synonym:LineTotal
-- total cost
-- line total
-- total line cost
-- product total cost
-
-## synonym:EmployeeName
-- employee
-- emp
-- employees
-- Employee Name
-- EmployeeName
-- Emp Wise
-- Emp Name
-- employee name
-- name
-- resource
-- employeewise
-- empwise
-- staff
-- personnel
-- all employee
-- all employees
-
-## synonym:VendorName
-- vendor
-- vendor name
-- Vendorname
-- vendorwise
-- vendornamewise
-- all vendor
-- allvendor
-- eachvendor
-
-## synonym:VendorAccountNumber
-- vendor a/c 
-- account wise
-- a/c wise
-- vendor act number
-- acc wise
-- ACC
-- A/C
-- Account
-
 
 ## synonym:JobTitle
 - job wise
 - job title wise
 - jobtitlewise
 - jobwise
-
-
-## synonym:ProductName
-- product
-- proddesc
-- prod
-- products
-- prod desc
-- prodDesc
-- productwise
-- item
-- goods
-- commodity
 
 ## synonym:ProductCategoryName
 - product category
@@ -1727,37 +1849,6 @@
 - product subtype
 - prod subcategory
 
-## synonym:ShipMethodName
-- shipment method
-- shipmethod
-- shipmentmethod
-- ship method
-- shipment
-- ship
-- transportation method
-- transport method
-
-## synonym:VendorAccountNumber
-- Vendor Account Number
-
-## synonym:Quarter
-- quarter
-- quarterly
-- qtr
-- Quarterwise
-- qtrwise
-- Quarterly
-- quarters
-
-## synonym:MonthYear
-- month year
-- monthyear
-- month-year
-- year month
-- MonthYearwise
-- monthyearwise
-- month-yearwise
-
 ## synonym:QuarterYear
 - qtryear
 - qtr year
@@ -1767,29 +1858,26 @@
 - quarter-year
 - qtr-year
 
-
 ## intent:POHeader
-- [employee wise](dim:EmployeeName) [month wise](dim:Month) po
-- [vendor wise](dim:VendorName) [monthly](dim:Month) po
-- [yearly](dim:Year) [freight](fact:Freight) of each [employee](dim:EmployeeName)
-- [month year wise](dim:MonthYear) [taxamount](fact:TaxAmt)
-
-## intent:PODetails
-- list of [products](dim:ProductName)
-
-## intent:POHeader
-- [month wise](dim:Month) PO for [year](filter:Year) 2016
-- [worst](selection:bottom) [employee](dim:EmployeeName)
+- [shipmethod wise](dim:ShipMethodName) [freight](fact:Freight)
+- [shipmethod wise](dim:ShipMethodName) [frieght](fact:Freight)
 
 ## intent:POHeaderDetails
-- PO for [year](filter:Year) 2017
-
-## intent:PODetails
-- [maximum](agg:max) [price](fact:UnitPrice) of [each product](dim:ProductName)
-- [maximum](agg:max) [unit price](fact:UnitPrice) of [each product](dim:ProductName)
+- po in this month by employee [eric](EmployeeName:eric)
+- po of [arvind](EmployeeName:arvind) in this month
+- po of vendor account [SPORTFA0001](VendorAccountNumber:SPORTFA0001)
+- po of [RELIANCE0001](VendorAccountNumber:RELIANCE0001)
+- po of vendor [Reliance Fitness, Inc.](VendorName:Reliance Fitness, Inc.)
+- po details of vendor account [SUPERIOR0001](VendorAccountNumber:SUPERIOR0001)
 
 ## intent:POHeader
-- [month wise](dim:Month) PO for [year](filter:Year) 2017
+- each [employee](dim:EmployeeName) [purchases](fact:SubTotal)
 
-## intent:PODetails
-- [avg](agg:mean) [unit price](fact:UnitPrice) of [each product](dim:ProductName)
+## intent:POHeaderDetails
+- po for vendor [International Bicycles](VendorName:International Bicycles)
+
+## intent:POHeaderDetails
+- [po](filter:PurchaseOrderID) 4010
+
+## intent:POHeader
+- [bottom](selection:bottom) 4 [employee](adject:EmployeeName) by purchase

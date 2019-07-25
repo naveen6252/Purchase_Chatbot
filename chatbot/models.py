@@ -1,7 +1,5 @@
 from chatbot import db
 
-
-
 MONTH_NAMES = {
 	1: {'FullMonthName': 'January', 'ShortMonthName': 'Jan', 'QtrName': 'Q1'},
 	2: {'FullMonthName': 'February', 'ShortMonthName': 'Feb', 'QtrName': 'Q1'},
@@ -18,12 +16,12 @@ MONTH_NAMES = {
 }
 
 RLS_COLUMNS_FILTER_CHOICE = [
-	{'col_name': 'CustomerName', 'operator_choice': {'equal-to': 'textbox', 'like': 'textbox', 'in': 'option'}}
-	, {'col_name': 'CustomerRegion', 'operator_choice': {'equal-to': 'textbox', 'like': 'textbox', 'in': 'option'}}
-	, {'col_name': 'CustomerType', 'operator_choice': {'equal-to': 'textbox', 'like': 'textbox', 'in': 'option'}}
-	, {'col_name': 'Name', 'operator_choice': {'equal-to': 'textbox', 'like': 'textbox', 'in': 'option'}}
-	, {'col_name': 'ProdGroup', 'operator_choice': {'equal-to': 'textbox', 'like': 'textbox', 'in': 'option'}}
-	, {'col_name': 'ProductDesc', 'operator_choice': {'equal-to': 'textbox', 'like': 'textbox', 'in': 'option'}}
+	{'col_name': 'EmployeeName', 'operator_choice': {'equal-to': 'textbox', 'like': 'textbox', 'in': 'option'}}
+	, {'col_name': 'JobTitle', 'operator_choice': {'equal-to': 'textbox', 'like': 'textbox', 'in': 'option'}}
+	, {'col_name': 'Status', 'operator_choice': {'equal-to': 'textbox', 'like': 'textbox', 'in': 'option'}}
+	, {'col_name': 'ProductCategoryName', 'operator_choice': {'equal-to': 'textbox', 'like': 'textbox', 'in': 'option'}}
+	, {'col_name': 'VendorName', 'operator_choice': {'equal-to': 'textbox', 'like': 'textbox', 'in': 'option'}}
+	, {'col_name': 'VendorCreditRating', 'operator_choice': {'equal-to': 'textbox', 'like': 'textbox', 'in': 'option'}}
 	, {'col_name': 'CalendarDate', 'operator_choice': {
 		'equal-to': 'calendar', 'greater-than': 'calendar', 'lesser-than': 'calendar'}}
 	, {'col_name': 'Month', 'operator_choice': {'equal-to': 'textbox', 'in': 'option'}}
@@ -31,13 +29,19 @@ RLS_COLUMNS_FILTER_CHOICE = [
 	, {'col_name': 'MonthYear', 'operator_choice': {'in': 'option'}}
 	, {'col_name': 'Quarter', 'operator_choice': {'equal-to': 'textbox', 'in': 'option'}}
 	, {'col_name': 'QuarterYear', 'operator_choice': {'in': 'option'}}
-	, {'col_name': 'SalesQty', 'operator_choice': {
+	, {'col_name': 'SubTotal', 'operator_choice': {
 		'equal-to': 'textbox', 'greater-than': 'textbox', 'lesser-than': 'textbox'}}
-	, {'col_name': 'SalesAmount', 'operator_choice': {
+	, {'col_name': 'TaxAmt', 'operator_choice': {
 		'equal-to': 'textbox', 'greater-than': 'textbox', 'lesser-than': 'textbox'}}
-	, {'col_name': 'TargetQty', 'operator_choice': {
+	, {'col_name': 'Freight', 'operator_choice': {
 		'equal-to': 'textbox', 'greater-than': 'textbox', 'lesser-than': 'textbox'}}
-	, {'col_name': 'TargetAmount', 'operator_choice': {
+	, {'col_name': 'OrderQty', 'operator_choice': {
+		'equal-to': 'textbox', 'greater-than': 'textbox', 'lesser-than': 'textbox'}}
+	, {'col_name': 'LineTotal', 'operator_choice': {
+		'equal-to': 'textbox', 'greater-than': 'textbox', 'lesser-than': 'textbox'}}
+	, {'col_name': 'ReceivedQty', 'operator_choice': {
+		'equal-to': 'textbox', 'greater-than': 'textbox', 'lesser-than': 'textbox'}}
+	, {'col_name': 'RejectedQty', 'operator_choice': {
 		'equal-to': 'textbox', 'greater-than': 'textbox', 'lesser-than': 'textbox'}}
 ]
 

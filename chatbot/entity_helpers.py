@@ -13,7 +13,7 @@ interpreter = Interpreter.load(NLU_MODEL_PATH)
 
 
 # Function to fill aggregation in fact_condition
-def fill_aggregation(raw_agg):
+def fill_aggregation(raw_agg, intent):
 	df = pd.DataFrame(raw_agg)
 	# if first is present then fill them down first
 	if all(df.iloc[0].isna()):
@@ -23,6 +23,11 @@ def fill_aggregation(raw_agg):
 	# default aggregate_function
 	if 'aggregate_functions' not in df.columns:
 		df['aggregate_functions'] = 'sum'
+	elif 'facts' not in df.columns:
+		if intent in ('POHeaderDetails', 'POHeader'):
+			df['facts'] = 'SubTotal'
+		if intent in ('PODetails'):
+			df['facts'] = 'LineTotal'
 	raw_agg = df.to_dict('records')
 	return raw_agg
 
@@ -67,7 +72,7 @@ def get_aggregation(entities, i):
 # ------------------------------- TO --------------------------------------------
 # {'aggregation': {'SalesAmount': ['sum']},
 # 'conditions': [{'fact_name': 'SalesAmount sum', 'conditions': 'greater_than', 'fact_value': 50000.0}]}
-def get_fact_condition_formatted(entities):
+def get_fact_condition_formatted(entities, intent):
 	fact_conditions = []
 	i = 0
 	while i < len(entities):
@@ -129,7 +134,7 @@ def get_fact_condition_formatted(entities):
 
 	# try to fill aggregate_function and facts
 	raw_agg = [agg['aggregation'] for agg in raw_fact_conditions]
-	raw_agg = fill_aggregation(raw_agg)
+	raw_agg = fill_aggregation(raw_agg, intent)
 
 	# raw_agg back to fact_conditions
 	for i, fact_condition in enumerate(raw_fact_conditions):
@@ -292,7 +297,7 @@ def get_date_condition_formatted(entities):
 
 
 # Function for final formatting of entities
-def format_entities(entities):
+def format_entities(entities, intent):
 	# Sort Entities by their end position in the query
 	formatted_entity = {'dim': [], 'graph': [], 'date_condition': [], 'fact_condition': {}, 'select_upto': [],
 						'logic': [], 'dim_filters': {}, 'adject': []}
@@ -317,10 +322,18 @@ def format_entities(entities):
 			prev_ent = entities[i - 1]['entity'] if i - 1 < -1 else 'NULL'
 			next_ent = entities[i + 1]['entity'] if i + 1 < len(entities) else 'NULL'
 			filter_value = ''
-			if next_ent == 'CARDINAL':
-				filter_value = entities[i + 1]['value']
-			elif prev_ent == 'CARDINAL':
-				filter_value = entities[i - 1]['value']
+			if next_ent in ('CARDINAL', 'number'):
+				filter_value = str(entities[i + 1]['value'])
+			elif prev_ent in ('CARDINAL', 'number'):
+				filter_value = str(entities[i - 1]['value'])
+			if not filter_value:
+				prev_ent = entities[i - 2]['entity'] if i - 2 < -1 else 'NULL'
+				next_ent = entities[i + 2]['entity'] if i + 2 < len(entities) else 'NULL'
+				if next_ent in ('CARDINAL', 'number'):
+					filter_value = str(entities[i + 2]['value'])
+				elif prev_ent in ('CARDINAL', 'number'):
+					filter_value = str(entities[i - 2]['value'])
+
 			if filter_value:
 				if filter_column in formatted_entity['dim_filters'].keys():
 					formatted_entity['dim_filters'][filter_column].append(filter_value)
@@ -339,7 +352,7 @@ def format_entities(entities):
 
 			formatted_entity['select_upto'].append({'selection': val, 'upto': upto})
 		i += 1
-	formatted_entity['fact_condition'] = get_fact_condition_formatted(entities)
+	formatted_entity['fact_condition'] = get_fact_condition_formatted(entities, intent)
 	formatted_entity['date_condition'] = get_date_condition_formatted(entities)
 	return formatted_entity
 
@@ -351,7 +364,7 @@ def convert_text_md_format(text, entities):
 	for entity in entities:
 		if entity['entity'] not in ('ORG', 'PERSON', 'CARDINAL', 'DATE', 'NORP', 'FAC', 'LOC', 'PRODUCT', 'EVENT',
 									'LANGUAGE', 'LAW', 'WORK_OF_ART', 'TIME', 'PERCENT', 'MONEY', 'QUANTITY',
-									'ORDINAL', 'GPE', 'date'):
+									'ORDINAL', 'GPE', 'time', 'number'):
 			start = entity['start'] + length_to_add
 			end = entity['end'] + length_to_add
 			value = entity['value']

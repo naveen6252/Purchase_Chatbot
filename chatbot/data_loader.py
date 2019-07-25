@@ -16,7 +16,7 @@ def get_columns_from_rls(rls_json):
 def get_columns_from_entities(raw_entities):
 	columns = []
 	for entity in raw_entities:
-		if entity['entity'] in ['dim', 'fact', 'adject']:
+		if entity['entity'] in ['dim', 'fact', 'adject', 'filter']:
 			columns.append(entity['value'])
 		# entity time for duckling pipeline
 		elif entity['entity'] == 'time':
@@ -73,13 +73,13 @@ def load_table_rls_filtered(intent, entities, rls_json):
 		if ent['value'] in ('ProductName', 'ProductNumber', 'ProductSubcategoryName', 'ProductCategoryName'):
 			isLineTotaltoload = True
 	if intent == 'POHeaderDetails':
-		columns = get_columns_from_rls(rls_json) + ['PurchaseOrderID', 'EmployeeFirstName', 'EmployeeLastName',
-													'EmployeeName', 'JobTitle', 'DepartmentName',
-													'VendorAccountNumber', 'VendorName', 'VendorCreditRating', 'Status',
-													'ShipMethodName', 'OrderDate', 'ShipDate', 'SubTotal', 'TaxAmt',
-													'Freight', 'TotalDue', 'ProductName', 'ProductNumber',
-													'ProductSubcategoryName', 'ProductCategoryName', 'OrderQty',
-													'UnitPrice', 'LineTotal', 'ReceivedQty', 'RejectedQty']
+		columns = get_columns_from_rls(rls_json) + get_columns_from_entities(entities) + [
+			'PurchaseOrderID', 'EmployeeFirstName', 'EmployeeLastName', 'EmployeeName', 'JobTitle', 'DepartmentName',
+			'VendorAccountNumber', 'VendorName', 'VendorCreditRating', 'Status', 'ShipMethodName', 'OrderDate',
+			'ShipDate', 'SubTotal', 'TaxAmt', 'Freight', 'TotalDue', 'ProductName', 'ProductNumber',
+			'ProductSubcategoryName', 'ProductCategoryName', 'OrderQty', 'UnitPrice', 'LineTotal', 'ReceivedQty',
+			'RejectedQty']
+
 	elif intent == 'POHeader':
 		columns = get_columns_from_rls(rls_json) + get_columns_from_entities(entities) + [
 			'PurchaseOrderID', 'EmployeeFirstName', 'EmployeeLastName', 'EmployeeName', 'JobTitle', 'DepartmentName',
@@ -92,6 +92,15 @@ def load_table_rls_filtered(intent, entities, rls_json):
 		columns = get_columns_from_rls(rls_json) + get_columns_from_entities(entities) + [
 			'PurchaseOrderID', 'OrderDate', 'ShipDate', 'SubTotal', 'TaxAmt', 'Freight', 'TotalDue',
 			'OrderQty', 'UnitPrice', 'LineTotal', 'ReceivedQty', 'RejectedQty']
+		if 'EmployeeName' in columns:
+			columns += ['EmployeeFirstName', 'EmployeeLastName']
+
+	elif intent == 'ProductDescription':
+		columns = get_columns_from_rls(rls_json) + get_columns_from_entities(entities) + [
+			'PurchaseOrderID', 'OrderDate', 'Status', 'ProductID', 'ProductName', 'ProductNumber',
+			'ProductSubcategoryName',
+			'ProductCategoryName', 'OrderQty', 'UnitPrice', 'LineTotal', 'ReceivedQty', 'RejectedQty']
+
 		if 'EmployeeName' in columns:
 			columns += ['EmployeeFirstName', 'EmployeeLastName']
 
