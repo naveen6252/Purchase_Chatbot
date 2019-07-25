@@ -1,6 +1,6 @@
 ## intent:POHeaderDetails
 - purchase order details of last month
-- order details [before](date_condition:lesser_than) february 2019]
+- order details [before](date_condition:lesser_than) february 2019
 - order details [after](date_condition:greater_than) 2 january 2019
 - order details [for](date_condition:equal_to) this month
 - purchase order details of [American Bikes](VendorName:American Bikes)
@@ -1773,3 +1773,23 @@
 - [vendor wise](dim:VendorName) [monthly](dim:Month) po
 - [yearly](dim:Year) [freight](fact:Freight) of each [employee](dim:EmployeeName)
 - [month year wise](dim:MonthYear) [taxamount](fact:TaxAmt)
+
+## intent:PODetails
+- list of [products](dim:ProductName)
+
+## intent:POHeader
+- [month wise](dim:Month) PO for [year](filter:Year) 2016
+- [worst](selection:bottom) [employee](dim:EmployeeName)
+
+## intent:POHeaderDetails
+- PO for [year](filter:Year) 2017
+
+## intent:PODetails
+- [maximum](agg:max) [price](fact:UnitPrice) of [each product](dim:ProductName)
+- [maximum](agg:max) [unit price](fact:UnitPrice) of [each product](dim:ProductName)
+
+## intent:POHeader
+- [month wise](dim:Month) PO for [year](filter:Year) 2017
+
+## intent:PODetails
+- [avg](agg:mean) [unit price](fact:UnitPrice) of [each product](dim:ProductName)
