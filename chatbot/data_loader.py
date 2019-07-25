@@ -97,7 +97,7 @@ def load_table_rls_filtered(intent, entities, rls_json):
 
 	elif intent == 'ProductDescription':
 		columns = get_columns_from_rls(rls_json) + get_columns_from_entities(entities) + [
-			'PurchaseOrderID', 'OrderDate', 'Status', 'ProductID', 'ProductName', 'ProductNumber',
+			'PurchaseOrderID', 'OrderDate', 'Month', 'Status', 'ProductID', 'ProductName', 'ProductNumber',
 			'ProductSubcategoryName',
 			'ProductCategoryName', 'OrderQty', 'UnitPrice', 'LineTotal', 'ReceivedQty', 'RejectedQty']
 

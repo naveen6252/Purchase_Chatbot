@@ -27,7 +27,7 @@ def get_json_from_query(query, rls_access_string, page_num=0):
 	for data in tables:
 		if data['chart'] == 'text':
 			final_data['response'].append(data)
-		elif data['chart'] == 'customHeadingTables':
+		elif data['chart'] in ('customHeadingTables', 'customProductChart'):
 			final_data['response'].append(data)
 		else:
 			# Round upto 2 places for all value in table

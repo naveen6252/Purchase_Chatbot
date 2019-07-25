@@ -199,7 +199,9 @@
 - [HL Road Rim](ProductName:HL Road Rim)
 - [HL Nipple](ProductName:HL Nipple)
 - [Tension Pulley](ProductName:Tension Pulley)
-- [Touring Rim](ProductName:Touring Rim)
+- [Freewheel](ProductName:Freewheel)
+- [Hex Nut 10](ProductName:Hex Nut 10)
+- [Metal Angle](ProductName:Metal Angle)
 
 ## lookup:agg
 - sum

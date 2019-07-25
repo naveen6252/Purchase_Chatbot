@@ -1,4 +1,5 @@
 "column","table","date_col"
+"OrderDate","PurchaseOrderHeader.csv","['OrderDate','ShipDate']"
 "SubTotal","PurchaseOrderHeader.csv","['OrderDate','ShipDate']"
 "TaxAmt","PurchaseOrderHeader.csv","['OrderDate','ShipDate']"
 "Freight","PurchaseOrderHeader.csv","['OrderDate','ShipDate']"

@@ -1,8 +1,10 @@
 import random
+
 import numpy as np
 import pandas as pd
 
 from chatbot import helper_methods as helpers
+from chatbot.models import MONTH_NAMES
 
 
 def action_po_header(df, entities, *args, **kwargs):
@@ -99,6 +101,12 @@ def action_po_header_details(df, entities, page_num=0, length=100, *args, **kwar
 	df = helpers.apply_dim_filters(df, entities['dim_filters'])
 	total_pages = len(df) // length
 	df = df.sort_values('PurchaseOrderID', ascending=False).iloc[page_num * length:(page_num + 1) * length]
+	for col in df:
+		dt = df[col].dtype
+		if dt == int or dt == float:
+			df[col].fillna(0, inplace=True)
+		else:
+			df[col].fillna("", inplace=True)
 	order_group_columns = ['PurchaseOrderID', 'EmployeeName', 'JobTitle', 'DepartmentName', 'VendorAccountNumber',
 						   'VendorName', 'VendorCreditRating', 'Status', 'ShipMethodName', 'OrderDate', 'ShipDate']
 	order_agg = {'SubTotal': 'mean', 'TaxAmt': 'mean', 'Freight': 'mean', 'TotalDue': 'mean'}
@@ -114,12 +122,6 @@ def action_po_header_details(df, entities, page_num=0, length=100, *args, **kwar
 	data = []
 	for index, row in order_df.iterrows():
 		row_order_details_df = order_details_df[order_details_df['PurchaseOrderID'] == row['PurchaseOrderID']].round(2)
-		for col in row_order_details_df:
-			dt = row_order_details_df[col].dtype
-			if dt == int or dt == float:
-				row_order_details_df[col].fillna(0, inplace=True)
-			else:
-				row_order_details_df[col].fillna("", inplace=True)
 
 		row_order_data = [row_order_details_df.columns.to_list()] + row_order_details_df.to_numpy().tolist()
 		row_data = {'PurchaseOrderHeader': {'type': 'values', 'value': row.to_dict()},
@@ -127,7 +129,7 @@ def action_po_header_details(df, entities, page_num=0, length=100, *args, **kwar
 		data.append(row_data)
 	if not data:
 		return [{'chart': 'text', 'chart_title': 'Message', 'data': 'No data found!'}], 1
-	data = [{'chart': 'customHeadingTables', 'data': data}]
+	data = [{'chart': 'customPOChart', 'data': data}]
 	return data, total_pages
 
 
@@ -135,42 +137,52 @@ def action_product_description(df, entities, page_num=0, length=100, *args, **kw
 	df = helpers.apply_date_condition(df, entities['date_condition'])
 	df = helpers.apply_dim_filters(df, entities['dim_filters'])
 
+	for col in df:
+		dt = df[col].dtype
+		if dt == int or dt == float:
+			df[col].fillna(0, inplace=True)
+		else:
+			df[col].fillna("", inplace=True)
+
 	product_group_columns = ['ProductID', 'ProductName', 'ProductNumber', 'ProductSubcategoryName',
 							 'ProductCategoryName']
 	product_agg = {'OrderDate': 'max', 'OrderQty': 'sum', 'LineTotal': 'sum', 'ReceivedQty': 'sum',
 				   'RejectedQty': 'sum'}
-	product_df = df.groupby(product_group_columns).agg(product_agg)
-	product_df = product_df.reset_index()
-	product_df['Return Rate'] = product_df['RejectedQty'] / product_df['OrderQty']
-	product_df['Pending Order'] = df[df['Status'] == 'Pending'].groupby(product_group_columns).agg({'OrderQty': 'sum'})[
-		'OrderQty']
+	product_df = df.groupby(product_group_columns).agg(product_agg).reset_index()
+	total_pages = len(product_df) // length
+	product_df = product_df.sort_values('ProductID', ascending=True).iloc[page_num * length:(page_num + 1) * length]
 
-	order_details_group_columns = [
-		'PurchaseOrderID', 'OrderDate', 'ProductName', 'ProductNumber', 'ProductSubcategoryName',
-		'ProductCategoryName', 'OrderQty', 'UnitPrice', 'LineTotal', 'ReceivedQty', 'RejectedQty']
+	product_df['LastPurchasedOn'] = product_df['OrderDate']
+	product_df.drop('OrderDate', axis=1, inplace=True)
+	product_df['ReturnRate'] = (product_df['RejectedQty'] / product_df['OrderQty']).round(2)
+	product_df['PendingOrder'] = product_df.apply(
+		lambda x: df[(df['Status']=='Pending')&(df['ProductID']==x['ProductID'])]['OrderQty'].sum(), axis=1)
 
-	order_details_agg = ['OrderQty', 'UnitPrice', 'LineTotal', 'ReceivedQty', 'RejectedQty']
-
-	order_details_df = df[order_details_group_columns + order_details_agg]
+	product_df['UnitPrice'] = product_df.apply( lambda x: df[(df['ProductID'] == x['ProductID']) & (
+			df['OrderDate'] == x['LastPurchasedOn'])]['UnitPrice'].mean(), axis=1)
+	product_df = product_df.round(2)
 
 	data = []
-	for index, row in order_df.iterrows():
-		row_order_details_df = order_details_df[order_details_df['PurchaseOrderID'] == row['PurchaseOrderID']].round(2)
-		for col in row_order_details_df:
-			dt = row_order_details_df[col].dtype
-			if dt == int or dt == float:
-				row_order_details_df[col].fillna(0, inplace=True)
-			else:
-				row_order_details_df[col].fillna("", inplace=True)
+	for index, row in product_df.iterrows():
+		row_product_details_df = df[df['ProductID'] == row['ProductID']].round(2)
+	row_product_details_df = row_product_details_df.groupby('Month').agg({'LineTotal': 'sum'}).reset_index()
+	full_month_names = {k: v['FullMonthName'] for k, v in MONTH_NAMES.items()}
+	row_product_details_df = row_product_details_df.replace({'Month': full_month_names}).round(2)
+	for col in row_product_details_df:
+		dt = row_product_details_df[col].dtype
+	if dt == int or dt == float:
+		row_product_details_df[col].fillna(0, inplace=True)
+	else:
+		row_product_details_df[col].fillna("", inplace=True)
 
-		row_order_data = [row_order_details_df.columns.to_list()] + row_order_details_df.to_numpy().tolist()
-		row_data = {'PurchaseOrderHeader': {'type': 'values', 'value': row.to_dict()},
-					'PurchaseOrderDetails': {'type': 'table', 'value': row_order_data}}
-		data.append(row_data)
+	row_product_data = [row_product_details_df.columns.to_list()] + row_product_details_df.to_numpy().tolist()
+	row_data = {'ProductData': {'type': 'values', 'value': row.to_dict()},
+				'ProductTrend': {'type': 'line', 'value': row_product_data}}
+	data.append(row_data)
 	if not data:
 		return [{'chart': 'text', 'chart_title': 'Message', 'data': 'No data found!'}], 1
-	data = [{'chart': 'customHeadingTables', 'data': data}]
-	return data, 1
+	data = [{'chart': 'customProductChart', 'data': data}]
+	return data, total_pages
 
 
 def utter_agent_acquaintance(*argv, **kwargs):
@@ -975,6 +987,7 @@ actions = {
 	'POHeaderDetails': action_po_header_details,
 	'POHeader': action_po_header,
 	'PODetails': action_po_details,
+	'ProductDescription': action_product_description,
 	"agent.acquaintance": utter_agent_acquaintance,
 	"agent.age": utter_agent_age,
 	"agent.annoying": utter_agent_annoying,

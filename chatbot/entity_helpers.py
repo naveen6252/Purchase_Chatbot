@@ -1,12 +1,14 @@
-import pandas as pd
-import numpy as np
 import json
-from rasa_nlu import train
 from datetime import datetime
-from rasa_nlu.model import Interpreter
+
+import numpy as np
+import pandas as pd
+from rasa_nlu import train
 from rasa_nlu import training_data
-from custom_exceptions import NoFactError, NoFactInOperand, FilterAndCardinalNotBound
+from rasa_nlu.model import Interpreter
+
 from chatbot import duckling
+from custom_exceptions import NoFactError, NoFactInOperand
 from settings import NLU_MODEL_PATH, RASA_CONFIG_PATH, RASA_NLU_DATA_PATH, RASA_MODEL_SAVE_PATH
 
 interpreter = Interpreter.load(NLU_MODEL_PATH)
@@ -26,7 +28,7 @@ def fill_aggregation(raw_agg, intent):
 	elif 'facts' not in df.columns:
 		if intent in ('POHeaderDetails', 'POHeader'):
 			df['facts'] = 'SubTotal'
-		if intent in ('PODetails'):
+		if intent in ('PODetails', 'ProductDescription'):
 			df['facts'] = 'LineTotal'
 	raw_agg = df.to_dict('records')
 	return raw_agg

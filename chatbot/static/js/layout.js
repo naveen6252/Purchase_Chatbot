@@ -81,7 +81,46 @@ function showHideCustomMsg(id) {
     }
 }
 
-function drawCustomHeadingTables(data) {
+function drawProductChart(data) {
+    var ProductData = data.ProductData.value;
+    var bot_message = '<button class="collapsible" onclick="showHideCustomMsg(' + bot_message_id + ')">Product Name: ' +
+        ProductData.ProductName + '</button><li class="other"><div class="msg" id="customMsg' + bot_message_id + '" ' +
+        'style="display: none">';
+    bot_message += '<div class="container"><h3 class="text-center">Product Description</h3>' +
+        '<div class="row">' +
+        '<div class="col-xs-4">ProductName: ' + ProductData.ProductName + '</div>' +
+        '<div class="col-xs-4">ProductNumber: ' + ProductData.ProductNumber + '</div>' +
+        '<div class="col-xs-4">ProductSubcategoryName: ' + ProductData.ProductSubcategoryName + '</div>' +
+        '</div><div class="row">' +
+        '<div class="col-xs-4">ProductCategoryName: ' + ProductData.ProductCategoryName + '</div>' +
+        '<div class="col-xs-4">UnitPrice: ' + ProductData.UnitPrice + '</div>' +
+        '<div class="col-xs-4">PendingOrder: ' + ProductData.PendingOrder + '</div>' +
+        '</div><div class="row">' +
+        '<div class="col-xs-4">OrderQty: ' + ProductData.OrderQty + '</div>' +
+        '<div class="col-xs-4">RejectedQty: ' + ProductData.RejectedQty + '</div>' +
+        '<div class="col-xs-4">ReturnRate: ' + ProductData.ReturnRate + '</div>' +
+        '</div><div class="row">' +
+        '<div class="col-xs-4">LastPurchasedOn: ' + ProductData.LastPurchasedOn + '</div>' +
+        '<div class="col-xs-4">LineTotal: ' + ProductData.LineTotal + '</div>' +
+        '<div class="col-xs-4">RejectedQty: ' + ProductData.RejectedQty + '</div>' +
+        '</div></div><br><br>';
+
+    var ProductTrend = data.ProductTrend.value;
+    chart_data = google.visualization.arrayToDataTable(ProductTrend);
+    chart_title = 'Product Trend';
+
+    bot_message += '<div class="container" id="msg' + bot_message_id + '"></div></li>';
+
+    $('#customHeadTable' + customTableHeaderId).append(bot_message).ready(function () {
+        $("html, body").animate({
+            scrollTop: $('.chat').height()
+        }, 1);
+    });
+    drawLineChart();
+}
+
+
+function drawPOChart(data) {
     var purchaseOrderHeaderData = data.PurchaseOrderHeader.value;
     var bot_message = '<button class="collapsible" onclick="showHideCustomMsg(' + bot_message_id + ')">PurchaseOrderID: ' +
         purchaseOrderHeaderData.PurchaseOrderID + '</button><li class="other"><div class="msg" id="customMsg' + bot_message_id + '" ' +
@@ -168,7 +207,7 @@ function draw_charts(data) {
         bot_message_id = bot_message_id + 1;
         if (this.chart === 'text') {
             drawTextMessage(this.data);
-        } else if (this.chart === 'customHeadingTables') {
+        } else if (this.chart === 'customPOChart') {
             var bot_message = '<div id="customHeadTable' + customTableHeaderId + '"></div>';
 
             $('.chat').append(bot_message).ready(function () {
@@ -178,7 +217,40 @@ function draw_charts(data) {
             });
 
             for (var i = 0; i < this.data.length; ++i) {
-                drawCustomHeadingTables(this.data[i]);
+                drawPOChart(this.data[i]);
+                bot_message_id++;
+            }
+            var bot_message = '<li class="other"><div class="row" id="customHeadTablePageButton' + customTableHeaderId + '"><div class="col-xs-4">';
+            if (data.page_num) {
+                bot_message += '<button class="btn btn-primary" style="z-index: 65;" onclick="showSpecificPage(' +
+                    (data.page_num - 1) + ', \'' + data.query + '\', ' + customTableHeaderId + ')">' +
+                    '<i class="glyphicon glyphicon-chevron-left"></i></button>';
+            }
+            bot_message += '</div><div class="col-xs-4 col-xs-offset-4">';
+            if (data.page_num < data.total_pages) {
+                bot_message += '<button class="btn btn-primary" style="z-index: 65;" onclick="showSpecificPage(' +
+                    (data.page_num + 1) + ', \'' + data.query + '\', ' + customTableHeaderId + ')">' +
+                    '<i class="glyphicon glyphicon-chevron-right"></i></button>';
+            }
+            bot_message += '</div></div></li>';
+            $('#customHeadTable' + customTableHeaderId).append(bot_message).ready(function () {
+                $("html, body").animate({
+                    scrollTop: $('.chat').height()
+                }, 1);
+            });
+            customTableHeaderId++;
+
+        } else if (this.chart === 'customProductChart') {
+            var bot_message = '<div id="customHeadTable' + customTableHeaderId + '"></div>';
+
+            $('.chat').append(bot_message).ready(function () {
+                $("html, body").animate({
+                    scrollTop: $('.chat').height()
+                }, 1);
+            });
+
+            for (var i = 0; i < this.data.length; ++i) {
+                drawProductChart(this.data[i]);
                 bot_message_id++;
             }
             var bot_message = '<li class="other"><div class="row" id="customHeadTablePageButton' + customTableHeaderId + '"><div class="col-xs-4">';
