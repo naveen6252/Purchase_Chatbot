@@ -113,7 +113,7 @@ wasabi==0.2.2
 wcwidth==0.1.7
 webexteamssdk==1.1.1
 websocket-client==0.54.0
-Werkzeug==0.15.2
+Werkzeug==0.15.3
 zope.interface==4.6.0
 pandas
 python-dotenv
